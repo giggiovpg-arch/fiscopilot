@@ -11,7 +11,7 @@ SaaS B2B brasileiro que ajuda pequenas e médias empresas a importar, interpreta
 
 O **FiscoPilot** é um SaaS B2B brasileiro que atua como um **copiloto fiscal para pequenas e médias empresas (PMEs)**. Ele importa, interpreta e age sobre dados fiscais — antes que inconsistências virem multas.
 
-O aplicativo foi projetado especificamente para **donos de loja de material de construção no Simples Nacional**, que recebem entre 60 e 200 notas fiscais eletrônicas (NF-e) de compra por mês e não têm como saber se há erros fiscais escondidos nos arquivos XML ilegíveis que recebem dos fornecedores.
+O aplicativo foi projetado especificamente para **donos de PME**, que recebem entre 60 e 200 notas fiscais eletrônicas (NF-e) de compra por mês e não têm como saber se há erros fiscais escondidos nos arquivos XML ilegíveis que recebem dos fornecedores.
 
 **Tagline:** *Suas notas fiscais explicadas.*
 
