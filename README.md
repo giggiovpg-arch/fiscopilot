@@ -1,7 +1,7 @@
 <img width="1003" height="192" alt="ChatGPT Image May 28, 2026, 01_28_04 AM (2)" src="https://github.com/user-attachments/assets/dd01c9b3-1c04-496f-a968-a485bae7f3ee" />
 
 
-# FiscoPilot -  Copiloto Fiscaal  para PME
+# FiscoPilot -  Copiloto Fiscal  para PME
 
 SaaS B2B brasileiro que ajuda pequenas e médias empresas a importar, interpretar e agir sobre seus dados fiscais — antes que inconsistências virem multas.
 
