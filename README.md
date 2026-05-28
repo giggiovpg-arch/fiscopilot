@@ -1,10 +1,206 @@
-
 <img width="1003" height="192" alt="ChatGPT Image May 28, 2026, 01_28_04 AM (2)" src="https://github.com/user-attachments/assets/dd01c9b3-1c04-496f-a968-a485bae7f3ee" />
 
 
 # FiscoPilot -  Copiloto Fiscaal  para PME
 
 SaaS B2B brasileiro que ajuda pequenas e médias empresas a importar, interpretar e agir sobre seus dados fiscais — antes que inconsistências virem multas.
+
+# FiscoPilot — Resumo do Aplicativo
+
+## O que é o FiscoPilot
+
+O **FiscoPilot** é um SaaS B2B brasileiro que atua como um **copiloto fiscal para pequenas e médias empresas (PMEs)**. Ele importa, interpreta e age sobre dados fiscais — antes que inconsistências virem multas.
+
+O aplicativo foi projetado especificamente para **donos de loja de material de construção no Simples Nacional**, que recebem entre 60 e 200 notas fiscais eletrônicas (NF-e) de compra por mês e não têm como saber se há erros fiscais escondidos nos arquivos XML ilegíveis que recebem dos fornecedores.
+
+**Tagline:** *Suas notas fiscais explicadas.*
+
+---
+
+## O Problema
+
+PMEs brasileiras perdem entre **R$ 7.700 e R$ 29.600 por ano** com:
+- Multas por inconsistência fiscal (R$ 2.000 a R$ 8.000/ano)
+- Imposto pago a maior por crédito não tomado (R$ 1.500 a R$ 6.000/ano)
+- Horas do dono desperdiçadas caçando documentos (R$ 3.000 a R$ 12.000/ano)
+- Honorários contábeis extras por retrabalho (R$ 1.200 a R$ 3.600/ano)
+
+O dono da PME toma decisões operacionais — comprar, vender, contratar — às cegas do ponto de vista fiscal. Quando o erro aparece, já é multa. Quando o crédito não é tomado, já prescreveu.
+
+---
+
+## A Solução
+
+O FiscoPilot resolve isso sendo a **primeira ferramenta que lê documentos fiscais automaticamente, detecta o que está errado ou arriscado e explica em português claro o que o dono precisa fazer — antes que o problema chegue ao fisco.**
+
+O fluxo é simples:
+1. A auxiliar administrativa (Fernanda) faz upload dos arquivos XML das notas fiscais de compra
+2. O sistema processa em segundos e cruza os dados com **8 regras fiscais determinísticas** do Simples Nacional
+3. O dono (Roberto) recebe no celular um dashboard com: total de notas, quantas estão OK, quantas têm pontos de atenção e quantas são de risco alto
+4. Para cada inconsistência, o sistema mostra **impacto em reais** e um **checklist de ações** ("Ligue para o fornecedor, peça carta de correção, avise o contador")
+5. No fim do mês, um **relatório em PDF** é gerado automaticamente para envio ao contador
+
+---
+
+## As 8 Regras Fiscais do Motor Determinístico
+
+| Regra | O que detecta | Score |
+|---|---|---|
+| **R1 — CFOP divergente** | Código de operação fiscal de saída em nota de entrada | 85 |
+| **R2 — Alíquota ICMS** | Alíquota de ICMS diferente da tabela interestadual oficial | 70 |
+| **R3 — NCM suspeito** | Classificação fiscal do produto fora do perfil de material de construção | 50 |
+| **R4 — CNPJ irregular** | Fornecedor com CNPJ suspenso, baixado ou inapto | 80-100 |
+| **R5 — Valor divergente** | Valor total da nota não bate com a soma dos itens | 60-90 |
+| **R6 — CST incompatível** | CST de PIS/COFINS incompatível com Simples Nacional | 50 |
+| **R7 — Chave inválida** | Dígito verificador da NF-e não confere (possível nota falsa) | 100 |
+| **R8 — ICMS ST indevido** | Substituição Tributária destacada para produto que não está na lista de ST do estado | 75 |
+
+Cada inconsistência recebe um score de 0 a 100 e é classificada como **OK** (0-30), **ATENÇÃO** (31-69) ou **RISCO ALTO** (70-100).
+
+---
+
+## Público-Alvo (ICP)
+
+**Dono(a) de PME**, com 5 a 20 funcionários, faturamento mensal entre R$ 80 mil e R$ 300 mil, optante do Simples Nacional, que compra de 20 a 50 fornecedores diferentes por mês e recebe entre 60 e 200 NF-e de entrada mensalmente.
+
+### Por que este ICP?
+
+- **Dor fiscal concreta:** CFOP e ICMS-ST geram multas frequentes no setor
+- **Volume ideal:** 60-200 notas/mês — suficiente para gerar valor, baixo o suficiente para o MVP
+- **Dono acessível:** Participa ativamente de grupos de WhatsApp do setor
+- **ROI claro:** "Evite multa de R$ 2.000 por CFOP errado" é imediato e quantificável
+- **MVP simples:** Apenas NF-e (XML padronizado nacionalmente), apenas Simples Nacional
+
+---
+
+## Personas
+
+### Roberto Almeida — O Dono (Comprador)
+- 51 anos, ensino médio, dono-fundador da loja há 14 anos
+- Usa WhatsApp intensamente, app de banco, mas não sabe o que é XML
+- Celular Android (Samsung, 2 anos de idade)
+- **Medo principal:** Tomar uma multa fiscal que quebre o negócio
+- **Gatilho de compra:** Alguém mostrar na frente dele que "essa nota aqui está errada e você nem sabia" usando o próprio CNPJ dele
+
+### Fernanda Souza — Auxiliar Administrativo (Usuária Operacional)
+- 28 anos, ensino médio, trabalha na loja há 3 anos
+- Sabe usar Excel básico, baixar XML de e-mail, converter foto em PDF
+- **Frustração principal:** "Fornecedor manda XML por e-mail com nome todo errado. Tenho que abrir um por um."
+- **Gatilho de adoção:** Se ela vê que o produto elimina "abrir 110 XMLs na mão", ela pede pro Roberto comprar
+
+### Dona Célia — A Contadora (Influenciadora)
+- 47 anos, técnica em contabilidade, CRC ativo
+- Atende ~40 empresas (90% Simples Nacional), 12h/dia de trabalho
+- **Frustração principal:** "Cliente manda 50 fotos de nota fiscal pelo WhatsApp. Tenho que digitar tudo na mão."
+- **Gatekeeper:** Se ela vetar o produto, a venda não fecha
+
+---
+
+## Funcionalidades do MVP (90 dias)
+
+### Módulo 1 — Ingestão de Documentos
+- Upload de arquivos XML via interface web (arrastar e soltar ou ZIP)
+- Ingestão via e-mail dedicado (notas@fiscopillot.com.br)
+- Validação automática de tipo e formato de arquivo
+- Indicador de progresso real durante processamento
+
+### Módulo 2 — Processamento
+- Parser de NF-e (modelo 55, layout 4.00) com extração de todos os campos fiscais
+- Motor de 8 regras determinísticas (R1 a R8)
+- Classificação de risco com score de 0 a 100
+- Deduplicação por chave de acesso
+
+### Módulo 3 — Dashboard
+- Visão resumida: total de notas, cards OK/Atenção/Risco Alto
+- Lista detalhada de inconsistências ordenada por gravidade
+- Detalhe da inconsistência com explicação em português claro
+- Checklist de ações ("O que fazer?")
+- Gerenciamento de status (Pendente / Em andamento / Resolvida / Ignorada)
+- Filtro por período e busca por fornecedor
+
+### Módulo 4 — Comunicação
+- Resumo semanal via WhatsApp (toda segunda-feira às 8h)
+- Alerta imediato via WhatsApp para inconsistências de risco alto
+- Notificação "tudo certo" mesmo sem inconsistências (silêncio positivo)
+- Exportação de relatório do contador em PDF
+- Autenticação 100% por link mágico via WhatsApp (sem senha)
+
+### Módulo 5 — Administração
+- Multi-tenant (cada loja vê apenas seus próprios dados)
+- Papéis e permissões (Admin e Operador)
+- Log de auditoria imutável (append-only)
+- Log de processamento com rastreabilidade completa
+
+---
+
+## Tecnologia
+
+| Camada | Tecnologia |
+|---|---|
+| **Front-end** | Next.js 14 (App Router) + React 18 + Tailwind CSS 3 + shadcn/ui |
+| **Back-end** | Fastify 5 + TypeScript 5 |
+| **Banco de dados** | PostgreSQL 16 (Docker) |
+| **ORM** | Drizzle ORM |
+| **Parser de XML** | fast-xml-parser |
+| **PDF** | pdfkit |
+| **Autenticação** | Magic link via WhatsApp + JWT (HS256, 7 dias) |
+| **Notificações** | WhatsApp Business Cloud API (Meta) |
+| **IA (opcional)** | OpenRouter → GPT-4o-mini (apenas paráfrase de explicações) |
+| **Infraestrutura** | Docker Compose em VPS (Hetzner CX22, 4GB RAM) |
+| **CI/CD** | GitHub Actions → GitHub Container Registry |
+| **Monitoramento** | Sentry + Uptime Robot + pino |
+| **Backup** | pg_dump diário → AWS S3 (AES-256) |
+
+---
+
+## Modelo de Negócio
+
+- **Preço:** R$ 97/mês (plano único no MVP)
+- **Trial:** 15 dias grátis com onboarding guiado pelo founder
+- **Cobrança:** Pix manual nos primeiros 6 meses (até ~20 clientes)
+- **Meta MVP (90 dias):** 10 clientes pagantes = R$ 970 MRR
+- **Meta 12 meses:** 80 clientes = R$ 15.760 MRR (com plano a R$ 197/mês na Fase D)
+- **Sem contrato.** Sem fidelidade. Sem multa de cancelamento.
+
+---
+
+## O que o Produto NÃO Faz (Limites de Compliance)
+
+- ❌ NÃO calcula imposto devido nem gera guias (DAS, ICMS, etc.)
+- ❌ NÃO envia obrigações acessórias (SPED, DIRF, DEFIS)
+- ❌ NÃO substitui o contador — complementa o trabalho dele
+- ❌ NÃO edita campos de NF-e (impedido por lei — risco de falsificação)
+- ❌ NÃO faz diagnóstico com IA — usa apenas regras determinísticas. IA só parafraseia explicações já existentes
+- ❌ NÃO emite nota fiscal de serviço, NFC-e ou CT-e (apenas processa NF-e de entrada)
+
+---
+
+## Roadmap
+
+### MVP (Mês 1-3)
+Core do produto: upload de XML, 8 regras fiscais, dashboard mobile-first, notificações WhatsApp, relatório PDF para o contador
+
+### Fase A — Retenção e Redução de Atrito (Mês 4-5)
+Mensagem pronta para fornecedor, painel de economia/riscos evitados, relatório mensal do dono, notificações mais inteligentes, onboarding raio-x fiscal, ingestão por WhatsApp
+
+### Fase B — Monitoramento Contínuo (Mês 5-7)
+Download automático de XML via certificado digital A1, Kanban de pendências fiscais, alertas cadastrais (certificado vencendo, CNPJ inapto, IE irregular)
+
+### Fase C — Inteligência e Ecossistema (Mês 7-9)
+Portal do contador (login próprio, comentários, validações), score de fornecedores, assistente de IA contextual
+
+### Fase D — Plataforma e Escala (Mês 9-12)
+Simulador da Reforma Tributária (CBS/IBS), integração com ERPs (Bling, Tiny, Omie, Conta Azul), biblioteca de regras fiscais por UF e setor
+
+---
+
+**Total de funcionalidades:** 35 no MVP + 30 pós-MVP = **65 funcionalidades**
+**Prazo de construção:** 90 dias (MVP) + ~9 meses (Fases A-D)
+**Equipe:** 1 founder full-stack + 1 engenheiro back-end + 1 designer UX part-time
+
+---
+
+*"O FiscoPilot lê suas notas fiscais de compra, encontra o que está errado e te explica em português claro o que fazer — antes que o erro vire multa."*
 
 ---
 
@@ -889,30 +1085,33 @@ comercial     E-mail                             (ingestão)         (ingestão)
 
 ---
 
-## Etapa 8 — Funcionalidades do MVP
+## Etapa 8 — Funcionalidades do Produto
 
 ### Objetivo da etapa
 
-Listar exaustivamente as funcionalidades visíveis ao usuário que compõem o FiscoPilot MVP, com descrição, prioridade, critério de aceitação, persona associada, etapa da jornada e esforço estimado. Esta lista será a fonte de verdade para o sprint de construção de 90 dias.
+Listar exaustivamente as funcionalidades visíveis ao usuário que compõem o FiscoPilot — do MVP (90 dias) à expansão pós-MVP (12 meses) — com descrição, prioridade, critério de aceitação, persona associada, fase de implementação e esforço estimado. Esta lista é a fonte de verdade para construção do produto.
 
 ### Premissas adotadas
 
 | # | Premissa | Justificativa |
 |---|---|---|
 | P1 | "Funcionalidade" = algo que o usuário vê ou sente, não componente interno de arquitetura | Ex.: "Upload de XMLs" é funcionalidade; "fila de processamento assíncrono" é implementação (Etapa 17) |
-| P2 | P0 = sem isso, a venda não fecha. P1 = sem isso, a retenção quebra em 30 dias. P2 = sem isso, o usuário não reclama no primeiro mês | Critério pragmático de priorização para MVP |
-| P3 | Esforço em dias de desenvolvimento de 1 pessoa sênior (8h/dia útil) | Para time de 2 devs, esforço total é aproximadamente metade dos dias corridos |
-| P4 | Cada funcionalidade tem exatamente 1 critério de aceitação principal — binário, testável, sem ambiguidade | Evita funcionalidades que "nunca ficam prontas" |
-| P5 | Ordem de construção segue a cadeia de dependência: sem ingestão, nada funciona; sem regras, sem valor; sem dashboard, usuário não vê nada | Construir na ordem da jornada do usuário |
+| P2 | MVP: P0 = sem isso, a venda não fecha. P1 = sem isso, a retenção quebra em 30 dias. P2 = sem isso, o usuário não reclama no primeiro mês | Critério pragmático de priorização para MVP |
+| P3 | Pós-MVP: PA = Fase A (retenção/atrio), PB = Fase B (monitoramento), PC = Fase C (inteligência), PD = Fase D (plataforma) | Priorização por fase de expansão (Etapa 35) |
+| P4 | Esforço em dias de desenvolvimento de 1 pessoa sênior (8h/dia útil) | Para time de 2 devs, esforço total é aproximadamente metade dos dias corridos |
+| P5 | Cada funcionalidade tem exatamente 1 critério de aceitação principal — binário, testável, sem ambiguidade | Evita funcionalidades que "nunca ficam prontas" |
+| P6 | Ordem de construção segue a cadeia de dependência: sem ingestão, nada funciona; sem regras, sem valor; sem dashboard, usuário não vê nada | Construir na ordem da jornada do usuário |
+| P7 | Funcionalidades pós-MVP (F36-F65) dependem do MVP funcional e em produção com ao menos 3-5 clientes | Validação de valor precede expansão |
 
 ### Decisões recomendadas
 
 | Decisão | Conteúdo | Status |
 |---|---|---|
-| D1 | 16 funcionalidades P0 (obrigatórias), 7 P1 (importantes), 4 P2 (desejáveis) = total de 27 funcionalidades para o MVP | Decisão de escopo |
-| D2 | A ordem de construção é estritamente M1 → M2 → M3 → M4, com M5 sendo construído incrementalmente ao longo do caminho | Decisão de execução |
-| D3 | Nenhuma funcionalidade de IA generativa é P0 — o diagnóstico é 100% determinístico; IA só melhora redação das explicações (P2) | Decisão técnica |
-| D4 | Funcionalidades que dependem de API externa (Sefaz, Receita Federal) são P1 ou P2; o MVP funciona totalmente offline de serviços públicos | Decisão de arquitetura |
+| D1 | MVP: 16 funcionalidades P0, 7 P1, 4 P2 = 27 funcionalidades. Pós-MVP: 30 funcionalidades adicionais (F36-F65) = 57 funcionalidades totais | Decisão de escopo |
+| D2 | 7 módulos: M1 (Ingestão), M2 (Processamento), M3 (Dashboard), M4 (Comunicação), M5 (Administração), M6 (Portal do Contador), M7 (Inteligência Fiscal) | Decisão de arquitetura |
+| D3 | MVP: M1 → M2 → M3 → M4 → M5. Pós-MVP: M6 e M7 construídos nas Fases B-C | Decisão de execução |
+| D4 | Nenhuma funcionalidade de IA generativa é P0 — o diagnóstico é 100% determinístico; IA só melhora redação das explicações | Decisão técnica |
+| D5 | Funcionalidades que dependem de API externa (Sefaz, Receita Federal, ERPs) são PA-PD; o MVP funciona totalmente offline de serviços públicos | Decisão de arquitetura |
 
 ---
 
@@ -976,27 +1175,106 @@ Listar exaustivamente as funcionalidades visíveis ao usuário que compõem o Fi
 | **F34** | Log de auditoria (eventos do usuário) | Quem fez upload, marcou pendência, exportou PDF. Append-only. Acessível pelo founder. | P2 | 3 | Founder | Log consultável. Registro imutável. |
 | **F35** | Log de processamento (eventos do sistema) | XML recebido (hash, chave), regra executada, score, justificativa, data/hora | P2 | 2 | Founder | Rastreabilidade completa de cada inconsistência detectada. |
 
-### Funcionalidades Explicitamente Excluídas do MVP
+---
+
+### MÓDULO M1 — INGESTÃO (EXPANSÃO PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F36** | Ingestão por WhatsApp | Fernanda encaminha XML/ZIP recebido no WhatsApp do fornecedor para o número do FiscoPilot; sistema processa automaticamente via webhook | PA | 8 | Fernanda | XML encaminhado via WhatsApp é processado em <60s. Confirmação enviada ao remetente. Histórico visível na interface. |
+| **F37** | Download automático de XML via certificado digital | Roberto faz upload do certificado A1 uma vez; sistema baixa NF-e automaticamente da Sefaz diariamente | PB | 15 | Sistema | Certificado A1 criptografado AES-256-GCM. Download diário funcional. Notas baixadas entram no pipeline. Alerta de vencimento 30/15/7 dias. |
+| **F38** | Integração com ERPs brasileiros (Bling, Tiny, Omie, Conta Azul) | Conectores OAuth que leem notas fiscais diretamente do ERP do cliente, eliminando upload manual | PD | 20 | Sistema | Ao menos 2 conectores funcionais (Bling + Tiny). OAuth flow completo. Sincronização automática diária. |
+
+---
+
+### MÓDULO M2 — PROCESSAMENTO (EXPANSÃO PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F39** | Verificador de campos CBS/IBS nos XMLs | Detecta presença/ausência de campos da Reforma Tributária (CBS/IBS) nos XMLs quando aplicável | PD | 5 | Sistema | XMLs com campos CBS/IBS são identificados. Alertas gerados quando campos ausentes em notas que deveriam ter. |
+| **F40** | Biblioteca de regras por UF e setor (pacotes) | Pacotes de regras empacotáveis: "SP material de construção", "MG material de construção", "restaurantes", "Lucro Presumido", etc. | PD | 15 | Sistema | Ao menos 3 pacotes funcionais. Pacotes ativáveis/desativáveis por organização. Motor carrega pacotes dinamicamente. |
+| **F41** | Monitoramento cadastral de fornecedores | Verifica semanalmente: CNPJ ativo, inscrição estadual regular, CNAE compatível, certificado digital vencendo | PB | 10 | Sistema | Verificação semanal automática. Alertas visíveis no dashboard. Alertas críticos disparam notificação WhatsApp. |
+
+---
+
+### MÓDULO M3 — DASHBOARD (EXPANSÃO PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F42** | Painel de economia / risco evitado | Mostra impacto acumulado: inconsistências detectadas, valor em risco, economia potencial. Demonstra ROI continuamente. | PA | 5 | Roberto | Painel exibe valores corretos para mês/trimestre/ano. Gráfico de barras com últimos 6 meses. Atualiza em tempo real. |
+| **F43** | Score de fornecedores | Dashboard com score por fornecedor baseado em 90 dias: erros, valor em risco, CNPJ irregular, recorrência de problemas | PC | 8 | Roberto | View materializada atualizada diariamente. Ranking por categoria (Confiável, Atenção, Risco). Só ativa após 90 dias de dados. |
+| **F44** | Preparação para Reforma Tributária (CBS/IBS) | Score de preparação (0-100%), checklist interativo por categoria, timeline 2026-2033, PDF "sua loja está pronta?" | PD | 15 | Roberto | Score calculado. Checklist interativo. Timeline personalizada. PDF gerado. Alertas CBS/IBS nos XMLs. |
+| **F45** | Gestão de pendências como Kanban | Mini-CRM de pendências: responsável, prazo, comentários, anexos, botões "enviar para contador" e "enviar para fornecedor" | PB | 12 | Fernanda + Roberto | Board com 4 colunas. Drag & drop. Comentários persistidos. Anexos uploadados. Atribuição com prazo. |
+
+---
+
+### MÓDULO M4 — COMUNICAÇÃO (EXPANSÃO PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F46** | Mensagem pronta para fornecedor | Sistema gera mensagem contextualizada para fornecedor quando nota tem inconsistência. Botões: copiar, WhatsApp, e-mail. | PA | 5 | Fernanda | Para cada regra R1-R8, mensagem contextual com dados reais. Botões funcionais. Status persistido. |
+| **F47** | Notificação "tudo certo" mais inteligente | Quando não há inconsistências, notificação inclui contexto: número de notas, valor total, fornecedores. | PA | 2 | Roberto | Notificações W1 e W5 incluem agregações de valor_total e COUNT(DISTINCT cnpj_emitente). Tom contextual. |
+| **F48** | Relatório mensal do dono ("fechamento fiscal") | PDF de 1 página para o dono: notas analisadas, valor processado, inconsistências, fornecedores problemáticos, recomendação | PA | 5 | Roberto | PDF gerado em <5s. Contém todos os dados do mês. Botão "Baixar meu mês fiscal" visível no dashboard. |
+| **F49** | Notificações para contador | Sistema notifica contador quando cliente tem inconsistência crítica ou quando exportação mensal está disponível | PC | 3 | Dona Célia | Contador recebe notificação por e-mail/WhatsApp quando há alerta crítico ou exportação disponível. |
+
+---
+
+### MÓDULO M5 — ADMINISTRAÇÃO (EXPANSÃO PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F50** | Checklist de onboarding "raio-x fiscal" | Fluxo guiado em 5 passos: upload → análise → resultados → top 3 riscos → PDF para contador | PA | 5 | Roberto + Fernanda | Wizard de 5 passos funcional. Upload simplificado. Resultados com animação. PDF gerado no passo 5. Sessão persistida. |
+| **F51** | Assistente de IA com limites claros | Chat contextual que responde perguntas sobre inconsistências. Guardrails impedem cálculo de imposto ou parecer definitivo. | PC | 10 | Roberto | Assistente responde perguntas contextuais. Guardrails funcionam. Disclaimer em toda resposta. Feedback persistido. |
+| **F52** | Gerenciador de pacotes de regras | Interface para ativar/desativar pacotes de regras por organização. Catálogo de pacotes disponíveis. | PD | 5 | Founder | Catálogo visível. Pacotes ativáveis/desativáveis. Motor carrega pacotes ativos dinamicamente. |
+
+---
+
+### MÓDULO M6 — PORTAL DO CONTADOR (NOVO — PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F53** | Login do contador | Auth separado com CPF + senha. Portal dedicado para contadores. | PC | 3 | Dona Célia | Contador faz login com CPF + senha. Sessão persistida. Portal separado do app do lojista. |
+| **F54** | Lista de clientes atendidos | Contador vê todos os clientes que o convidaram, com resumo de status fiscal | PC | 3 | Dona Célia | Lista visível com resumo por cliente. Clique abre dashboard do cliente. |
+| **F55** | Dashboard do cliente (visão contador) | Contador vê dashboard completo do cliente: notas, inconsistências, pendências | PC | 2 | Dona Célia | Dashboard idêntico ao do lojista, mas read-only. Sem botões de ação (só comentários e validação). |
+| **F56** | Comentários por inconsistência | Contador pode comentar em qualquer inconsistência do cliente | PC | 3 | Dona Célia | Comentários persistidos. Visíveis para lojista e contador. Thread de comentários. |
+| **F57** | Botão "validado pelo contador" | Contador valida inconsistência com selo verde "Validado pelo contador" | PC | 2 | Dona Célia | Selo visível na inconsistência. Data/hora da validação. Nome do contador. |
+| **F58** | Exportação mensal consolidada | Contador gera exportação mensal consolidada de todos os clientes | PC | 5 | Dona Célia | Exportação funcional. PDF consolidado. Botão "Baixar" e "Enviar por e-mail". |
+| **F59** | Histórico de ações do contador | Log de comentários, validações e exportações do contador | PC | 2 | Dona Célia | Histórico visível. Filtro por cliente e período. |
+| **F60** | Convite de cliente para contador | Lojista convida contador via e-mail/WhatsApp. Contador aceita e vê dashboard do cliente. | PC | 3 | Roberto + Dona Célia | Convite enviado. Contador aceita. Dashboard do cliente visível. Relação persistida. |
+
+---
+
+### MÓDULO M7 — INTELIGÊNCIA FISCAL (NOVO — PÓS-MVP)
+
+| ID | Funcionalidade | Descrição | Fase | Esforço (dias) | Quem usa | Critério de aceitação |
+|---|---|---|---|---|---|---|
+| **F61** | Assistente de IA contextual | Chat que responde perguntas sobre inconsistências: "Explique em linguagem simples", "O que perguntar ao contador?", "Gere mensagem para fornecedor" | PC | 8 | Roberto | Assistente funcional. Botões de perguntas rápidas. Guardrails impedem parecer fiscal. Disclaimer em toda resposta. |
+| **F62** | Score de fornecedores (detalhe) | Página de detalhe por fornecedor: histórico de 90 dias, problemas recorrentes, valor em risco, categoria | PC | 5 | Roberto | Detalhe visível. Histórico de 90 dias. Problemas recorrentes listados. Botão "Ver todas as notas do fornecedor". |
+| **F63** | Ranking de fornecedores | Lista ordenada por categoria: "Mais confiáveis", "Mais problemáticos", "Maior valor em risco" | PC | 3 | Roberto | Ranking visível. Filtros por categoria. Clique abre detalhe do fornecedor. |
+| **F64** | Simulador da Reforma Tributária | Módulo "Preparação CBS/IBS": score de preparação, checklist, timeline 2026-2033, PDF de preparação | PD | 12 | Roberto | Score calculado (0-100%). Checklist interativo. Timeline personalizada. PDF gerado. |
+| **F65** | Alertas de conformidade cadastral | Alertas proativos: certificado vencendo, CNPJ inapto, IE irregular, CNAE incompatível, fornecedor recorrente com problema | PB | 5 | Roberto + Fernanda | Alertas visíveis no dashboard. Badge de contagem. Alertas críticos disparam WhatsApp. |
+
+---
+
+### Funcionalidades Explicitamente Excluídas do Produto
 
 | Funcionalidade excluída | Motivo | Quando entra |
 |---|---|---|
-| Cadastro self-service | Onboarding guiado pelo founder nos primeiros 10 clientes | Fase 2 (mês 4) |
-| Download automático de XML via Sefaz | Complexidade alta; upload manual resolve MVP | Fase 2 (mês 4-6) |
-| Ingestão via WhatsApp | Exige WhatsApp Business API com webhook complexo | Fase 2 (mês 6) |
-| App nativo iOS/Android | Web app responsivo + PWA cobre 100% das necessidades | Fase 3 (mês 9+) |
-| Integração com ERP (Tiny, Bling, Omie) | Cada ERP tem API diferente; volume inicial baixo | Fase 2 (mês 5-7) |
-| Módulo de contador (login dedicado, multi-cliente) | Contador não é usuário pagante no MVP | Fase 2 (mês 5) |
-| IA generativa para diagnóstico fiscal | Diagnóstico é 100% determinístico no MVP; IA é arriscada | Fase 2-3 (mês 7+) |
-| Gateway de pagamento | Volume <20 clientes; Pix manual funciona | Fase 2 (mês 4) |
-| Trial automatizado | Controle manual do founder | Fase 2 (mês 4) |
-| Dashboard de fornecedores | Requer volume acumulado; sem valor nos 3 primeiros meses | Fase 3 (mês 9+) |
-| Suporte a Lucro Presumido/Lucro Real | Cada regime tem regras distintas | Fase 2-3 |
-| Suporte a NFS-e, CT-e, NFC-e | Cada documento tem schema XML diferente | Fase 2-3 |
-| Edição de dados da nota pelo usuário | Risco regulatório: falsificação fiscal | Nunca |
-| Apuração de imposto (cálculo da DAS) | Atribuição legal exclusiva do contador | Nunca |
-| Envio de obrigações acessórias (SPED, DIRF) | Atribuição exclusiva do contador habilitado | Nunca |
+| Cadastro self-service | Onboarding guiado pelo founder nos primeiros 10 clientes | Fase 2 (mês 4) — não no escopo atual |
+| App nativo iOS/Android | Web app responsivo + PWA cobre 100% das necessidades | Fase 3 (mês 9+) — avaliar após Fase D |
+| Gateway de pagamento | Volume <20 clientes; Pix manual funciona | Fase 2 (mês 4) — não no escopo atual |
+| Trial automatizado | Controle manual do founder | Fase 2 (mês 4) — não no escopo atual |
+| Suporte a NFS-e, CT-e, NFC-e | Cada documento tem schema XML diferente | Fase 2-3 — após consolidação do NF-e |
+| Edição de dados da nota pelo usuário | Risco regulatório: falsificação fiscal | **Nunca** |
+| Apuração de imposto (cálculo da DAS) | Atribuição legal exclusiva do contador | **Nunca** |
+| Envio de obrigações acessórias (SPED, DIRF) | Atribuição exclusiva do contador habilitado | **Nunca** |
+| Substituição do contador | Produto complementa, não substitui | **Nunca** |
+
+**Nota:** As seguintes funcionalidades, antes excluídas do MVP, agora fazem parte do roadmap pós-MVP (Etapa 35): download automático de XML via Sefaz (F37), ingestão via WhatsApp (F36), integração com ERP (F38), módulo de contador (F53-F60), IA generativa (F51, F61), dashboard de fornecedores (F43, F62, F63), suporte a Lucro Presumido (F40).
 
 ### Ordem de Construção (Sprint Plan)
+
+#### MVP (90 dias — Semanas 1-12)
 
 | Sprint (2 semanas) | Funcionalidades | Marco |
 |---|---|---|
@@ -1007,7 +1285,41 @@ Listar exaustivamente as funcionalidades visíveis ao usuário que compõem o Fi
 | **Sprint 5** (Sem 9-10) | F03, F05, F22, F28, F33 | **M5 — Beta**: Produto usável em beta |
 | **Sprint 6** (Sem 11-12) | F25, F26, F27, P1s/P2s remanescentes, QA | **M6 — Lançamento**: MVP completo |
 
+#### Pós-MVP — Fase A: Retenção e Redução de Atrito (Mês 4-5, ~30 dias)
+
+| Sprint (2 semanas) | Funcionalidades | Marco |
+|---|---|---|
+| **Sprint 7** (Sem 13-14) | F46, F47, F50 | Mensagem fornecedor + tudo certo inteligente + onboarding raio-x |
+| **Sprint 8** (Sem 15-16) | F42, F48, F36 | Painel economia + relatório dono + ingestão WhatsApp |
+
+#### Pós-MVP — Fase B: Monitoramento Contínuo (Mês 5-7, ~40 dias)
+
+| Sprint (2 semanas) | Funcionalidades | Marco |
+|---|---|---|
+| **Sprint 9** (Sem 17-18) | F37 (parte 1), F65 | Download automático XML (certificado + scheduler) + alertas cadastrais |
+| **Sprint 10** (Sem 19-20) | F37 (parte 2), F41 | Download automático (Sefaz WS + fila) + monitoramento cadastral |
+| **Sprint 11** (Sem 21-22) | F45 | Kanban de pendências completo |
+
+#### Pós-MVP — Fase C: Inteligência e Ecossistema (Mês 7-9, ~35 dias)
+
+| Sprint (2 semanas) | Funcionalidades | Marco |
+|---|---|---|
+| **Sprint 12** (Sem 23-24) | F53, F54, F55, F60 | Portal do contador (login + lista clientes + dashboard + convite) |
+| **Sprint 13** (Sem 25-26) | F56, F57, F58, F59, F49 | Portal do contador (comentários + validação + exportação + histórico) |
+| **Sprint 14** (Sem 27-28) | F43, F62, F63, F51, F61 | Score fornecedores + assistente IA |
+
+#### Pós-MVP — Fase D: Plataforma e Escala (Mês 9-12, ~50 dias)
+
+| Sprint (2 semanas) | Funcionalidades | Marco |
+|---|---|---|
+| **Sprint 15** (Sem 29-30) | F39, F64, F44 | Verificador CBS/IBS + simulador Reforma Tributária |
+| **Sprint 16** (Sem 31-32) | F38 (parte 1), F40 (parte 1) | Integração ERP (Bling + Tiny) + biblioteca de regras (base) |
+| **Sprint 17** (Sem 33-34) | F38 (parte 2), F40 (parte 2) | Integração ERP (Omie + Conta Azul) + pacotes setoriais |
+| **Sprint 18** (Sem 35-36) | F52, QA geral, otimizações | Gerenciador de pacotes + QA + lançamento Fase D |
+
 ### Riscos e pontos de atenção
+
+#### Riscos do MVP (Sprints 1-6)
 
 | Risco | Severidade | Mitigação |
 |---|---|---|
@@ -1015,6 +1327,39 @@ Listar exaustivamente as funcionalidades visíveis ao usuário que compõem o Fi
 | Sprint 5 (WhatsApp Business API) pode ter atraso de aprovação do Meta | Média | Iniciar cadastro na Semana 1. Fallback: SMS ou PWA push notification. |
 | Funcionalidades P1 do M4 (WhatsApp) impactam retenção mas estão no Sprint 6 | Média | Se Sprint 5 atrasar, cortar F03/F05 para liberar dias para WhatsApp. |
 | 16 funcionalidades P0 pode ser alto para 90 dias | Média | 6 P0 são regras fiscais simples (7 dias total). Esforço concentrado no parser (8d) e dashboard (16d). |
+
+#### Riscos da Fase A — Retenção (Sprints 7-8)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| WhatsApp Business API pode rejeitar webhook de ingestão de documentos (F36) | Média | Testar com conta de teste da Meta antes de implementar. Fallback: e-mail para notas@copilotofiscal.com |
+| Painel de economia (F42) pode superestimar impacto financeiro se `estimated_impact` estiver errado | Média | Sempre usar "~" (aproximado). Disclaimer: "Estimativa conservadora. Confirme com seu contador." |
+| Templates de mensagem (F46) podem soar robóticos ou formais demais para WhatsApp | Média | Testar com 5 donos de loja reais. Ajustar tom para linguagem coloquial brasileira |
+
+#### Riscos da Fase B — Monitoramento (Sprints 9-11)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Webservices da Sefaz (NFeConsultaDest) têm histórico de instabilidade e downtime (F37) | Alta | Retry com backoff exponencial. Fila de downloads (pg-boss). Alerta founder se API falhar >3x |
+| Armazenar certificado digital cria responsabilidade legal e risco de segurança (F37) | Alta | Criptografia AES-256-GCM. Certificado NUNCA em logs. Pen-test antes de lançar. Termo de responsabilidade |
+| Kanban (F45) pode adicionar complexidade desnecessária se usuário não adotar | Média | Lançar como feature opcional. Dashboard simples continua sendo a tela principal |
+
+#### Riscos da Fase C — Inteligência (Sprints 12-14)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Contador pode sentir que o portal (F53-F60) é "fiscalização do trabalho dele" | Alta | Posicionar como "ferramenta que facilita seu trabalho". Selo "Validado pelo contador" dá autoridade |
+| IA (F51, F61) pode alucinar e dar orientação fiscal errada | Alta | Guardrails rígidos no prompt. Output validado antes de exibir. Fallback para template se IA falhar |
+| Score de fornecedores (F43) pode gerar conflitos entre lojista e fornecedor | Média | Score é privado (só o lojista vê). Nunca enviar score para fornecedor |
+
+#### Riscos da Fase D — Plataforma (Sprints 15-18)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Reforma Tributária (F64) pode ter regulamentação incompleta ou mudar | Alta | Acompanhar publicações da Receita Federal. Checklist genérico + alertas específicos quando campos CBS/IBS disponíveis |
+| APIs de ERPs (F38) podem mudar sem aviso ou ter rate limits restritivos | Média | Versionamento de conectores. Testes de integração contínuos. Fallback para upload manual |
+| Biblioteca de regras (F40) pode gerar inconsistência entre pacotes | Média | Pacote base (R1-R8) sempre ativo. Pacotes setoriais adicionam regras, não substituem. Testes cruzados |
+| Esforço total da Fase D (~50 dias) pode exceder capacidade do time | Média | Priorizar F38 (ERPs) — maior impacto comercial. F64 e F40 podem ser adiadas |
 
 ---
 
@@ -1037,9 +1382,10 @@ Especificar cada comportamento do sistema no formato "O sistema DEVE [ação] [c
 
 | Decisão | Conteúdo | Status |
 |---|---|---|
-| D1 | 52 requisitos funcionais: 22 de usuário (RFU), 22 de sistema (RFS), 8 de contorno (RFC) | Decisão de escopo |
-| D2 | Cada requisito DEVE ser rastreável a uma funcionalidade FXX e a uma etapa da jornada | Decisão de qualidade |
+| D1 | 143 requisitos funcionais: 55 de usuário (RFU), 76 de sistema (RFS), 12 de contorno (RFC) | Decisão de escopo |
+| D2 | Cada requisito DEVE ser rastreável a uma funcionalidade FXX e a uma fase (MVP ou A-D) | Decisão de qualidade |
 | D3 | Requisitos são ordem de implementação, não ordem de numeração — a numeração segue o agrupamento por módulo | Decisão de organização |
+| D4 | Requisitos pós-MVP (RFU-015+, RFS-032+) dependem do MVP funcional e em produção | Decisão de execução |
 
 ---
 
@@ -1143,6 +1489,187 @@ Especificar cada comportamento do sistema no formato "O sistema DEVE [ação] [c
 | **RFS-030** | O sistema DEVE registrar em log de auditoria append-only: uploads, alterações de status, exportações de PDF, criação/remoção de usuários | F34 | E4 |
 | **RFS-031** | O sistema DEVE registrar em log de processamento: hash SHA-256 do XML, chave de acesso, data/hora, regras executadas, resultado de cada regra, score final. Não acessível ao usuário final. | F35 | E1, E2, E4 |
 
+---
+
+### MÓDULO M1 — INGESTÃO (EXPANSÃO PÓS-MVP)
+
+#### Requisitos de Usuário
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFU-015** | O sistema DEVE permitir que o usuário encaminhe arquivos XML ou ZIP via WhatsApp para o número dedicado do FiscoPilot, recebendo confirmação de processamento em até 60 segundos | F36 | PA |
+| **RFU-016** | O sistema DEVE exibir histórico de ingestões via WhatsApp com data, hora, nome do arquivo, status (processado/com erro) e link para o dashboard | F36 | PA |
+| **RFU-017** | O sistema DEVE permitir upload de certificado digital A1 (arquivo .pfx ou .p12) com senha, exibindo CNPJ do titular, data de validade e status de conexão com a Sefaz | F37 | PB |
+| **RFU-018** | O sistema DEVE exibir alertas visuais de vencimento do certificado digital: verde (>30 dias), amarelo (7-30 dias), vermelho (<7 dias ou vencido) | F37 | PB |
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-032** | O sistema DEVE receber webhooks da WhatsApp Business API, validar assinatura HMAC-SHA256, extrair mídia (XML/ZIP) e processar via pipeline de ingestão existente | F36 | PA |
+| **RFS-033** | O sistema DEVE associar automaticamente mensagens WhatsApp a organizações via número de telefone do remetente (campo `whatsapp` da tabela `users`) | F36 | PA |
+| **RFS-034** | O sistema DEVE criptografar certificados digitais A1 com AES-256-GCM antes de armazenar no banco, usando chave derivada de variável de ambiente `CERTIFICATE_ENCRYPTION_KEY` | F37 | PB |
+| **RFS-035** | O sistema DEVE executar job diário (02:00 BRT) que autentica na Sefaz via certificado A1, consulta NF-e emitidas contra o CNPJ da organização nas últimas 24h, baixa XMLs e processa via pipeline | F37 | PB |
+| **RFS-036** | O sistema DEVE implementar fila de downloads (pg-boss) com retry exponencial (1min, 5min, 15min, 1h) e máximo 3 tentativas por sessão de download | F37 | PB |
+| **RFS-037** | O sistema DEVE integrar com APIs OAuth2 de ERPs brasileiros (Bling, Tiny, Omie, Conta Azul), armazenando tokens criptografados e renovando automaticamente via refresh_token | F38 | PD |
+
+---
+
+### MÓDULO M2 — PROCESSAMENTO (EXPANSÃO PÓS-MVP)
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-038** | O sistema DEVE detectar presença de campos CBS/IBS nos XMLs de NF-e quando aplicável (notas emitidas a partir de 2026 com regime tributário CBS/IBS) | F39 | PD |
+| **RFS-039** | O sistema DEVE gerar alerta de conformidade quando XML deveria conter campos CBS/IBS (baseado em data de emissão e regime) mas estes estão ausentes | F39 | PD |
+| **RFS-040** | O sistema DEVE carregar pacotes de regras dinamicamente baseado em `organization_rule_packs` ativos, executando regras do pacote base (R1-R8) + regras dos pacotes setoriais habilitados | F40 | PD |
+| **RFS-041** | O sistema DEVE executar job semanal (domingo 03:00 BRT) que consulta API da Receita Federal para verificar situação cadastral (CNPJ ativo, IE regular, CNAE compatível) de todos os fornecedores dos últimos 90 dias | F41 | PB |
+| **RFS-042** | O sistema DEVE gerar alerta cadastral crítico (score 100) quando fornecedor tem CNPJ inapto/suspenso/baixado, e alerta de atenção (score 50) para IE irregular ou CNAE incompatível | F41 | PB |
+
+---
+
+### MÓDULO M3 — DASHBOARD (EXPANSÃO PÓS-MVP)
+
+#### Requisitos de Usuário
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFU-019** | O sistema DEVE exibir painel "Riscos Evitados" com: total de inconsistências detectadas no mês/trimestre/ano, valor em risco (soma de `estimated_impact`), taxa de resolução (%) | F42 | PA |
+| **RFU-020** | O sistema DEVE exibir gráfico de barras com histórico de riscos evitados dos últimos 6 meses, permitindo comparação mensal | F42 | PA |
+| **RFU-021** | O sistema DEVE exibir ranking de fornecedores por categoria: "Mais confiáveis" (0 inconsistências), "Atenção" (1-2 inconsistências), "Risco" (3+ inconsistências ou score >= 70) | F43 | PC |
+| **RFU-022** | O sistema DEVE exibir página de detalhe do fornecedor com: total de notas em 90 dias, inconsistências por tipo, valor em risco, problemas recorrentes, botão "Ver todas as notas" | F43 | PC |
+| **RFU-023** | O sistema DEVE exibir score de preparação para Reforma Tributária (0-100%) baseado em checklist interativo com categorias: Cadastro, Sistemas, Processos, Tributação | F44 | PD |
+| **RFU-024** | O sistema DEVE exibir timeline visual 2026-2033 com marcos da Reforma Tributária (CBS, IBS, transição) personalizados para o regime da organização | F44 | PD |
+| **RFU-025** | O sistema DEVE exibir board Kanban com 4 colunas (Pendente, Em andamento, Resolvida, Ignorada) e permitir drag & drop de inconsistências entre colunas | F45 | PB |
+| **RFU-026** | O sistema DEVE permitir adicionar comentários, anexos (PDF/imagem até 10MB), atribuição de responsável e prazo em cada inconsistência via Kanban | F45 | PB |
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-043** | O sistema DEVE calcular `risco_evitado = SUM(estimated_impact) WHERE status = 'RESOLVIDA'` e `risco_detectado = SUM(estimated_impact) WHERE classification = 'RISCO_ALTO'` para período especificado | F42 | PA |
+| **RFS-044** | O sistema DEVE atualizar view materializada `supplier_scores` diariamente via cron (04:00 BRT) com dados dos últimos 90 dias | F43 | PC |
+| **RFS-045** | O sistema DEVE classificar fornecedores em 3 categorias: CONFIÁVEL (0 inconsistências), ATENCAO (taxa de erro <= 20%), RISCO (taxa de erro > 20% ou inconsistências de score >= 70) | F43 | PC |
+| **RFS-046** | O sistema DEVE calcular score de preparação CBS/IBS baseado em: (a) campos CBS/IBS presentes nos XMLs, (b) itens do checklist marcados como concluídos, (c) alertas de conformidade resolvidos | F44 | PD |
+| **RFS-047** | O sistema DEVE persistir estado do Kanban (coluna, responsável, prazo, comentários, anexos) em tabelas `inconsistency_assignments`, `inconsistency_comments`, `inconsistency_attachments` | F45 | PB |
+| **RFS-048** | O sistema DEVE validar tamanho máximo de anexos (10MB) e tipos permitidos (PDF, PNG, JPG) antes de upload, rejeitando arquivos inválidos com mensagem de erro clara | F45 | PB |
+
+---
+
+### MÓDULO M4 — COMUNICAÇÃO (EXPANSÃO PÓS-MVP)
+
+#### Requisitos de Usuário
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFU-027** | O sistema DEVE gerar mensagem contextualizada para fornecedor quando inconsistência é detectada, com botões: "Copiar", "Enviar por WhatsApp", "Enviar por e-mail" | F46 | PA |
+| **RFU-028** | O sistema DEVE exibir preview da mensagem antes de enviar, permitindo edição manual do texto | F46 | PA |
+| **RFU-029** | O sistema DEVE incluir contexto rico em notificações "tudo certo": número de notas processadas, valor total em compras, quantidade de fornecedores distintos | F47 | PA |
+| **RFU-030** | O sistema DEVE permitir download de relatório mensal do dono (PDF 1 página) com: notas analisadas, valor processado, inconsistências, fornecedores problemáticos, recomendação | F48 | PA |
+| **RFU-031** | O sistema DEVE exibir botão "Baixar meu mês fiscal" no dashboard, visível para usuários ADMIN | F48 | PA |
+| **RFU-032** | O sistema DEVE notificar contador via e-mail/WhatsApp quando cliente tem inconsistência crítica (score >= 70) ou quando exportação mensal está disponível | F49 | PC |
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-049** | O sistema DEVE gerar mensagem para fornecedor usando templates por regra (R1-R8) com placeholders: `{fornecedor}`, `{numero}`, `{cfop_encontrado}`, `{cfop_esperado}`, `{impacto}` | F46 | PA |
+| **RFS-050** | O sistema DEVE persistir status de mensagens enviadas (GENERATED, COPIED, SENT_WHATSAPP, SENT_EMAIL, DELIVERED, READ) em tabela `supplier_messages` | F46 | PA |
+| **RFS-051** | O sistema DEVE calcular agregações para notificações "tudo certo": `COUNT(nfe_documents)`, `SUM(valor_total)`, `COUNT(DISTINCT cnpj_emitente)` para período da semana | F47 | PA |
+| **RFS-052** | O sistema DEVE gerar PDF do relatório mensal do dono em até 5 segundos usando pdfkit, incluindo gráficos de barras (notas por semana, inconsistências por tipo) | F48 | PA |
+| **RFS-053** | O sistema DEVE incluir disclaimer no rodapé do relatório do dono: "Este relatório é uma análise automática preliminar. Confirme com seu contador antes de tomar decisões fiscais." | F48 | PA |
+| **RFS-054** | O sistema DEVE enviar notificação para contador quando: (a) inconsistência com score >= 70 detectada, (b) exportação mensal gerada, (c) lojista convida contador para portal | F49 | PC |
+
+---
+
+### MÓDULO M5 — ADMINISTRAÇÃO (EXPANSÃO PÓS-MVP)
+
+#### Requisitos de Usuário
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFU-033** | O sistema DEVE exibir wizard de onboarding em 5 passos: (1) upload XMLs, (2) processamento, (3) resultados, (4) top 3 riscos, (5) PDF para contador | F50 | PA |
+| **RFU-034** | O sistema DEVE permitir pular wizard de onboarding, mas exibir botão "Retomar onboarding" no dashboard até conclusão | F50 | PA |
+| **RFU-035** | O sistema DEVE exibir botão "Perguntar à IA" em páginas de inconsistência, abrindo chat contextual com botões de perguntas rápidas | F51 | PC |
+| **RFU-036** | O sistema DEVE exibir disclaimer em toda resposta da IA: "Esta é uma orientação preliminar. Confirme com seu contador antes de agir." | F51 | PC |
+| **RFU-037** | O sistema DEVE exibir catálogo de pacotes de regras disponíveis com descrição, setor, UF, regime, e botão "Ativar/Desativar" | F52 | PD |
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-055** | O sistema DEVE persistir estado do wizard de onboarding em tabela `onboarding_sessions`, permitindo retomar de onde parou | F50 | PA |
+| **RFS-056** | O sistema DEVE gerar PDF automaticamente no passo 5 do wizard usando dados do primeiro upload (batch_id armazenado em `onboarding_sessions`) | F50 | PA |
+| **RFS-057** | O sistema DEVE enviar perguntas contextuais para OpenRouter API com system prompt que inclui guardrails: (a) nunca calcular imposto, (b) nunca dar parecer definitivo, (c) sempre recomendar contador | F51 | PC |
+| **RFS-058** | O sistema DEVE validar output da IA antes de exibir: (a) não contém cálculo de imposto, (b) não contém parecer definitivo, (c) contém disclaimer. Se inválido, retornar fallback template. | F51 | PC |
+| **RFS-059** | O sistema DEVE carregar pacotes de regras de tabela `rule_packs` onde `is_active = true` e habilitados para organização via `organization_rule_packs` | F52 | PD |
+
+---
+
+### MÓDULO M6 — PORTAL DO CONTADOR (NOVO — PÓS-MVP)
+
+#### Requisitos de Usuário
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFU-038** | O sistema DEVE permitir login de contador via CPF + senha em portal separado (`/accountant/login`) | F53 | PC |
+| **RFU-039** | O sistema DEVE permitir registro de contador com: nome, CPF, e-mail, senha, CRC (opcional), WhatsApp (opcional) | F53 | PC |
+| **RFU-040** | O sistema DEVE exibir lista de clientes atendidos pelo contador com: nome da loja, CNPJ, total de notas no mês, inconsistências pendentes, última atividade | F54 | PC |
+| **RFU-041** | O sistema DEVE permitir buscar clientes por nome ou CNPJ na lista do contador | F54 | PC |
+| **RFU-042** | O sistema DEVE exibir dashboard completo do cliente (idêntico ao do lojista) em modo read-only para contador | F55 | PC |
+| **RFU-043** | O sistema DEVE permitir que contador adicione comentários em qualquer inconsistência do cliente, visíveis para lojista e contador | F56 | PC |
+| **RFU-044** | O sistema DEVE exibir thread de comentários por inconsistência com autor (contador/lojista/sistema), data/hora e texto | F56 | PC |
+| **RFU-045** | O sistema DEVE permitir que contador valide inconsistência com botão "Validado pelo contador", exibindo selo verde + data/hora + nome do contador | F57 | PC |
+| **RFU-046** | O sistema DEVE permitir que contador gere exportação mensal consolidada de todos os clientes em PDF único | F58 | PC |
+| **RFU-047** | O sistema DEVE exibir histórico de ações do contador: comentários, validações, exportações com filtro por cliente e período | F59 | PC |
+| **RFU-048** | O sistema DEVE permitir que lojista convide contador via e-mail/WhatsApp, exibindo campo "Convidar contador" no perfil da organização | F60 | PC |
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-060** | O sistema DEVE autenticar contador via JWT separado (campo `accountant_id` no payload) com expiração de 7 dias | F53 | PC |
+| **RFS-061** | O sistema DEVE validar CPF usando algoritmo de dígitos verificadores antes de criar conta de contador | F53 | PC |
+| **RFS-062** | O sistema DEVE retornar lista de clientes via JOIN entre `accountant_clients` (status = 'ACTIVE') e `organizations`, incluindo agregações de `nfe_documents` e `inconsistencies` | F54 | PC |
+| **RFS-063** | O sistema DEVE validar que contador só acessa dados de clientes onde `accountant_clients.accountant_id = contador_logado` e `status = 'ACTIVE'` | F55 | PC |
+| **RFS-064** | O sistema DEVE persistir comentários em tabela `accountant_comments` com `author_type = 'ACCOUNTANT'` e notificar lojista via WhatsApp | F56 | PC |
+| **RFS-065** | O sistema DEVE persistir validação em tabela `accountant_comments` com `is_validation = true` e `validated_at = now()`, atualizando campo `validated_by_accountant` em `inconsistencies` | F57 | PC |
+| **RFS-066** | O sistema DEVE gerar PDF consolidado de múltiplos clientes em até 10 segundos, agrupando por cliente e incluindo resumo executivo | F58 | PC |
+| **RFS-067** | O sistema DEVE persistir exportações em tabela `accountant_monthly_exports` com status (PENDING, GENERATING, READY, DOWNLOADED) e URL do PDF | F58 | PC |
+| **RFS-068** | O sistema DEVE retornar histórico de ações do contador via query em `accountant_comments` e `accountant_monthly_exports` com filtro por `accountant_id`, `organization_id` e período | F59 | PC |
+| **RFS-069** | O sistema DEVE enviar convite para contador via e-mail (com link de aceite) e WhatsApp (com mensagem pré-formatada), persistindo em `accountant_clients` com status 'PENDING' | F60 | PC |
+
+---
+
+### MÓDULO M7 — INTELIGÊNCIA FISCAL (NOVO — PÓS-MVP)
+
+#### Requisitos de Usuário
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFU-049** | O sistema DEVE exibir chat de IA contextual com botões de perguntas rápidas: "Explique em linguagem simples", "O que perguntar ao contador?", "Gere mensagem para fornecedor" | F61 | PC |
+| **RFU-050** | O sistema DEVE exibir histórico de conversas com IA, permitindo retomar conversas anteriores por inconsistência | F61 | PC |
+| **RFU-051** | O sistema DEVE permitir feedback (thumbs up/down) em respostas da IA para melhorar qualidade | F61 | PC |
+| **RFU-052** | O sistema DEVE exibir página de detalhe do fornecedor com: histórico de 90 dias (notas, inconsistências, valores), problemas recorrentes, categoria (Confiável/Atenção/Risco) | F62 | PC |
+| **RFU-053** | O sistema DEVE exibir botão "Ver todas as notas do fornecedor" que filtra lista de notas por CNPJ do emitente | F62 | PC |
+| **RFU-054** | O sistema DEVE exibir ranking de fornecedores com filtros: "Mais confiáveis", "Mais problemáticos", "Maior valor em risco", ordenável por colunas | F63 | PC |
+| **RFU-055** | O sistema DEVE exibir simulador da Reforma Tributária com: score de preparação (0-100%), checklist interativo, timeline 2026-2033, botão "Gerar PDF de preparação" | F64 | PD |
+
+#### Requisitos de Sistema
+
+| ID | Requisito | Funcionalidade | Fase |
+|---|---|---|---|
+| **RFS-070** | O sistema DEVE enviar contexto da inconsistência (regra, valores, impacto) para IA junto com pergunta do usuário, limitando resposta a 150 palavras | F61 | PC |
+| **RFS-071** | O sistema DEVE persistir conversas com IA em tabela `ai_conversations` com: pergunta, resposta, modelo usado, tokens, latência, feedback | F61 | PC |
+| **RFS-072** | O sistema DEVE implementar rate limit de 10 perguntas por hora por usuário para evitar abuso da API de IA | F61 | PC |
+| **RFS-073** | O sistema DEVE retornar dados de fornecedor via query em `supplier_scores` (view materializada) + JOIN com `nfe_documents` e `inconsistencies` dos últimos 90 dias | F62 | PC |
+| **RFS-074** | O sistema DEVE calcular problemas recorrentes do fornecedor via GROUP BY em `inconsistencies.rule_id` com COUNT(*) >= 3 | F62 | PC |
+| **RFS-075** | O sistema DEVE retornar ranking de fornecedores via query em `supplier_scores` com ORDER BY dinâmico (categoria, error_rate, total_risk_value) e paginação | F63 | PC |
+| **RFS-076** | O sistema DEVE gerar PDF de preparação para Reforma Tributária em até 5 segundos, incluindo: score, checklist com status, timeline personalizada, recomendações | F64 | PD |
+
+---
+
 ### REQUISITOS DE CONTORNO (RFC) — O que o sistema NÃO DEVE fazer
 
 | ID | Requisito | Risco mitigado |
@@ -1155,6 +1682,10 @@ Especificar cada comportamento do sistema no formato "O sistema DEVE [ação] [c
 | **RFC-006** | O sistema NÃO DEVE classificar inconsistência como "erro fiscal comprovado" sem o qualificador "análise automática preliminar" visível na mesma tela | Usuário tomar decisão baseada em falso positivo |
 | **RFC-007** | O sistema NÃO DEVE expor dados de uma organização para usuários de outra organização, independentemente de papel | Violação de sigilo fiscal entre clientes; LGPD |
 | **RFC-008** | O sistema NÃO DEVE armazenar conteúdo completo do XML da NF-e por mais de 5 anos, devendo permitir exclusão lógica após esse período mediante solicitação do cliente | LGPD (minimização de dados); prazo decadencial CTN (Art. 173) |
+| **RFC-009** | O sistema NÃO DEVE expor certificado digital A1 do cliente em logs, responses de API, ou qualquer interface — apenas metadados (CNPJ titular, data de validade, status) | Uso indevido de certificado digital; LGPD |
+| **RFC-010** | O sistema NÃO DEVE permitir que assistente de IA calcule imposto devido, gere guias de pagamento, ou emita parecer fiscal definitivo — apenas explicar inconsistências detectadas pelo motor de regras | Exercício ilegal da profissão contábil; responsabilidade civil |
+| **RFC-011** | O sistema NÃO DEVE expor score de fornecedores para outros fornecedores ou terceiros — apenas para usuários da organização proprietária dos dados | Conflito comercial; LGPD |
+| **RFC-012** | O sistema NÃO DEVE armazenar tokens OAuth de ERPs em texto puro — sempre criptografados com AES-256-GCM usando chave derivada de variável de ambiente | Vazamento de credenciais; segurança |
 
 ### Riscos e pontos de atenção
 
@@ -1165,6 +1696,19 @@ Especificar cada comportamento do sistema no formato "O sistema DEVE [ação] [c
 | Impacto financeiro estimado (RFS-019) pode estar errado para casos complexos (ex.: redução de base de cálculo) | Média | Incluir sempre "estimado" e "confirme com seu contador" ao lado do valor em reais |
 | Limite de 1 alerta/hora (RFS-023) pode atrasar detecção de segundo problema grave | Baixa | Uploads são manuais (2-3x/semana); cenário improvável no MVP. Revisar Fase 2. |
 | Validação de CNPJ (RFS-028) não garante existência real na RFB | Baixa | Aceitável; RFS-012 complementa com consulta de CNPJ ativo |
+
+#### Riscos dos requisitos pós-MVP (Fases A-D)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Criptografia de certificados A1 (RFS-034) pode falhar se `CERTIFICATE_ENCRYPTION_KEY` for comprometida | Alta | Rotação de chave a cada 6 meses. Pen-test antes de lançar. Armazenar chave em cofre (AWS Secrets Manager ou similar) |
+| Job diário de download da Sefaz (RFS-035) pode falhar silenciosamente se API da Sefaz mudar | Alta | Monitoramento de health check do job. Alerta se 3 dias consecutivos sem download. Fallback para upload manual |
+| View materializada `supplier_scores` (RFS-044) pode ficar desatualizada se cron falhar | Média | Refresh manual via botão na interface. Alerta se refresh falhar. Timestamp visível "Atualizado em DD/MM HH:MM" |
+| Assistente de IA (RFS-057, RFS-070) pode alucinar e dar orientação fiscal errada mesmo com guardrails | Alta | Validação de output (RFS-058) com regex para detectar cálculo de imposto. Fallback para template se inválido. Disclaimer em toda resposta |
+| Integração com ERPs (RFS-037) pode quebrar se API do ERP mudar sem versionamento | Alta | Testes de integração contínuos. Monitoramento de health check por conector. Fallback para upload manual se conector falhar |
+| Portal do contador (RFS-060-RFS-069) pode criar superfície de ataque adicional (auth separado) | Média | Rate limit de login (3 tentativas/15min). 2FA na Fase D. Monitoramento de tentativas de login suspeitas |
+| Kanban (RFS-047) pode adicionar complexidade desnecessária se usuário não adotar | Média | Lançar como feature opcional. Dashboard simples continua sendo tela principal. Métricas de adoção antes de expandir |
+| Pacotes de regras setoriais (RFS-040) podem gerar inconsistência entre pacotes (mesma nota, resultados diferentes) | Média | Pacote base (R1-R8) sempre ativo. Pacotes setoriais adicionam regras, não substituem. Testes cruzados entre pacotes |
 
 ---
 
@@ -1777,6 +2321,334 @@ T5 — EXPORTANDO (modal de progresso do PDF)
 | Roberto acessar T6 (Carregar) por engano | Média | Texto direto: "Arraste XMLs aqui". Onboarding ensina que é tarefa da Fernanda |
 | Nome "Notas" pode confundir com "notas de saída" ou "anotações" | Baixa | Founder explica no onboarding. Testar "Problemas" ou "Pendências" no futuro |
 | Checklist T4 inline pode ter problemas de scroll em celular | Baixa | Testar em 3 dispositivos Android reais antes do beta |
+
+---
+
+### Expansão Pós-MVP — Novas Telas (T10-T23)
+
+**Objetivo:** Adicionar 14 novas telas para suportar as 30 funcionalidades pós-MVP (F36-F65), organizadas por fase de implementação.
+
+#### Mapa de Telas Atualizado (MVP + Pós-MVP)
+
+```
+MVP (T0-T6):
+T0 — LINK EXPIRADO
+T1 — DASHBOARD (HOME)
+T2 — NOTAS (Lista de Inconsistências)
+T3 — DETALHE da inconsistência
+T4 — AÇÃO ("O que fazer")
+T5 — EXPORTANDO (modal PDF)
+T6 — CARREGAR NOTAS (Upload)
+
+Pós-MVP Fase A (T10-T13):
+T10 — ONBOARDING RAIO-X (wizard 5 passos)
+T11 — MENSAGEM PARA FORNECEDOR (modal)
+T12 — PAINEL DE ECONOMIA / RISCOS EVITADOS
+T13 — RELATÓRIO MENSAL DO DONO (preview)
+
+Pós-MVP Fase B (T14-T16):
+T14 — KANBAN DE PENDÊNCIAS
+T15 — CONFIGURAÇÃO DOWNLOAD AUTOMÁTICO
+T16 — ALERTAS CADASTRAIS
+
+Pós-MVP Fase C (T17-T20):
+T17 — PORTAL DO CONTADOR (login)
+T18 — PORTAL DO CONTADOR (dashboard clientes)
+T19 — SCORE DE FORNECEDORES
+T20 — ASSISTENTE IA (chat panel)
+
+Pós-MVP Fase D (T21-T23):
+T21 — PREPARAÇÃO REFORMA TRIBUTÁRIA
+T22 — INTEGRAÇÃO ERPs
+T23 — CATÁLOGO DE PACOTES DE REGRAS
+```
+
+#### Navegação Atualizada (Pós-MVP)
+
+**Bottom Nav Bar (MVP + Fase A):**
+```
+[📊 Resumo]    [📋 Notas]    [➕ Carregar]
+```
+
+**Bottom Nav Bar (Fase B+):**
+```
+[📊 Resumo]    [📋 Notas]    [📌 Pendências]    [➕ Carregar]
+```
+
+**Menu Lateral (Fase C+ — acessível via ícone ☰ no header):**
+```
+┌─────────────────────┐
+│ 📊 Resumo           │
+│ 📋 Notas            │
+│ 📌 Pendências       │
+│ ➕ Carregar         │
+│ ─────────────────── │
+│ 💰 Economia         │  ← T12
+│ 🏢 Fornecedores     │  ← T19
+│ 🤖 Assistente IA    │  ← T20
+│ 📄 Relatório Mensal │  ← T13
+│ ⚙️ Configurações    │  ← T15, T16, T22, T23
+│ 👤 Perfil           │
+└─────────────────────┘
+```
+
+**Portal do Contador (separado — T17, T18):**
+```
+[🏢 Clientes]    [📊 Dashboard]    [📄 Exportações]
+```
+
+---
+
+#### Descrição das Novas Telas
+
+##### T10 — ONBOARDING RAIO-X (Fase A)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Guiar novo usuário em 5 passos: upload → análise → resultados → top 3 riscos → PDF para contador |
+| **URL** | `/onboarding` |
+| **Conteúdo** | Wizard de 5 passos com barra de progresso. Passo 1: upload simplificado (sem menus). Passo 2: animação de processamento. Passo 3: resultados com números grandes. Passo 4: cards dos top 3 riscos. Passo 5: botão "Baixar PDF" + "Enviar por WhatsApp". |
+| **Ações** | Avançar/retroceder passos. Pular wizard (botão discreto). Retomar wizard (botão no dashboard até conclusão). |
+| **Estados** | Passo 1 (upload), Passo 2 (processando), Passo 3 (resultados), Passo 4 (top riscos), Passo 5 (PDF), concluído. |
+
+##### T11 — MENSAGEM PARA FORNECEDOR (Fase A)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Gerar mensagem contextualizada para fornecedor quando inconsistência é detectada |
+| **URL** | Modal acessível via T3 (Detalhe da Inconsistência) |
+| **Conteúdo** | 1. Preview da mensagem gerada (texto editável). 2. Botões: "Copiar", "Enviar por WhatsApp", "Enviar por e-mail". 3. Status da mensagem (gerada, copiada, enviada, entregue). |
+| **Ações** | Editar texto. Copiar para clipboard. Enviar via WhatsApp (abre compartilhamento). Enviar via e-mail (abre cliente de e-mail). Fechar modal. |
+| **Estados** | Gerando mensagem, preview pronto, enviando, enviada, erro no envio. |
+
+##### T12 — PAINEL DE ECONOMIA / RISCOS EVITADOS (Fase A)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Demonstrar ROI continuamente: inconsistências detectadas, valor em risco, economia potencial |
+| **URL** | `/economia` |
+| **Conteúdo** | 1. Card principal: "Riscos Evitados" com valor em R$ (grande). 2. Métricas: total detectadas, resolvidas, pendentes. 3. Gráfico de barras: últimos 6 meses (detectados vs resolvidos). 4. Filtro: mês/trimestre/ano. |
+| **Ações** | Alterar período (dropdown). Exportar PDF do relatório de economia. Voltar ao dashboard. |
+| **Estados** | Com dados (gráfico + métricas), sem dados ("Ainda não há dados suficientes"), carregando. |
+
+##### T13 — RELATÓRIO MENSAL DO DONO (Fase A)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Preview do relatório mensal de 1 página para o dono antes de baixar |
+| **URL** | `/relatorio-mensal` |
+| **Conteúdo** | 1. Preview visual do PDF (1 página A4). 2. Seletor de mês (dropdown). 3. Botão "Baixar PDF" (grande). 4. Botão "Enviar por WhatsApp". |
+| **Ações** | Selecionar mês. Baixar PDF. Enviar por WhatsApp. Voltar ao dashboard. |
+| **Estados** | Preview pronto, gerando PDF, erro na geração, sem dados para o mês selecionado. |
+
+##### T14 — KANBAN DE PENDÊNCIAS (Fase B)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Mini-CRM de pendências fiscais: responsável, prazo, comentários, anexos |
+| **URL** | `/pendencias` |
+| **Conteúdo** | 1. Board com 4 colunas: Pendente, Em andamento, Resolvida, Ignorada. 2. Cards de inconsistências em cada coluna (fornecedor, valor, score, responsável, prazo). 3. Filtros: responsável, prazo, score. 4. Botão "Nova pendência" (manual). |
+| **Ações** | Drag & drop entre colunas. Clique no card → abre painel lateral com detalhes, comentários, anexos. Atribuir responsável. Definir prazo. Adicionar comentário. Upload anexo. |
+| **Estados** | Board vazio, board com cards, arrastando card, painel lateral aberto, salvando alterações. |
+
+##### T15 — CONFIGURAÇÃO DOWNLOAD AUTOMÁTICO (Fase B)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Configurar download automático de XMLs via certificado digital A1 |
+| **URL** | `/configuracoes/download-automatico` |
+| **Conteúdo** | 1. Status do certificado (válido/vencendo/vencido) com data de validade. 2. Botão "Upload certificado A1" (se não há certificado). 3. Toggle "Download automático" (ativo/inativo). 4. Frequência (diário/semanal). 5. Horário preferido. 6. Histórico de downloads (últimos 10). |
+| **Ações** | Upload certificado (modal com senha). Ativar/desativar download automático. Alterar frequência/horário. Ver detalhes de download específico. |
+| **Estados** | Sem certificado, certificado válido, certificado vencendo, certificado vencido, download ativo, download inativo, histórico vazio. |
+
+##### T16 — ALERTAS CADASTRAIS (Fase B)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Mini-monitor cadastral: certificado vencendo, CNPJ inapto, IE irregular, CNAE incompatível |
+| **URL** | `/alertas-cadastrais` |
+| **Conteúdo** | 1. Lista de alertas com severidade (crítico/atenção/info). 2. Cada alerta: tipo, entidade (fornecedor/organização), mensagem, data. 3. Filtros: severidade, tipo, lido/não lido. 4. Botão "Marcar como lido" em cada alerta. |
+| **Ações** | Marcar alerta como lido. Descartar alerta. Ver detalhes do alerta (modal). Filtrar por severidade/tipo. |
+| **Estados** | Sem alertas, alertas críticos, alertas de atenção, alertas informativos, todos lidos. |
+
+##### T17 — PORTAL DO CONTADOR (LOGIN) (Fase C)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Login separado para contadores (CPF + senha) |
+| **URL** | `/contador/login` |
+| **Conteúdo** | 1. Campo CPF (com máscara). 2. Campo senha. 3. Botão "Entrar". 4. Link "Esqueci minha senha". 5. Link "Sou contador, quero me cadastrar". |
+| **Ações** | Login. Recuperar senha (envia e-mail). Cadastro (vai para `/contador/cadastro`). |
+| **Estados** | Formulário vazio, validando credenciais, login bem-sucedido, credenciais inválidas, conta bloqueada. |
+
+##### T18 — PORTAL DO CONTADOR (DASHBOARD CLIENTES) (Fase C)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Lista de clientes atendidos pelo contador com resumo de status fiscal |
+| **URL** | `/contador/dashboard` |
+| **Conteúdo** | 1. Lista de clientes (nome, CNPJ, total notas mês, inconsistências pendentes, última atividade). 2. Busca por nome/CNPJ. 3. Filtro: com pendências, sem pendências, inativos. 4. Botão "Exportar todos" (PDF consolidado). |
+| **Ações** | Clique no cliente → abre dashboard do cliente (read-only). Exportar PDF consolidado. Buscar cliente. Filtrar lista. |
+| **Estados** | Lista com clientes, lista vazia, buscando, filtrando, exportando PDF. |
+
+##### T19 — SCORE DE FORNECEDORES (Fase C)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Dashboard com score por fornecedor baseado em 90 dias |
+| **URL** | `/fornecedores` |
+| **Conteúdo** | 1. Ranking por categoria: "Mais confiáveis", "Atenção", "Risco". 2. Cards de fornecedores (nome, CNPJ, score, categoria, total notas 90d, valor em risco). 3. Filtros: categoria, UF, valor mínimo. 4. Busca por nome/CNPJ. |
+| **Ações** | Clique no fornecedor → abre detalhe (T19.1). Filtrar por categoria. Buscar fornecedor. Ordenar por score/valor/notas. |
+| **Estados** | Com dados (ranking + cards), sem dados ("Ainda não há dados suficientes — precisamos de 90 dias de histórico"), carregando. |
+
+##### T20 — ASSISTENTE IA (CHAT PANEL) (Fase C)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Chat contextual que responde perguntas sobre inconsistências |
+| **URL** | Painel lateral acessível via T3 (Detalhe da Inconsistência) ou botão flutuante no dashboard |
+| **Conteúdo** | 1. Histórico de conversas (scroll). 2. Campo de input de pergunta. 3. Botões de perguntas rápidas: "Explique em linguagem simples", "O que perguntar ao contador?", "Gere mensagem para fornecedor". 4. Disclaimer em toda resposta. 5. Feedback (thumbs up/down). |
+| **Ações** | Digitar pergunta. Clicar em pergunta rápida. Enviar feedback. Copiar resposta. Fechar painel. |
+| **Estados** | Painel fechado, painel aberto (vazio), painel aberto (com histórico), digitando, aguardando resposta, resposta pronta, erro na resposta. |
+
+##### T21 — PREPARAÇÃO REFORMA TRIBUTÁRIA (Fase D)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Simulador de preparação para Reforma Tributária (CBS/IBS) |
+| **URL** | `/reforma-tributaria` |
+| **Conteúdo** | 1. Score de preparação (0-100%) com gauge circular. 2. Checklist interativo por categoria (Cadastro, Sistemas, Processos, Tributação). 3. Timeline 2026-2033 com marcos personalizados. 4. Alertas CBS/IBS nos XMLs. 5. Botão "Gerar PDF de preparação". |
+| **Ações** | Marcar itens do checklist como concluídos. Ver detalhes de cada item (modal). Gerar PDF. Ver timeline. |
+| **Estados** | Score baixo (0-40%), score médio (41-70%), score alto (71-100%), checklist vazio, checklist parcial, checklist completo. |
+
+##### T22 — INTEGRAÇÃO ERPs (Fase D)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Conectar ERPs brasileiros (Bling, Tiny, Omie, Conta Azul) para leitura automática de notas |
+| **URL** | `/configuracoes/erps` |
+| **Conteúdo** | 1. Grid de ERPs suportados com logos. 2. Status de cada conexão (conectado/desconectado/erro). 3. Botão "Conectar" para cada ERP. 4. Última sincronização (data/hora). 5. Botão "Sincronizar agora". |
+| **Ações** | Conectar ERP (OAuth flow). Desconectar ERP. Sincronizar manualmente. Ver logs de sincronização. |
+| **Estados** | Sem conexões, conexão ativa, conexão com erro, sincronizando, sincronização concluída, OAuth em andamento. |
+
+##### T23 — CATÁLOGO DE PACOTES DE REGRAS (Fase D)
+
+| Campo | Conteúdo |
+|---|---|
+| **Propósito** | Ativar/desativar pacotes de regras por UF e setor |
+| **URL** | `/configuracoes/pacotes-regras` |
+| **Conteúdo** | 1. Lista de pacotes disponíveis (nome, descrição, setor, UF, regime). 2. Toggle "Ativado/Desativado" para cada pacote. 3. Detalhe do pacote (modal com lista de regras incluídas). 4. Pacotes ativos destacados no topo. |
+| **Ações** | Ativar/desativar pacote. Ver detalhes do pacote. Buscar pacote por nome/setor/UF. |
+| **Estados** | Lista com pacotes, lista vazia, ativando/desativando, erro na ativação. |
+
+---
+
+#### Hierarquia de Informação Atualizada (Pós-MVP)
+
+| Ação do Roberto | Toques | Tela |
+|---|---|---|
+| Ver se tem problema | 0 (abre o app) | T1 |
+| Ver detalhe de uma inconsistência | 1 (toque no card) | T3 |
+| Ver todas as inconsistências | 1 (Ver todas) | T2 |
+| Ver checklist de ação | 1 (O que fazer) | T4 |
+| Carregar notas (Fernanda) | 1 (nav Carregar) | T6 |
+| Ver economia/riscos evitados | 2 (menu lateral → Economia) | T12 |
+| Ver score de fornecedores | 2 (menu lateral → Fornecedores) | T19 |
+| Perguntar à IA | 2 (menu lateral → Assistente IA) | T20 |
+| Ver relatório mensal | 2 (menu lateral → Relatório Mensal) | T13 |
+| Gerenciar pendências (Kanban) | 1 (nav Pendências) | T14 |
+| Configurar download automático | 3 (menu lateral → Configurações → Download) | T15 |
+| Ver alertas cadastrais | 3 (menu lateral → Configurações → Alertas) | T16 |
+| Conectar ERP | 3 (menu lateral → Configurações → ERPs) | T22 |
+| Ativar pacotes de regras | 3 (menu lateral → Configurações → Pacotes) | T23 |
+| Preparação Reforma Tributária | 2 (menu lateral → Reforma) | T21 |
+
+**Portal do Contador (Dona Célia):**
+
+| Ação do Contador | Toques | Tela |
+|---|---|---|
+| Login | 0 (acessa URL) | T17 |
+| Ver lista de clientes | 1 (após login) | T18 |
+| Ver dashboard do cliente | 2 (clique no cliente) | T18.1 |
+| Comentar em inconsistência | 3 (cliente → inconsistência → comentário) | T18.2 |
+| Validar inconsistência | 3 (cliente → inconsistência → validar) | T18.2 |
+| Exportar PDF consolidado | 2 (botão "Exportar todos") | T18 |
+
+---
+
+#### Nomenclatura Atualizada — Glossário de Interface (Pós-MVP)
+
+| Termo técnico | Como aparece para o Roberto |
+|---|---|
+| Dashboard | **Resumo** |
+| NF-e | **Nota fiscal** |
+| XML | **Arquivo da nota** ou **XML** |
+| CFOP | **Código da operação fiscal (CFOP)** |
+| NCM | **Classificação fiscal do produto (NCM)** |
+| Inconsistência | **Problema** ou **ponto de atenção** |
+| Score | **Nível de atenção** (verde/amarelo/vermelho) |
+| Upload | **Carregar notas** |
+| Exportar PDF | **Baixar relatório do contador** |
+| Processar | **Analisar** |
+| Kanban | **Pendências** |
+| Supplier Score | **Score de fornecedores** |
+| AI Assistant | **Assistente IA** |
+| Digital Certificate | **Certificado digital** |
+| ERP Integration | **Integração com sistema** |
+| Rule Pack | **Pacote de regras** |
+| Tax Reform | **Reforma Tributária** |
+
+---
+
+#### Árvore de Rotas Atualizada (Visão Dev — Pós-MVP)
+
+```
+MVP:
+/
+├── /login?expired=true → T0
+├── /dashboard → T1
+├── /notas → T2
+│   └── /notas/:id → T3 → expande → T4
+├── /carregar → T6
+└── /api/notas/:id/exportar-pdf → T5
+
+Fase A:
+├── /onboarding → T10
+├── /notas/:id/mensagem → T11 (modal)
+├── /economia → T12
+└── /relatorio-mensal → T13
+
+Fase B:
+├── /pendencias → T14
+├── /configuracoes/download-automatico → T15
+└── /alertas-cadastrais → T16
+
+Fase C:
+├── /contador/login → T17
+├── /contador/dashboard → T18
+│   └── /contador/clientes/:orgId → T18.1
+│       └── /contador/clientes/:orgId/inconsistencias/:id → T18.2
+├── /fornecedores → T19
+└── /assistente-ia → T20 (painel lateral)
+
+Fase D:
+├── /reforma-tributaria → T21
+├── /configuracoes/erps → T22
+└── /configuracoes/pacotes-regras → T23
+```
+
+---
+
+### Riscos e pontos de atenção (Expansão Pós-MVP)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| 14 novas telas podem sobrecarregar navegação se não organizadas corretamente | Alta | Menu lateral só aparece na Fase C+. Bottom nav mantém 3-4 itens. Testar com 5 usuários antes de cada fase |
+| Kanban (T14) pode ser complexo para usuários com baixa maturidade digital | Média | Lançar como feature opcional. Dashboard simples continua sendo tela principal. Tutorial interativo no primeiro acesso |
+| Portal do contador (T17, T18) separado pode confundir contadores | Média | Link claro no e-mail de convite. Onboarding guiado para contadores. Suporte via WhatsApp |
+| Assistente IA (T20) pode gerar expectativas irreais sobre capacidades | Alta | Disclaimer em toda resposta. Botões de perguntas rápidas limitam escopo. Guardrails impedem cálculo de imposto |
+| Menu lateral com muitas opções pode causar paralisia de escolha | Média | Itens do menu aparecem gradualmente conforme fases. "Configurações" agrupa opções avançadas |
+| Onboarding raio-x (T10) pode ser pulado por usuários apressados | Baixa | Botão "Retomar onboarding" visível no dashboard até conclusão. Benefícios claros em cada passo |
 
 ---
 
@@ -2732,6 +3604,1572 @@ FAB (+):  → T2 (Upload) a partir de T1 ou T3
 | Tela de link mágico depender de envio de WhatsApp (se API falhar, usuário não entra) | Média | Fallback: SMS com código de 6 dígitos. Exibir número de suporte: "Fale conosco: (11) 9XXXX-XXXX" |
 | Scroll infinito na T3 pode perder performance com 500+ notas | Baixa | MVP tem ~200 notas/mês. Implementar virtualização se necessário (react-virtual) |
 | ASCII mockups não capturam feedback visual de microinterações (bounce, fade, shimmer) | Baixa | Complementar com protótipo clicável no Figma antes do Sprint 4. Mockups ASCII são suficientes para briefing de desenvolvimento |
+
+---
+
+### Telas Pós-MVP (T10-T23)
+
+As seguintes telas serão implementadas nas fases A-D do roadmap pós-MVP. Cada tela segue o sistema visual da Etapa 14 e os princípios de design definidos.
+
+---
+
+#### TELA T10 — ONBOARDING RAIO-X (Fase A)
+
+**Quem usa:** Roberto (principal), Fernanda (secundário)
+**Quando:** Primeiro acesso de nova organização
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot                      │
+├──────────────────────────────────┤
+│                                  │
+│  Bem-vindo ao FiscoPilot!        │
+│                                  │
+│  Vamos fazer um raio-x fiscal    │
+│  da sua loja em 5 passos.        │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ● ○ ○ ○ ○                   ││  ← Indicador de progresso
+│  │  1   2 3 4 5                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PASSO 1: CARREGAR NOTAS ──   │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │                              ││
+│  │       📤                     ││  ← Drop zone simplificado
+│  │                              ││     (sem menus, sem histórico)
+│  │  Arraste seus XMLs aqui      ││
+│  │  ou                          ││
+│  │  [Selecionar arquivos]       ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  💡 Dica: peça para sua auxiliar │
+│  ou contador os arquivos .xml    │
+│  dos últimos 30 dias.            │
+│                                  │
+│  [Pular]              [Avançar →]│
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Passo 2 (processando)**
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot                      │
+├──────────────────────────────────┤
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ● ● ○ ○ ○                   ││
+│  │  1   2 3 4 5                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PASSO 2: ANALISANDO ──       │
+│                                  │
+│       ┌────────────────────┐     │
+│       │                    │     │
+│       │   ⏳               │     │  ← Animação de processamento
+│       │                    │     │
+│       │   Analisando       │     │
+│       │   87 notas...      │     │
+│       │                    │     │
+│       │   ████████░░ 80%   │     │  ← Barra de progresso
+│       │                    │     │
+│       └────────────────────┘     │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Passo 3 (resultados)**
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot                      │
+├──────────────────────────────────┤
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ● ● ● ○ ○                   ││
+│  │  1   2 3 4 5                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PASSO 3: RESULTADOS ──       │
+│                                  │
+│  Analisamos 87 notas fiscais.    │
+│                                  │
+│  ┌────────┐ ┌────────┐ ┌──────┐ │
+│  │   ✅   │ │   ⚠️   │ │  🔴  │ │
+│  │   83   │ │    3   │ │   1   │ │
+│  │  OK    │ │ Atenção│ │ Risco │ │
+│  └────────┘ └────────┘ └──────┘ │
+│                                  │
+│  Encontramos 4 pontos de         │
+│  atenção que precisam da         │
+│  sua revisão.                    │
+│                                  │
+│  [← Voltar]          [Avançar →] │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Passo 4 (top 3 riscos)**
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot                      │
+├──────────────────────────────────┤
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ● ● ● ● ○                   ││
+│  │  1   2 3 4 5                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PASSO 4: TOP 3 RISCOS ──     │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ 🔴 RISCO ALTO         R$ 412││
+│  │ Distribuidora CimentoBom    ││
+│  │ Código da operação diverge  ││
+│  │ Nota #3521 · 10/05          ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ ⚠️ ATENÇÃO             R$ 87││
+│  │ Telhanorte ABC              ││
+│  │ Valor total não bate        ││
+│  │ Nota #3518 · 12/05          ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ ⚠️ ATENÇÃO              R$ —││
+│  │ Pisos e Revestimentos Sul   ││
+│  │ Classificação fiscal        ││
+│  │ Nota #3498 · 05/05          ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [← Voltar]          [Avançar →] │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Passo 5 (PDF para contador)**
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot                      │
+├──────────────────────────────────┤
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ● ● ● ● ●                   ││
+│  │  1   2 3 4 5                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PASSO 5: RELATÓRIO ──        │
+│                                  │
+│  Pronto! Seu raio-x fiscal       │
+│  está completo.                  │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📄                          ││
+│  │                              ││
+│  │  Relatório Fiscal            ││  ← Preview do PDF
+│  │  Maio 2026                   ││
+│  │                              ││
+│  │  87 notas analisadas         ││
+│  │  4 pontos de atenção         ││
+│  │  1 risco alto                ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  Envie este PDF para seu         │
+│  contador revisar.               │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │      [Baixar PDF]            ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │   [Enviar por WhatsApp]      ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [← Voltar]          [Concluir ✓]│
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Wizard de 5 passos com barra de progresso visual
+- Botão "Pular" discreto (texto pequeno, cor cinza)
+- Botão "Retomar onboarding" visível no dashboard até conclusão
+- Sessão persistida em `onboarding_sessions` (pode retomar se sair)
+- PDF gerado automaticamente no passo 5 usando dados do primeiro upload
+
+---
+
+#### TELA T11 — MENSAGEM PARA FORNECEDOR (Fase A)
+
+**Quem usa:** Fernanda (principal), Roberto (secundário)
+**Quando:** Ao clicar em "Gerar mensagem" na tela de detalhe da inconsistência (T5)
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar    Mensagem Fornecedor │
+├──────────────────────────────────┤
+│                                  │
+│  ── MENSAGEM GERADA ──           │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │                              ││
+│  │  Olá, Distribuidora          ││  ← Texto editável
+│  │  CimentoBom.                 ││
+│  │                              ││
+│  │  Recebemos a NF-e nº 3521    ││
+│  │  e identificamos possível    ││
+│  │  divergência no código da    ││
+│  │  operação fiscal (CFOP).     ││
+│  │                              ││
+│  │  O código registrado foi     ││
+│  │  6102, mas nosso sistema     ││
+│  │  indica que o correto        ││
+│  │  seria 1102.                 ││
+│  │                              ││
+│  │  Poderiam verificar e, se    ││
+│  │  necessário, emitir carta    ││
+│  │  de correção?                ││
+│  │                              ││
+│  │  Obrigado.                   ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ✏️ Você pode editar o texto     │
+│  acima antes de enviar.          │
+│                                  │
+│  ── ENVIAR VIA ──                │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📋 Copiar para clipboard    ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  💬 Enviar por WhatsApp      ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ✉️ Enviar por e-mail        ││
+│  └──────────────────────────────┘│
+│                                  │
+│  Status: Gerada                  │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Mensagem enviada**
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar    Mensagem Fornecedor │
+├──────────────────────────────────┤
+│                                  │
+│  ── MENSAGEM ENVIADA ──          │
+│                                  │
+│       ┌────────────────────┐     │
+│       │        ✅          │     │
+│       │                    │     │
+│       │  Mensagem enviada  │     │
+│       │  por WhatsApp      │     │
+│       │  em 15/05 14:32    │     │
+│       │                    │     │
+│       └────────────────────┘     │
+│                                  │
+│  ── HISTÓRICO ──                 │
+│                                  │
+│  15/05 14:32 · Enviada WhatsApp  │
+│  15/05 14:30 · Gerada pelo       │
+│                sistema           │
+│                                  │
+│  [Fechar]                        │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Modal acessível via T5 (Detalhe da Inconsistência)
+- Texto pré-preenchido com template da regra (R1-R8) + dados da nota
+- Campo de texto editável (textarea)
+- Botões de ação: Copiar, WhatsApp, E-mail
+- Status persistido em `supplier_messages` (GENERATED, COPIED, SENT_WHATSAPP, SENT_EMAIL, DELIVERED, READ)
+- WhatsApp: abre compartilhamento nativo do sistema
+- E-mail: abre cliente de e-mail com texto pré-preenchido
+
+---
+
+#### TELA T12 — PAINEL DE ECONOMIA / RISCOS EVITADOS (Fase A)
+
+**Quem usa:** Roberto (principal)
+**Quando:** Menu lateral → "Economia"
+
+```
+┌──────────────────────────────────┐
+│  ☰ FiscoPilot                    │
+├──────────────────────────────────┤
+│                                  │
+│  ── RISCOS EVITADOS ──           │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │                              ││
+│  │  Este mês o FiscoPilot       ││
+│  │  encontrou 4 inconsistências ││
+│  │  em R$ 18.430 de notas.      ││
+│  │                              ││
+│  │  Impacto potencial           ││
+│  │  estimado:                   ││
+│  │                              ││
+│  │      ~R$ 1.240               ││  ← Valor grande, cor verde
+│  │                              ││
+│  │  3 resolvidos · 1 pendente   ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── MÉTRICAS ──                  │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Total detectadas       12   ││
+│  │  Resolvidas              9   ││
+│  │  Pendentes               2   ││
+│  │  Ignoradas               1   ││
+│  │  Taxa de resolução    75%    ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── HISTÓRICO (6 MESES) ──       │
+│                                  │
+│  Mai 2026  ~R$ 1.240  ████░░    │
+│  Abr 2026  ~R$   890  ███░░░    │
+│  Mar 2026  ~R$ 2.100  ██████░   │
+│  Fev 2026  ~R$   340  █░░░░░    │
+│  Jan 2026  ~R$   670  ██░░░░    │
+│  Dez 2025  ~R$ 1.450  ████░░    │
+│                                  │
+│  ── PERÍODO ──                   │
+│  [Este mês ▾]                    │
+│                                  │
+│  [Exportar PDF]                  │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Card principal com valor em R$ (grande, cor verde)
+- Métricas: total detectadas, resolvidas, pendentes, ignoradas, taxa de resolução
+- Gráfico de barras com últimos 6 meses (detectados vs resolvidos)
+- Filtro de período: mês/trimestre/ano
+- Botão "Exportar PDF" gera relatório de economia
+- Cálculo: `risco_evitado = SUM(estimated_impact) WHERE status = 'RESOLVIDA'`
+
+---
+
+#### TELA T13 — RELATÓRIO MENSAL DO DONO (Fase A)
+
+**Quem usa:** Roberto (principal)
+**Quando:** Menu lateral → "Relatório Mensal"
+
+```
+┌──────────────────────────────────┐
+│  ☰ FiscoPilot                    │
+├──────────────────────────────────┤
+│                                  │
+│  ── RELATÓRIO MENSAL ──          │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Maio 2026 ▾                 ││  ← Seletor de mês
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PREVIEW ──                   │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  FiscoPilot                  ││
+│  │  Seu Mês Fiscal              ││
+│  │  Casa Forte · Maio 2026      ││
+│  │                              ││
+│  │  NOTAS ANALISADAS            ││
+│  │       143                    ││
+│  │                              ││
+│  │  VALOR PROCESSADO            ││
+│  │  R$ 284.500                  ││
+│  │                              ││
+│  │  INCONSISTÊNCIAS             ││
+│  │       5                      ││
+│  │                              ││
+│  │  RISCOS RESOLVIDOS           ││
+│  │       3                      ││
+│  │                              ││
+│  │  FORNECEDORES                ││
+│  │  PROBLEMÁTICOS               ││
+│  │       2                      ││
+│  │                              ││
+│  │  PENDÊNCIAS ABERTAS          ││
+│  │       2                      ││
+│  │                              ││
+│  │  TOP 3 FORNECEDORES          ││
+│  │  1. CimentoBom (3 notas)     ││
+│  │  2. Telhanorte (1 nota)      ││
+│  │  3. Pisos Sul (1 nota)       ││
+│  │                              ││
+│  │  RECOMENDAÇÃO                ││
+│  │  "Atenção ao fornecedor      ││
+│  │  CimentoBom. Considere       ││
+│  │  pedir carta de correção."   ││
+│  │                              ││
+│  │  ⓘ Análise preliminar.       ││
+│  │  Confirme com seu contador.  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │      [Baixar PDF]            ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │   [Enviar por WhatsApp]      ││
+│  └──────────────────────────────┘│
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Preview visual do PDF (1 página A4)
+- Seletor de mês (dropdown)
+- Botão "Baixar PDF" (grande, cor primária)
+- Botão "Enviar por WhatsApp" (abre compartilhamento)
+- PDF gerado em até 5 segundos usando pdfkit
+- Inclui gráficos de barras (notas por semana, inconsistências por tipo)
+- Disclaimer no rodapé: "Este relatório é uma análise automática preliminar. Confirme com seu contador antes de tomar decisões fiscais."
+
+---
+
+#### TELA T14 — KANBAN DE PENDÊNCIAS (Fase B)
+
+**Quem usa:** Fernanda (principal), Roberto (secundário)
+**Quando:** Bottom nav → "Pendências"
+
+```
+┌──────────────────────────────────┐
+│  ☰ FiscoPilot                    │
+├──────────────────────────────────┤
+│                                  │
+│  ── PENDÊNCIAS FISCAIS ──        │
+│                                  │
+│  Filtros: [Todos ▾] [Prazo ▾]   │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  PENDENTE (3)                ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ 🔴 CimentoBom          │  ││
+│  │  │ R$ 8.400 · CFOP        │  ││
+│  │  │ Fernanda · Prazo: 20/05│  ││
+│  │  └────────────────────────┘  ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ 🔴 Areal Brita         │  ││
+│  │  │ R$ 5.200 · CNPJ        │  ││
+│  │  │ Roberto · Prazo: 22/05 │  ││
+│  │  └────────────────────────┘  ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ ⚠️ Pisos Sul           │  ││
+│  │  │ R$ 520 · NCM           │  ││
+│  │  │ Sem responsável        │  ││
+│  │  └────────────────────────┘  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  EM ANDAMENTO (2)            ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ ⚠️ Telhanorte          │  ││
+│  │  │ R$ 3.200 · Valor       │  ││
+│  │  │ Roberto · Prazo: 25/05 │  ││
+│  │  └────────────────────────┘  ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ ⚠️ C&C Materiais       │  ││
+│  │  │ R$ 1.150 · Soma        │  ││
+│  │  │ Fernanda · Prazo: 28/05│  ││
+│  │  └────────────────────────┘  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  RESOLVIDA (5)               ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ ✅ Ferragens do Zé     │  ││
+│  │  │ R$ 2.890 · CST         │  ││
+│  │  │ Resolvida em 12/05     │  ││
+│  │  └────────────────────────┘  ││
+│  │  ...                         ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  IGNORADA (1)                ││
+│  │  ┌────────────────────────┐  ││
+│  │  │ ⚠️ Pisos Sul           │  ││
+│  │  │ R$ 520 · NCM           │  ││
+│  │  │ Motivo: contador ok    │  ││
+│  │  └────────────────────────┘  ││
+│  └──────────────────────────────┘│
+│                                  │
+├──────────────────────────────────┤
+│  [🏠 Home] [📋 Notas] [📌 Pend.] │
+└──────────────────────────────────┘
+```
+
+**Painel lateral (ao clicar em card)**
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar    CimentoBom          │
+├──────────────────────────────────┤
+│                                  │
+│  🔴 RISCO ALTO · Score 85        │
+│                                  │
+│  NF-e #3521 · R$ 8.400           │
+│  CFOP divergente                 │
+│                                  │
+│  ── RESPONSÁVEL ──               │
+│  [Fernanda Souza ▾]              │
+│                                  │
+│  ── PRAZO ──                     │
+│  [20/05/2026]                    │
+│                                  │
+│  ── STATUS ──                    │
+│  [Pendente ▾]                    │
+│                                  │
+│  ── COMENTÁRIOS ──               │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Fernanda · 15/05 14:30      ││
+│  │  Liguei para fornecedor.     ││
+│  │  Vão verificar e retornar    ││
+│  │  até amanhã.                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Roberto · 15/05 10:15       ││
+│  │  Prioridade alta. Resolver   ││
+│  │  essa semana.                ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Digite um comentário...     ││
+│  └──────────────────────────────┘│
+│  [Enviar]                        │
+│                                  │
+│  ── ANEXOS ──                    │
+│  📎 carta_correcao.pdf (245 KB)  │
+│  [+ Adicionar anexo]             │
+│                                  │
+│  ── AÇÕES ──                     │
+│  [Enviar para contador]          │
+│  [Enviar mensagem fornecedor]    │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Board com 4 colunas: Pendente, Em andamento, Resolvida, Ignorada
+- Drag & drop entre colunas (mobile: swipe horizontal)
+- Clique no card → abre painel lateral com detalhes
+- Painel lateral: responsável, prazo, status, comentários, anexos, ações
+- Comentários persistidos em `inconsistency_comments`
+- Anexos persistidos em `inconsistency_attachments` (PDF/imagem até 10MB)
+- Atribuição persistida em `inconsistency_assignments`
+- Botões "Enviar para contador" e "Enviar mensagem fornecedor" integrados com Features #2 e #5
+
+---
+
+#### TELA T15 — CONFIGURAÇÃO DOWNLOAD AUTOMÁTICO (Fase B)
+
+**Quem usa:** Roberto (principal), Fernanda (secundário)
+**Quando:** Menu lateral → "Configurações" → "Download Automático"
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar   Download Automático  │
+├──────────────────────────────────┤
+│                                  │
+│  ── CERTIFICADO DIGITAL ──       │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  🟢 Certificado válido       ││
+│  │                              ││
+│  │  CNPJ: 12.345.678/0001-90    ││
+│  │  Titular: Casa Forte Mat.    ││
+│  │  Validade: 15/08/2026        ││
+│  │                              ││
+│  │  [Trocar certificado]        ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── DOWNLOAD AUTOMÁTICO ──       │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Download automático         ││
+│  │  [====ON====]                ││  ← Toggle
+│  │                              ││
+│  │  Frequência                  ││
+│  │  [Diário ▾]                  ││
+│  │                              ││
+│  │  Horário                     ││
+│  │  [02:00 ▾]                   ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── ÚLTIMOS DOWNLOADS ──         │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  15/05 02:00 · 12 notas      ││
+│  │  ✅ Concluído                ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  14/05 02:00 · 8 notas       ││
+│  │  ✅ Concluído                ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  13/05 02:00 · 0 notas       ││
+│  │  ✅ Concluído                ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [Baixar agora manualmente]      │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Sem certificado**
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar   Download Automático  │
+├──────────────────────────────────┤
+│                                  │
+│  ── CERTIFICADO DIGITAL ──       │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ⚪ Sem certificado          ││
+│  │                              ││
+│  │  Para baixar notas           ││
+│  │  automaticamente da Sefaz,   ││
+│  │  você precisa fazer upload   ││
+│  │  do seu certificado digital  ││
+│  │  A1.                         ││
+│  │                              ││
+│  │  [Upload certificado A1]     ││
+│  └──────────────────────────────┘│
+│                                  │
+│  💡 O certificado A1 é um        │
+│  arquivo .pfx ou .p12 que        │
+│  você recebe da certificadora.   │
+│                                  │
+│  ⓘ Seu certificado é             │
+│  criptografado e armazenado      │
+│  com segurança. Nunca            │
+│  compartilhamos seus dados.      │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Modal: Upload de certificado**
+
+```
+┌──────────────────────────────────┐
+│  Upload Certificado A1           │
+├──────────────────────────────────┤
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📄                          ││
+│  │                              ││
+│  │  certificado.pfx             ││
+│  │  2.3 KB                      ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  Senha do certificado           │
+│  ┌──────────────────────────────┐│
+│  │  ••••••••                    ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ⓘ A senha é usada apenas para   │
+│  extrair o certificado e não     │
+│  é armazenada.                   │
+│                                  │
+│  [Cancelar]        [Upload]      │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Status do certificado: válido (verde), vencendo (amarelo, <30 dias), vencido (vermelho)
+- Toggle para ativar/desativar download automático
+- Frequência: diário/semanal
+- Horário preferido (dropdown)
+- Histórico dos últimos 10 downloads
+- Botão "Baixar agora manualmente" (trigger manual)
+- Upload certificado: modal com arquivo .pfx/.p12 + senha
+- Certificado criptografado com AES-256-GCM antes de armazenar
+- Job diário (02:00 BRT) autentica na Sefaz, consulta NF-e, baixa XMLs, processa via pipeline
+
+---
+
+#### TELA T16 — ALERTAS CADASTRAIS (Fase B)
+
+**Quem usa:** Roberto (principal), Fernanda (secundário)
+**Quando:** Menu lateral → "Alertas Cadastrais"
+
+```
+┌──────────────────────────────────┐
+│  ☰ FiscoPilot                    │
+├──────────────────────────────────┤
+│                                  │
+│  ── ALERTAS CADASTRAIS ──        │
+│                                  │
+│  Filtros: [Todos ▾] [Lidos ▾]    │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ 🔴 CRÍTICO                   ││
+│  │                              ││
+│  │ Certificado digital vencendo ││
+│  │ Seu certificado A1 vence em  ││
+│  │ 7 dias (15/08/2026).         ││
+│  │                              ││
+│  │ [Ver detalhes] [Marcar lido] ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ 🔴 CRÍTICO                   ││
+│  │                              ││
+│  │ CNPJ inapto                  ││
+│  │ Fornecedor Areal Brita       ││
+│  │ (CNPJ 12.345.678/0001-90)    ││
+│  │ está com situação cadastral  ││
+│  │ "INAPTA" na Receita Federal. ││
+│  │                              ││
+│  │ [Ver detalhes] [Marcar lido] ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ ⚠️ ATENÇÃO                   ││
+│  │                              ││
+│  │ Inscrição estadual irregular ││
+│  │ Fornecedor Telhanorte ABC    ││
+│  │ (IE 123.456.789.000) está    ││
+│  │ com IE "BAIXADA" no Sintegra.││
+│  │                              ││
+│  │ [Ver detalhes] [Marcar lido] ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ ℹ️ INFORMAÇÃO                ││
+│  │                              ││
+│  │ CNAE incompatível            ││
+│  │ Fornecedor Pisos Sul         ││
+│  │ tem CNAE principal           ││
+│  │ "4751-2/00" (comércio de     ││
+│  │ tintas) incompatível com     ││
+│  │ NF-e de material de          ││
+│  │ construção.                  ││
+│  │                              ││
+│  │ [Ver detalhes] [Marcar lido] ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │ ⚠️ ATENÇÃO                   ││
+│  │                              ││
+│  │ Fornecedor recorrente        ││
+│  │ Distribuidora CimentoBom     ││
+│  │ tem 5 inconsistências nos    ││
+│  │ últimos 90 dias.             ││
+│  │                              ││
+│  │ [Ver detalhes] [Marcar lido] ││
+│  └──────────────────────────────┘│
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Lista de alertas com severidade (crítico/atenção/info)
+- Cada alerta: tipo, entidade (fornecedor/organização), mensagem, data
+- Filtros: severidade, tipo, lido/não lido
+- Botão "Marcar como lido" em cada alerta
+- Botão "Ver detalhes" abre modal com informações completas
+- Alertas críticos disparam notificação WhatsApp
+- Job semanal (domingo 03:00 BRT) consulta API da Receita Federal para verificar situação cadastral
+- Tipos de alerta: CERTIFICATE_EXPIRING, CERTIFICATE_EXPIRED, CNPJ_INAPTO, IE_IRREGULAR, CNAE_INCOMPATIVEL, SUPPLIER_RECURRENT_ISSUE
+
+---
+
+#### TELA T17 — PORTAL DO CONTADOR (LOGIN) (Fase C)
+
+**Quem usa:** Dona Célia (contadora)
+**Quando:** Acesso via URL `/contador/login`
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot Contador             │
+├──────────────────────────────────┤
+│                                  │
+│       ┌────────────────────┐     │
+│       │  [Logo FiscoPilot] │     │
+│       └────────────────────┘     │
+│                                  │
+│  Portal do Contador              │
+│                                  │
+│  Acesse os dados fiscais dos     │
+│  seus clientes em um só lugar.   │
+│                                  │
+│  ── LOGIN ──                     │
+│                                  │
+│  CPF                             │
+│  ┌──────────────────────────────┐│
+│  │  123.456.789-00              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  Senha                           │
+│  ┌──────────────────────────────┐│
+│  │  ••••••••                    ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [Entrar]                        │
+│                                  │
+│  Esqueci minha senha             │
+│                                  │
+│  ──────────────────────────────  │
+│                                  │
+│  Sou contador, quero me          │
+│  cadastrar                       │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Estado: Login bem-sucedido**
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot Contador             │
+├──────────────────────────────────┤
+│                                  │
+│       ┌────────────────────┐     │
+│       │        ✅          │     │
+│       │                    │     │
+│       │  Login realizado   │     │
+│       │  com sucesso!      │     │
+│       │                    │     │
+│       │  Redirecionando... │     │
+│       │                    │     │
+│       └────────────────────┘     │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Campo CPF com máscara (123.456.789-00)
+- Campo senha (password)
+- Validação de CPF usando algoritmo de dígitos verificadores
+- JWT separado para contadores (campo `accountant_id` no payload)
+- Expiração de 7 dias
+- Link "Esqueci minha senha" envia e-mail de recuperação
+- Link "Sou contador, quero me cadastrar" vai para `/contador/cadastro`
+- Rate limit: 3 tentativas/15min
+- Redireciona para `/contador/dashboard` após login bem-sucedido
+
+---
+
+#### TELA T18 — PORTAL DO CONTADOR (DASHBOARD CLIENTES) (Fase C)
+
+**Quem usa:** Dona Célia (contadora)
+**Quando:** Após login no portal do contador
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot Contador             │
+├──────────────────────────────────┤
+│                                  │
+│  Olá, Dona Célia                 │
+│                                  │
+│  ── SEUS CLIENTES ──             │
+│                                  │
+│  Busca: [________________]       │
+│                                  │
+│  Filtros: [Todos ▾]              │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Casa Forte Materiais        ││
+│  │  CNPJ: 12.345.678/0001-90    ││
+│  │                              ││
+│  │  Maio 2026                   ││
+│  │  📋 143 notas                ││
+│  │  ⚠️ 5 pendências             ││
+│  │  🔴 1 risco alto             ││
+│  │                              ││
+│  │  Última atividade: 15/05     ││
+│  │                              ││
+│  │  [Ver dashboard →]           ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Ferragens do Zé             ││
+│  │  CNPJ: 98.765.432/0001-10    ││
+│  │                              ││
+│  │  Maio 2026                   ││
+│  │  📋 87 notas                 ││
+│  │  ✅ 0 pendências             ││
+│  │                              ││
+│  │  Última atividade: 14/05     ││
+│  │                              ││
+│  │  [Ver dashboard →]           ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Telhanorte ABC              ││
+│  │  CNPJ: 45.678.901/0001-23    ││
+│  │                              ││
+│  │  Maio 2026                   ││
+│  │  📋 234 notas                ││
+│  │  ⚠️ 12 pendências            ││
+│  │  🔴 3 riscos altos           ││
+│  │                              ││
+│  │  Última atividade: 15/05     ││
+│  │                              ││
+│  │  [Ver dashboard →]           ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │      [Exportar todos]        ││
+│  └──────────────────────────────┘│
+│                                  │
+├──────────────────────────────────┤
+│  [🏢 Clientes] [📊 Dashboard]    │
+│  [📄 Exportações]                │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Lista de clientes com resumo de status fiscal
+- Busca por nome ou CNPJ
+- Filtros: com pendências, sem pendências, inativos
+- Cada card: nome, CNPJ, total notas mês, pendências, riscos altos, última atividade
+- Clique em "Ver dashboard" → abre dashboard do cliente (read-only)
+- Botão "Exportar todos" gera PDF consolidado de todos os clientes
+- Query: JOIN entre `accountant_clients` (status = 'ACTIVE') e `organizations`, incluindo agregações de `nfe_documents` e `inconsistencies`
+- Validação: contador só acessa dados de clientes onde `accountant_clients.accountant_id = contador_logado`
+
+---
+
+#### TELA T19 — SCORE DE FORNECEDORES (Fase C)
+
+**Quem usa:** Roberto (principal)
+**Quando:** Menu lateral → "Fornecedores"
+
+```
+┌──────────────────────────────────┐
+│  ☰ FiscoPilot                    │
+├──────────────────────────────────┤
+│                                  │
+│  ── SCORE DE FORNECEDORES ──     │
+│                                  │
+│  ── RANKING POR CATEGORIA ──     │
+│                                  │
+│  [Mais confiáveis] [Atenção]     │
+│  [Risco]                         │
+│                                  │
+│  ── MAIS CONFIÁVEIS ──           │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ✅ C&C Materiais            ││
+│  │  CNPJ: 12.345.678/0001-90    ││
+│  │                              ││
+│  │  90 dias                     ││
+│  │  📋 45 notas                 ││
+│  │  ✅ 0 inconsistências        ││
+│  │  💰 R$ 0 em risco            ││
+│  │                              ││
+│  │  [Ver detalhe →]             ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ✅ Ferragens do Zé          ││
+│  │  CNPJ: 98.765.432/0001-10    ││
+│  │                              ││
+│  │  90 dias                     ││
+│  │  📋 32 notas                 ││
+│  │  ✅ 0 inconsistências        ││
+│  │  💰 R$ 0 em risco            ││
+│  │                              ││
+│  │  [Ver detalhe →]             ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── ATENÇÃO ──                   │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ⚠️ Telhanorte ABC           ││
+│  │  CNPJ: 45.678.901/0001-23    ││
+│  │                              ││
+│  │  90 dias                     ││
+│  │  📋 28 notas                 ││
+│  │  ⚠️ 2 inconsistências        ││
+│  │  💰 R$ 340 em risco          ││
+│  │                              ││
+│  │  Problemas recorrentes:      ││
+│  │  · Valor total (2x)          ││
+│  │                              ││
+│  │  [Ver detalhe →]             ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── RISCO ──                     │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  🔴 Distribuidora CimentoBom ││
+│  │  CNPJ: 78.901.234/0001-56    ││
+│  │                              ││
+│  │  90 dias                     ││
+│  │  📋 18 notas                 ││
+│  │  🔴 5 inconsistências        ││
+│  │  💰 R$ 2.340 em risco        ││
+│  │                              ││
+│  │  Problemas recorrentes:      ││
+│  │  · CFOP divergente (3x)      ││
+│  │  · Alíquota ICMS (2x)        ││
+│  │                              ││
+│  │  [Ver detalhe →]             ││
+│  └──────────────────────────────┘│
+│                                  │
+│  Filtros: [Categoria ▾] [UF ▾]   │
+│  Busca: [________________]       │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Tela de detalhe do fornecedor (T19.1)**
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar   CimentoBom           │
+├──────────────────────────────────┤
+│                                  │
+│  🔴 RISCO                        │
+│                                  │
+│  Distribuidora CimentoBom        │
+│  CNPJ: 78.901.234/0001-56        │
+│                                  │
+│  ── ÚLTIMOS 90 DIAS ──           │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📋 18 notas                 ││
+│  │  🔴 5 inconsistências (28%)  ││
+│  │  🔴 3 de risco alto          ││
+│  │  💰 R$ 2.340 em risco        ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PROBLEMAS RECORRENTES ──     │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  CFOP divergente        3x   ││
+│  │  Alíquota ICMS          2x   ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── HISTÓRICO DE NOTAS ──        │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  🔴 NF-e #3521 · 10/05       ││
+│  │  R$ 8.400 · CFOP             ││
+│  │  [Ver →]                     ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  🔴 NF-e #3498 · 05/05       ││
+│  │  R$ 5.200 · Alíquota         ││
+│  │  [Ver →]                     ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ⚠️ NF-e #3456 · 28/04       ││
+│  │  R$ 3.100 · CFOP             ││
+│  │  [Ver →]                     ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [Ver todas as notas →]          │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Ranking por categoria: "Mais confiáveis", "Atenção", "Risco"
+- Cards de fornecedores: nome, CNPJ, score, categoria, total notas 90d, valor em risco
+- Filtros: categoria, UF, valor mínimo
+- Busca por nome ou CNPJ
+- Clique em "Ver detalhe" → abre página de detalhe do fornecedor (T19.1)
+- Página de detalhe: histórico de 90 dias, problemas recorrentes, lista de notas
+- Botão "Ver todas as notas" filtra lista de notas por CNPJ do emitente
+- View materializada `supplier_scores` atualizada diariamente via cron (04:00 BRT)
+- Classificação: CONFIÁVEL (0 inconsistências), ATENCAO (taxa de erro <= 20%), RISCO (taxa de erro > 20% ou inconsistências de score >= 70)
+- Só ativa após 90 dias de dados acumulados
+
+---
+
+#### TELA T20 — ASSISTENTE IA (CHAT PANEL) (Fase C)
+
+**Quem usa:** Roberto (principal), Fernanda (secundário)
+**Quando:** Painel lateral acessível via T5 (Detalhe da Inconsistência) ou botão flutuante no dashboard
+
+```
+┌──────────────────────────────────┐
+│  Assistente IA              [✕]  │
+├──────────────────────────────────┤
+│                                  │
+│  ── CONVERSA ──                  │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  🤖 Assistente               ││
+│  │                              ││
+│  │  Olá! Sou o assistente do    ││
+│  │  FiscoPilot. Posso te        ││
+│  │  ajudar a entender essa      ││
+│  │  inconsistência.             ││
+│  │                              ││
+│  │  O que você gostaria de      ││
+│  │  saber?                      ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  👤 Você                     ││
+│  │                              ││
+│  │  Explique em linguagem       ││
+│  │  simples o que está errado   ││
+│  │  nessa nota.                 ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  🤖 Assistente               ││
+│  │                              ││
+│  │  Claro! A nota fiscal        ││
+│  │  #3521 da Distribuidora      ││
+│  │  CimentoBom tem um problema  ││
+│  │  no código da operação       ││
+│  │  fiscal (CFOP).              ││
+│  │                              ││
+│  │  O fornecedor usou o código  ││
+│  │  6102, que é para vendas     ││
+│  │  dentro do estado. Mas como  ││
+│  │  você está comprando, o      ││
+│  │  correto seria 1102          ││
+│  │  (compra para                ││
+│  │  comercialização).           ││
+│  │                              ││
+│  │  Isso pode fazer você pagar  ││
+│  │  ~R$ 412 a mais de imposto   ││
+│  │  nesse mês.                  ││
+│  │                              ││
+│  │  👍 👎                       ││  ← Feedback
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PERGUNTAS RÁPIDAS ──         │
+│                                  │
+│  [Explique em linguagem simples] │
+│  [O que perguntar ao contador?]  │
+│  [Gere mensagem para fornecedor] │
+│                                  │
+│  ── SUA PERGUNTA ──              │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Digite sua pergunta...      ││
+│  └──────────────────────────────┘│
+│  [Enviar]                        │
+│                                  │
+│  ⓘ Esta é uma orientação         │
+│  preliminar. Confirme com seu    │
+│  contador antes de agir.         │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Painel lateral (slide da direita)
+- Histórico de conversas (scroll vertical)
+- Campo de input de pergunta
+- Botões de perguntas rápidas: "Explique em linguagem simples", "O que perguntar ao contador?", "Gere mensagem para fornecedor"
+- Disclaimer em toda resposta: "Esta é uma orientação preliminar. Confirme com seu contador antes de agir."
+- Feedback (thumbs up/down) em cada resposta
+- Botão "Copiar resposta"
+- Botão "Fechar" (✕) no header
+- Contexto da inconsistência enviado para IA (regra, valores, impacto)
+- Limite de 150 palavras por resposta
+- Rate limit: 10 perguntas por hora por usuário
+- Conversas persistidas em `ai_conversations` (pergunta, resposta, modelo, tokens, latência, feedback)
+- Guardrails: nunca calcular imposto, nunca dar parecer definitivo, sempre recomendar contador
+- Validação de output antes de exibir (regex para detectar cálculo de imposto)
+- Fallback para template se IA falhar
+
+---
+
+#### TELA T21 — PREPARAÇÃO REFORMA TRIBUTÁRIA (Fase D)
+
+**Quem usa:** Roberto (principal)
+**Quando:** Menu lateral → "Reforma Tributária"
+
+```
+┌──────────────────────────────────┐
+│  ☰ FiscoPilot                    │
+├──────────────────────────────────┤
+│                                  │
+│  ── PREPARAÇÃO CBS/IBS ──        │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │                              ││
+│  │  Score de preparação         ││
+│  │                              ││
+│  │       ╭───────╮              ││
+│  │      ╱  65%   ╲             ││  ← Gauge circular
+│  │      ╲       ╱              ││
+│  │       ╰───────╯              ││
+│  │                              ││
+│  │  Sua loja está parcialmente  ││
+│  │  preparada para a Reforma    ││
+│  │  Tributária.                 ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── CHECKLIST ──                 │
+│                                  │
+│  ── CADASTRO ──                  │
+│  ┌──────────────────────────────┐│
+│  │  ☑ CNPJ atualizado na        ││
+│  │    Receita Federal           ││
+│  │  ☑ Inscrição estadual        ││
+│  │    regular                   ││
+│  │  ☐ CNAE principal            ││
+│  │    compatível com atividade  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── SISTEMAS ──                  │
+│  ┌──────────────────────────────┐│
+│  │  ☐ ERP atualizado para       ││
+│  │    suportar CBS/IBS          ││
+│  │  ☑ Fornecedor principal já   ││
+│  │    emite com campos CBS/IBS  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PROCESSOS ──                 │
+│  ┌──────────────────────────────┐│
+│  │  ☑ Contador informado sobre  ││
+│  │    a transição               ││
+│  │  ☐ Plano de classificação    ││
+│  │    de produtos revisado      ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── TRIBUTAÇÃO ──                │
+│  ┌──────────────────────────────┐│
+│  │  ☐ Entendeu a diferença      ││
+│  │    entre ICMS e IBS          ││
+│  │  ☐ Sabe quando CBS começa    ││
+│  │    a valer para o Simples    ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── TIMELINE 2026-2033 ──        │
+│                                  │
+│  2026 ●─────○─────○─────○       │
+│       CBS    IBS   Trans  Completo
+│       teste  teste ição          │
+│                                  │
+│  [Ver detalhes da timeline →]    │
+│                                  │
+│  ── ALERTAS CBS/IBS ──           │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  ⚠️ 3 notas em Maio/2026     ││
+│  │  deveriam ter campos CBS/IBS ││
+│  │  mas estão ausentes.         ││
+│  │                              ││
+│  │  [Ver notas →]               ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │   [Gerar PDF de preparação]  ││
+│  └──────────────────────────────┘│
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Score de preparação (0-100%) com gauge circular
+- Checklist interativo por categoria (Cadastro, Sistemas, Processos, Tributação)
+- Cada item: checkbox + descrição
+- Timeline 2026-2033 com marcos da Reforma Tributária personalizados para o regime da organização
+- Alertas CBS/IBS nos XMLs (quando aplicável)
+- Botão "Gerar PDF de preparação" (inclui score, checklist, timeline, recomendações)
+- Score calculado baseado em: (a) campos CBS/IBS presentes nos XMLs, (b) itens do checklist marcados como concluídos, (c) alertas de conformidade resolvidos
+- Checklist persistido em `reform_checklist`
+- Alertas persistidos em `cbs_ibs_alerts`
+
+---
+
+#### TELA T22 — INTEGRAÇÃO ERPs (Fase D)
+
+**Quem usa:** Roberto (principal), Fernanda (secundário)
+**Quando:** Menu lateral → "Configurações" → "Integração ERPs"
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar   Integração ERPs      │
+├──────────────────────────────────┤
+│                                  │
+│  ── ERPs SUPORTADOS ──           │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  [Logo Bling]                ││
+│  │  Bling                       ││
+│  │                              ││
+│  │  🟢 Conectado                ││
+│  │  Última sync: 15/05 03:00    ││
+│  │                              ││
+│  │  [Sincronizar agora]         ││
+│  │  [Desconectar]               ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  [Logo Tiny]                 ││
+│  │  Tiny                        ││
+│  │                              ││
+│  │  🟢 Conectado                ││
+│  │  Última sync: 15/05 03:00    ││
+│  │                              ││
+│  │  [Sincronizar agora]         ││
+│  │  [Desconectar]               ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  [Logo Omie]                 ││
+│  │  Omie                        ││
+│  │                              ││
+│  │  ⚪ Não conectado            ││
+│  │                              ││
+│  │  [Conectar]                  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  [Logo Conta Azul]           ││
+│  │  Conta Azul                  ││
+│  │                              ││
+│  │  ⚪ Não conectado            ││
+│  │                              ││
+│  │  [Conectar]                  ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── HISTÓRICO DE SINCRONIZAÇÃO ──│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  15/05 03:00 · Bling         ││
+│  │  ✅ 12 notas sincronizadas   ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  15/05 03:00 · Tiny          ││
+│  │  ✅ 8 notas sincronizadas    ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  14/05 03:00 · Bling         ││
+│  │  ✅ 15 notas sincronizadas   ││
+│  └──────────────────────────────┘│
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Modal: Conectar ERP (OAuth flow)**
+
+```
+┌──────────────────────────────────┐
+│  Conectar Omie                   │
+├──────────────────────────────────┤
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  [Logo Omie]                 ││
+│  │                              ││
+│  │  Você será redirecionado     ││
+│  │  para o site da Omie para    ││
+│  │  autorizar o acesso.         ││
+│  │                              ││
+│  │  O FiscoPilot poderá:        ││
+│  │  · Ler notas fiscais         ││
+│  │  · Ler dados de clientes     ││
+│  │  · Ler dados de produtos     ││
+│  │                              ││
+│  │  O FiscoPilot NÃO poderá:    ││
+│  │  · Criar ou editar notas     ││
+│  │  · Alterar dados             ││
+│  │  · Enviar obrigações         ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [Cancelar]        [Autorizar]   │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Grid de ERPs suportados com logos
+- Status de cada conexão: conectado (verde), desconectado (cinza), erro (vermelho)
+- Botão "Conectar" para cada ERP (OAuth flow)
+- Botão "Desconectar" para ERPs conectados
+- Botão "Sincronizar agora" (trigger manual)
+- Última sincronização (data/hora)
+- Histórico de sincronização (últimos 10)
+- OAuth flow: redireciona para ERP, usuário autoriza, callback salva tokens
+- Tokens criptografados com AES-256-GCM
+- Sincronização automática diária (job noturno)
+- Notas do ERP entram no pipeline de processamento existente
+- Ao menos 2 conectores funcionais (Bling + Tiny) no lançamento
+- Interface `ErpConnector` padroniza implementação de novos conectores
+
+---
+
+#### TELA T23 — CATÁLOGO DE PACOTES DE REGRAS (Fase D)
+
+**Quem usa:** Roberto (principal), Founder (admin)
+**Quando:** Menu lateral → "Configurações" → "Pacotes de Regras"
+
+```
+┌──────────────────────────────────┐
+│  ← Voltar   Pacotes de Regras    │
+├──────────────────────────────────┤
+│                                  │
+│  ── PACOTES ATIVOS ──            │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 Base (R1-R8)             ││
+│  │  Regras universais para      ││
+│  │  todas as organizações       ││
+│  │                              ││
+│  │  [====ON====]                ││  ← Sempre ativo
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 SP Material de Construção││
+│  │  Regras específicas para     ││
+│  │  lojas de material de        ││
+│  │  construção em São Paulo     ││
+│  │                              ││
+│  │  [====ON====]                ││
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── PACOTES DISPONÍVEIS ──       │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 MG Material de Construção││
+│  │  Regras específicas para     ││
+│  │  lojas de material de        ││
+│  │  construção em Minas Gerais  ││
+│  │                              ││
+│  │  [OFF====]                   ││
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 Restaurantes             ││
+│  │  Regras para setor de        ││
+│  │  alimentação e restaurantes  ││
+│  │                              ││
+│  │  [OFF====]                   ││
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 Confecção                ││
+│  │  Regras para indústria e     ││
+│  │  comércio de roupas          ││
+│  │                              ││
+│  │  [OFF====]                   ││
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 Distribuidora de Bebidas ││
+│  │  Regras para distribuidoras  ││
+│  │  de bebidas e alimentos      ││
+│  │                              ││
+│  │  [OFF====]                   ││
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  📦 Lucro Presumido          ││
+│  │  Regras para organizações    ││
+│  │  no regime Lucro Presumido   ││
+│  │                              ││
+│  │  [OFF====]                   ││
+│  │                              ││
+│  │  [Ver regras →]              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  Busca: [________________]       │
+│  Filtros: [Setor ▾] [UF ▾]       │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Modal: Detalhe do pacote**
+
+```
+┌──────────────────────────────────┐
+│  Pacote: SP Material Construção  │
+├──────────────────────────────────┤
+│                                  │
+│  Setor: Material de Construção   │
+│  UF: São Paulo                   │
+│  Regime: Simples Nacional        │
+│  Versão: 2026-01                 │
+│                                  │
+│  ── REGRAS INCLUÍDAS ──          │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  R9 · ICMS-ST específico SP  ││
+│  │  Verifica se NCM consta na   ││
+│  │  lista de ST do estado de    ││
+│  │  São Paulo (Convênio ICMS    ││
+│  │  142/2018 + legislação SP)   ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  R10 · Alíquota interna SP   ││
+│  │  Compara alíquota de ICMS    ││
+│  │  com tabela interna do       ││
+│  │  estado de São Paulo         ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  R11 · NCM materiais SP      ││
+│  │  Verifica se NCM pertence    ││
+│  │  a capítulo típico de        ││
+│  │  material de construção      ││
+│  │  (lista expandida SP)        ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [Fechar]                        │
+│                                  │
+└──────────────────────────────────┘
+```
+
+**Comportamento:**
+- Lista de pacotes disponíveis (nome, descrição, setor, UF, regime)
+- Toggle "Ativado/Desativado" para cada pacote
+- Pacotes ativos destacados no topo
+- Detalhe do pacote (modal com lista de regras incluídas)
+- Busca por nome/setor/UF
+- Filtros: setor, UF, regime
+- Pacote base (R1-R8) sempre ativo (não pode ser desativado)
+- Pacotes setoriais adicionam regras, não substituem
+- Motor de regras carrega pacotes ativos dinamicamente via `organization_rule_packs`
+- Ao menos 3 pacotes funcionais no lançamento: SP construção, MG construção, Lucro Presumido
+- Testes cruzados entre pacotes para evitar inconsistências
 
 ---
 
@@ -3967,7 +6405,384 @@ fiscopilot/
 | **Ataque brute force (magic link)** | Rate limit: 3 solicitações por número a cada 15 minutos. Tokens expiram em 24h |
 | **Perda total da VPS** | Backup diário no S3. Recuperação: provisionar nova VPS + docker compose up + pg_restore. RTO estimado: 2h |
 
-### Riscos e pontos de atenção
+---
+
+### Expansão Pós-MVP — Novos Módulos (Fases A-D)
+
+**Objetivo:** Adicionar 12 novos módulos para suportar as 30 funcionalidades pós-MVP (F36-F65), mantendo a arquitetura modular monolítica.
+
+#### Diagrama de Componentes Atualizado (Pós-MVP)
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                        USUÁRIOS                                   │
+│                                                                    │
+│   Roberto      Fernanda      Dona Célia     Founder              │
+│   (Celular)    (PC Loja)     (Portal)       (Admin)              │
+│       │            │             │              │                 │
+│       │ WhatsApp   │ Web         │ Web          │ Web             │
+│       │ / PWA      │ Upload      │ Portal       │ Admin           │
+│       ▼            ▼             ▼              ▼                 │
+│ ┌──────────┐              ┌───────────────┐                       │
+│ │ WhatsApp │              │   Cloudflare   │                       │
+│ │ Business │◄─────────────│   DNS + Proxy  │                       │
+│ │   API    │              │ (app.fiscopilot│                       │
+│ │  (Meta)  │              │      .com)     │                       │
+│ └────┬─────┘              └───────┬───────┘                       │
+│      │                            │                                 │
+│      │         ┌──────────────────┘                                 │
+│      │         │                                                    │
+│      ▼         ▼                                                    │
+│ ┌──────────────────────────────────────────┐                      │
+│ │              VPS (Docker Host)            │                      │
+│ │                                           │                      │
+│ │  ┌─────────────────────────────────────┐ │                      │
+│ │  │        Container: fiscopilot-api     │ │                      │
+│ │  │        (Node.js + Fastify + TS)      │ │                      │
+│ │  │                                      │ │                      │
+│ │  │  MÓDULOS MVP:                        │ │                      │
+│ │  │  ┌──────────┐  ┌──────────┐        │ │                      │
+│ │  │  │ Ingest   │  │  Parser  │        │ │                      │
+│ │  │  │ Module   │──┤  Module  │        │ │                      │
+│ │  │  │          │  │          │        │ │                      │
+│ │  │  │· Upload  │  │· XML→JSON│        │ │                      │
+│ │  │  │· E-mail  │  │· Valida  │        │ │                      │
+│ │  │  │  receiver│  │  schema  │        │ │                      │
+│ │  │  └────┬─────┘  └────┬─────┘        │ │                      │
+│ │  │       │             │               │ │                      │
+│ │  │       │     ┌───────┘               │ │                      │
+│ │  │       │     ▼                       │ │                      │
+│ │  │  ┌────┴───────────┐               │ │                      │
+│ │  │  │   Rule Engine   │               │ │                      │
+│ │  │  │                 │               │ │                      │
+│ │  │  │ · R1-R8 (base)  │               │ │                      │
+│ │  │  │ · R9-R20 (packs)│               │ │                      │
+│ │  │  └────────┬────────┘               │ │                      │
+│ │  │           │                         │ │                      │
+│ │  │     ┌─────┴─────┐                  │ │                      │
+│ │  │     ▼           ▼                  │ │                      │
+│ │  │ ┌────────┐ ┌──────────┐           │ │                      │
+│ │  │ │Explain │ │ Notify   │           │ │                      │
+│ │  │ │Module  │ │ Module   │           │ │                      │
+│ │  │ │        │ │          │           │ │                      │
+│ │  │ │·Templat│ │·WhatsApp │           │ │                      │
+│ │  │ │·LLM opt│ │·E-mail   │           │ │                      │
+│ │  │ └────────┘ └──────────┘           │ │                      │
+│ │  │                                      │ │                      │
+│ │  │  NOVOS MÓDULOS (Pós-MVP):           │ │                      │
+│ │  │  ┌──────────────────────────────┐   │ │                      │
+│ │  │  │ messages/      (Fase A)      │   │ │                      │
+│ │  │  │ savings/       (Fase A)      │   │ │                      │
+│ │  │  │ whatsapp-ingest/ (Fase A)    │   │ │                      │
+│ │  │  │ onboarding/    (Fase A)      │   │ │                      │
+│ │  │  │ sefaz/         (Fase B)      │   │ │                      │
+│ │  │  │ kanban/        (Fase B)      │   │ │                      │
+│ │  │  │ cadastral/     (Fase B)      │   │ │                      │
+│ │  │  │ accountant/    (Fase C)      │   │ │                      │
+│ │  │  │ suppliers/     (Fase C)      │   │ │                      │
+│ │  │  │ reform/        (Fase D)      │   │ │                      │
+│ │  │  │ erp/           (Fase D)      │   │ │                      │
+│ │  │  │ rules/packs/   (Fase D)      │   │ │                      │
+│ │  │  └──────────────────────────────┘   │ │                      │
+│ │  │                                      │ │                      │
+│ │  │  ┌─────────────────────────────┐    │ │                      │
+│ │  │  │     REST API Routes          │    │ │                      │
+│ │  │  │                              │    │ │                      │
+│ │  │  │  MVP: 13 endpoints           │    │ │                      │
+│ │  │  │  Pós-MVP: +~65 endpoints     │    │ │                      │
+│ │  │  │  Total: ~78 endpoints        │    │ │                      │
+│ │  │  └─────────────────────────────┘    │ │                      │
+│ │  └─────────────────────────────────────┘ │                      │
+│ │                                           │                      │
+│ │  ┌─────────────────────────────────────┐ │                      │
+│ │  │    Container: fiscopilot-web         │ │                      │
+│ │  │    (Next.js PWA + React)             │ │                      │
+│ │  │                                      │ │                      │
+│ │  │    MVP: 9 telas (T0-T9)              │ │                      │
+│ │  │    Pós-MVP: +14 telas (T10-T23)      │ │                      │
+│ │  │    Total: 23 telas                   │ │                      │
+│ │  │                                      │ │                      │
+│ │  │    Portal do Contador (T17-T18)      │ │                      │
+│ │  │    separado em /contador/*           │ │                      │
+│ │  └─────────────────────────────────────┘ │                      │
+│ │                                           │                      │
+│ │  ┌─────────────────────────────────────┐ │                      │
+│ │  │    Container: PostgreSQL 16          │ │                      │
+│ │  │    Volume: /data/postgres            │ │                      │
+│ │  │    Backup diário → S3 (AWS/minio)    │ │                      │
+│ │  │                                      │ │                      │
+│ │  │    MVP: 10 tabelas                   │ │                      │
+│ │  │    Pós-MVP: +23 tabelas + 1 view     │ │                      │
+│ │  │    Total: 34 tabelas                 │ │                      │
+│ │  └─────────────────────────────────────┘ │                      │
+│ │                                           │                      │
+│ │  ┌─────────────────────────────────────┐ │                      │
+│ │  │    Container: Postfix (recebe e-mail)│ │                      │
+│ │  │    Volumes: /data/xml-uploads        │ │                      │
+│ │  └─────────────────────────────────────┘ │                      │
+│ └──────────────────────────────────────────┘                      │
+│                                                                     │
+│  ┌──────────────────────────────────────────┐                     │
+│  │     Serviços Externos (opcionais)         │                     │
+│  │                                           │                     │
+│  │  MVP:                                     │                     │
+│  │  · OpenRouter API (LLM, opcional)         │                     │
+│  │  · WhatsApp Business Cloud API (Meta)     │                     │
+│  │  · AWS S3 (backup)                        │                     │
+│  │  · Sentry (error tracking)                │                     │
+│  │                                           │                     │
+│  │  Pós-MVP:                                 │                     │
+│  │  · Sefaz WS (download automático XML)     │                     │
+│  │  · APIs ERP (Bling, Tiny, Omie, ContaAzul)│                     │
+│  │  · API Receita Federal (CNPJ, IE)         │                     │
+│  │  · Sintegra (inscrição estadual)          │                     │
+│  └──────────────────────────────────────────┘                     │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Fluxo de Dados Atualizado — Download Automático (Fase B)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DOWNLOAD AUTOMÁTICO (SEFAZ)                    │
+└─────────────────────────────────────────────────────────────────┘
+
+                          ┌───────────┐
+                          │  Cron Job │
+                          │  02:00 BRT│
+                          └─────┬─────┘
+                                │
+                                ▼
+                    ┌─────────────────────┐
+                    │  SEFAZ MODULE       │
+                    │                     │
+                    │ 1. Busca            │
+                    │    organizations    │
+                    │    com certificado  │
+                    │    A1 ativo         │
+                    │ 2. Para cada org:   │
+                    │    a. Descriptografa│
+                    │       certificado   │
+                    │       (AES-256-GCM) │
+                    │    b. Autentica na  │
+                    │       Sefaz WS      │
+                    │       (SOAP)        │
+                    │    c. Consulta NF-e │
+                    │       emitidas      │
+                    │       contra CNPJ   │
+                    │       (últimas 24h) │
+                    │    d. Baixa XMLs    │
+                    │    e. Processa via  │
+                    │       pipeline      │
+                    │       existente     │
+                    │ 3. Atualiza         │
+                    │    sefaz_download_  │
+                    │    sessions         │
+                    │ 4. Notifica         │
+                    │    usuário via      │
+                    │    WhatsApp         │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  PIPELINE EXISTENTE │
+                    │                     │
+                    │  Ingest → Parser →  │
+                    │  Rules → Persist →  │
+                    │  Notify             │
+                    └─────────────────────┘
+```
+
+---
+
+#### Fluxo de Dados Atualizado — Ingestão por WhatsApp (Fase A)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    INGESTÃO POR WHATSAPP                         │
+└─────────────────────────────────────────────────────────────────┘
+
+                          ┌───────────┐
+                          │ Fernanda  │
+                          │ encaminha │
+                          │ XML/ZIP   │
+                          │ via WA    │
+                          └─────┬─────┘
+                                │
+                                ▼
+                    ┌─────────────────────┐
+                    │  WhatsApp Business  │
+                    │  Cloud API (Meta)   │
+                    │                     │
+                    │  Envia webhook:     │
+                    │  POST /api/v1/      │
+                    │  whatsapp/webhook   │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  WHATSAPP-INGEST    │
+                    │  MODULE             │
+                    │                     │
+                    │  1. Valida          │
+                    │     assinatura      │
+                    │     HMAC-SHA256     │
+                    │  2. Extrai mídia    │
+                    │     (XML/ZIP)       │
+                    │  3. Download via    │
+                    │     WhatsApp Media  │
+                    │     API             │
+                    │  4. Identifica org  │
+                    │     via whatsapp    │
+                    │     do remetente    │
+                    │  5. Processa via    │
+                    │     pipeline        │
+                    │     existente       │
+                    │  6. Envia           │
+                    │     confirmação     │
+                    │     via WhatsApp    │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  PIPELINE EXISTENTE │
+                    │                     │
+                    │  Ingest → Parser →  │
+                    │  Rules → Persist →  │
+                    │  Notify             │
+                    └─────────────────────┘
+```
+
+---
+
+#### Estrutura de Monorepo Atualizada (Pós-MVP)
+
+```
+fiscopilot/
+├── apps/
+│   ├── web/                    # Next.js PWA (React)
+│   │   ├── src/
+│   │   │   ├── app/           # App Router (pages)
+│   │   │   │   ├── (auth)/    # T0, T7 (login, link expirado)
+│   │   │   │   ├── dashboard/ # T1 (dashboard)
+│   │   │   │   ├── notas/     # T2, T3, T4 (lista, detalhe, ação)
+│   │   │   │   ├── carregar/  # T6 (upload)
+│   │   │   │   ├── onboarding/ # T10 (wizard raio-x) ← NOVO
+│   │   │   │   ├── economia/  # T12 (painel economia) ← NOVO
+│   │   │   │   ├── relatorio-mensal/ # T13 (relatório dono) ← NOVO
+│   │   │   │   ├── pendencias/ # T14 (kanban) ← NOVO
+│   │   │   │   ├── fornecedores/ # T19 (score fornecedores) ← NOVO
+│   │   │   │   ├── reforma-tributaria/ # T21 (preparação CBS/IBS) ← NOVO
+│   │   │   │   ├── contador/  # T17, T18 (portal contador) ← NOVO
+│   │   │   │   └── configuracoes/ # T15, T16, T22, T23 ← NOVO
+│   │   │   ├── components/    # UI components
+│   │   │   └── hooks/         # Custom hooks
+│   │   ├── public/
+│   │   │   ├── manifest.json  # PWA manifest
+│   │   │   └── sw.js          # Service Worker
+│   │   ├── tailwind.config.ts
+│   │   ├── next.config.ts
+│   │   └── package.json
+│   │
+│   └── api/                    # Fastify + TypeScript
+│       ├── src/
+│       │   ├── modules/
+│       │   │   ├── auth/       # Magic link, JWT
+│       │   │   ├── ingest/     # Upload, e-mail receiver
+│       │   │   ├── parser/     # XML → JSON
+│       │   │   ├── rules/      # Rule engine (R1-R8)
+│       │   │   │   └── packs/  # Pacotes de regras (R9-R20) ← NOVO
+│       │   │   ├── dashboard/  # Aggregation queries
+│       │   │   ├── notify/     # WhatsApp, e-mail
+│       │   │   ├── report/     # PDF generation
+│       │   │   ├── messages/   # Mensagem para fornecedor ← NOVO
+│       │   │   ├── savings/    # Painel economia/riscos evitados ← NOVO
+│       │   │   ├── whatsapp-ingest/ # Ingestão por WhatsApp ← NOVO
+│       │   │   ├── onboarding/ # Wizard raio-x ← NOVO
+│       │   │   ├── sefaz/      # Download automático XML ← NOVO
+│       │   │   ├── kanban/     # Gestão de pendências ← NOVO
+│       │   │   ├── cadastral/  # Alertas cadastrais ← NOVO
+│       │   │   ├── accountant/ # Portal do contador ← NOVO
+│       │   │   ├── suppliers/  # Score de fornecedores ← NOVO
+│       │   │   ├── reform/     # Preparação Reforma Tributária ← NOVO
+│       │   │   └── erp/        # Integração ERPs ← NOVO
+│       │   ├── db/
+│       │   │   ├── migrations/ # Drizzle ORM
+│       │   │   └── schema.ts
+│       │   ├── config/
+│       │   │   └── env.ts      # Variáveis de ambiente
+│       │   └── server.ts       # Entry point
+│       ├── Dockerfile
+│       └── package.json
+│
+├── packages/
+│   └── shared/                  # Tipos, validações, constantes
+│       ├── src/
+│       │   ├── types/          # NfeDocument, Inconsistency, etc.
+│       │   ├── validators/     # Zod schemas
+│       │   └── constants/      # Regimes, tabelas fiscais
+│       └── package.json
+│
+├── data/                        # Tabelas de referência fiscal
+│   ├── cfop.csv                 # Tabela CFOP oficial
+│   ├── ncm_materiais.csv        # NCMs de material de construção
+│   ├── aliquotas_icms.csv       # Alíquotas interestaduais
+│   ├── st_estados.csv           # Listas de ST por UF
+│   ├── cnpj_irregular.csv       # Cache CNPJs irregulares (opcional)
+│   └── rule_packs/              # Pacotes de regras ← NOVO
+│       ├── base.json            # R1-R8 (sempre ativo)
+│       ├── sp-construcao.json   # R9-R11 (SP material construção)
+│       ├── mg-construcao.json   # R12-R14 (MG material construção)
+│       └── lucro-presumido.json # R15-R20 (Lucro Presumido)
+│
+├── docker-compose.yml
+├── docker-compose.prod.yml
+├── .github/
+│   └── workflows/
+│       ├── ci.yml               # Lint, test, typecheck
+│       └── deploy.yml           # Build + deploy
+├── turbo.json                   # Turborepo config
+├── package.json                 # Workspace root
+└── README.md
+```
+
+---
+
+#### Estratégia de Resiliência Expandida (Pós-MVP)
+
+| Cenário | Comportamento |
+|---|---|
+| **Sefaz WS offline** (Fase B) | Fila de downloads (pg-boss) com retry exponencial (1min, 5min, 15min, 1h). Alerta se 3 dias consecutivos sem download. Fallback para upload manual |
+| **Certificado A1 vencido** (Fase B) | Alerta cadastral 30/15/7 dias antes. Download automático desativado. Notificação WhatsApp para usuário |
+| **API ERP offline** (Fase D) | Retry com backoff exponencial. Alerta se conector falhar >3x. Fallback para upload manual. Health check por conector |
+| **API Receita Federal offline** (Fase B) | Cache de 7 dias por CNPJ. Batch processing noturno (não em tempo real). Alerta se API falhar >3x consecutivas |
+| **View materializada desatualizada** (Fase C) | Refresh manual via botão na interface. Alerta se cron falhar. Timestamp visível "Atualizado em DD/MM HH:MM" |
+| **IA alucina resposta** (Fase C) | Validação de output com regex (detecta cálculo de imposto). Fallback para template se inválido. Disclaimer em toda resposta |
+| **Kanban não adotado** (Fase B) | Feature opcional. Dashboard simples continua sendo tela principal. Métricas de adoção antes de expandir |
+| **Portal contador confundido** (Fase C) | Link claro no e-mail de convite. Onboarding guiado para contadores. Suporte via WhatsApp |
+
+---
+
+### Riscos e pontos de atenção (Expansão Pós-MVP)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| 12 novos módulos podem sobrecarregar monolito se não modularizados corretamente | Alta | Cada módulo é auto-contido (routes, services, repositories). Testes de integração por módulo. Code review rigoroso |
+| Download automático (Sefaz WS) pode falhar silenciosamente se API mudar | Alta | Monitoramento de health check do job. Alerta se 3 dias consecutivos sem download. Fallback para upload manual |
+| Criptografia de certificados A1 pode falhar se `CERTIFICATE_ENCRYPTION_KEY` for comprometida | Alta | Rotação de chave a cada 6 meses. Pen-test antes de lançar. Armazenar chave em cofre (AWS Secrets Manager) |
+| Integração com ERPs pode quebrar se API do ERP mudar sem versionamento | Alta | Testes de integração contínuos. Monitoramento de health check por conector. Fallback para upload manual |
+| 23 novas tabelas podem degradar performance se índices não otimizados | Média | Revisão de índices antes de cada fase. Query analysis com `EXPLAIN ANALYZE`. Particionamento se necessário |
+| Portal do contador (auth separado) pode criar superfície de ataque adicional | Média | Rate limit de login (3 tentativas/15min). 2FA na Fase D. Monitoramento de tentativas de login suspeitas |
+| View materializada `supplier_scores` pode ficar desatualizada se cron falhar | Média | Refresh manual via botão na interface. Alerta se refresh falhar. Timestamp visível |
+| Pacotes de regras setoriais podem gerar inconsistência entre pacotes | Média | Pacote base (R1-R8) sempre ativo. Pacotes setoriais adicionam regras, não substituem. Testes cruzados entre pacotes |
+| Assistente de IA pode alucinar e dar orientação fiscal errada mesmo com guardrails | Alta | Validação de output com regex. Fallback para template se inválido. Disclaimer em toda resposta. Feedback loop |
+| Custo de infra pode crescer mais que receita se features não converterem em vendas | Média | Cada fase deve gerar ao menos 5 novos clientes ou permitir aumento de preço (R$ 97 → R$ 147 → R$ 197) |
+
+---
+
+### Riscos e pontos de atenção (MVP)
 
 | Risco | Severidade | Mitigação |
 |---|---|---|
@@ -5232,10 +8047,649 @@ const pending = await db.query.pendingNotifications.findMany({
 
 ---
 
-### Resumo do Modelo
+### Expansão Pós-MVP — Novas Tabelas (Fases A-D)
+
+**Objetivo:** Adicionar 23 novas tabelas + 1 view materializada para suportar as 30 funcionalidades pós-MVP (F36-F65).
+
+#### 5.6 Novas Tabelas — Fase A (Retenção e Redução de Atrito)
+
+```sql
+-- ============================================================
+-- TABELA: supplier_message_templates (Feature #5)
+-- ============================================================
+CREATE TABLE supplier_message_templates (
+  id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  rule_id         rule_id NOT NULL,
+  variant         varchar(30) NOT NULL DEFAULT 'default',
+  template_text   text NOT NULL,
+  is_active       boolean NOT NULL DEFAULT true,
+  created_at      timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_template_rule_variant UNIQUE (rule_id, variant)
+);
+
+CREATE INDEX IDX_message_templates_rule ON supplier_message_templates (rule_id) WHERE is_active = true;
+
+COMMENT ON TABLE supplier_message_templates IS 'Templates de mensagens para fornecedores por tipo de regra';
+
+
+-- ============================================================
+-- TABELA: supplier_messages (Feature #5)
+-- ============================================================
+CREATE TABLE supplier_messages (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  user_id           uuid REFERENCES users(id) ON DELETE SET NULL,
+  channel           varchar(20) NOT NULL,
+  message_text      text NOT NULL,
+  status            varchar(20) NOT NULL DEFAULT 'GENERATED',
+  sent_at           timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_supplier_messages_channel CHECK (channel IN ('WHATSAPP', 'EMAIL', 'COPY')),
+  CONSTRAINT CK_supplier_messages_status CHECK (status IN ('GENERATED', 'COPIED', 'SENT_WHATSAPP', 'SENT_EMAIL', 'DELIVERED', 'READ'))
+);
+
+CREATE INDEX IDX_supplier_messages_org ON supplier_messages (organization_id);
+CREATE INDEX IDX_supplier_messages_inconsistency ON supplier_messages (inconsistency_id);
+CREATE INDEX IDX_supplier_messages_status ON supplier_messages (status);
+
+COMMENT ON TABLE supplier_messages IS 'Log de mensagens geradas/enviadas para fornecedores';
+
+
+-- ============================================================
+-- TABELA: whatsapp_ingestion_log (Feature #11)
+-- ============================================================
+CREATE TABLE whatsapp_ingestion_log (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid REFERENCES organizations(id) ON DELETE CASCADE,
+  user_id           uuid REFERENCES users(id) ON DELETE SET NULL,
+  whatsapp_from     varchar(20) NOT NULL,
+  message_id        varchar(100) NOT NULL,
+  message_type      varchar(30) NOT NULL,
+  media_url         text,
+  media_mime_type   varchar(100),
+  processed         boolean NOT NULL DEFAULT false,
+  upload_batch_id   uuid REFERENCES upload_batches(id) ON DELETE SET NULL,
+  error_message     text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_whatsapp_message_type CHECK (message_type IN ('document', 'audio', 'text', 'image', 'video'))
+);
+
+CREATE INDEX IDX_whatsapp_ingestion_org ON whatsapp_ingestion_log (organization_id);
+CREATE INDEX IDX_whatsapp_ingestion_processed ON whatsapp_ingestion_log (processed) WHERE processed = false;
+CREATE INDEX IDX_whatsapp_ingestion_created ON whatsapp_ingestion_log (created_at DESC);
+
+COMMENT ON TABLE whatsapp_ingestion_log IS 'Log de mensagens recebidas via WhatsApp Business API';
+
+
+-- ============================================================
+-- TABELA: onboarding_sessions (Feature #15)
+-- ============================================================
+CREATE TABLE onboarding_sessions (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  user_id           uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  current_step      integer NOT NULL DEFAULT 0,
+  steps_completed   jsonb NOT NULL DEFAULT '[]'::jsonb,
+  first_upload_batch_id uuid REFERENCES upload_batches(id) ON DELETE SET NULL,
+  risks_found       integer DEFAULT 0,
+  high_risks_found  integer DEFAULT 0,
+  completed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_onboarding_step CHECK (current_step >= 0 AND current_step <= 5)
+);
+
+CREATE INDEX IDX_onboarding_sessions_org ON onboarding_sessions (organization_id);
+CREATE INDEX IDX_onboarding_sessions_user ON onboarding_sessions (user_id);
+CREATE INDEX IDX_onboarding_sessions_incomplete ON onboarding_sessions (organization_id) WHERE completed_at IS NULL;
+
+COMMENT ON TABLE onboarding_sessions IS 'Sessões de onboarding raio-x (wizard 5 passos)';
+```
+
+---
+
+#### 5.7 Novas Tabelas — Fase B (Monitoramento Contínuo)
+
+```sql
+-- ============================================================
+-- TABELA: digital_certificates (Feature #1)
+-- ============================================================
+CREATE TABLE digital_certificates (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  certificate_type  varchar(5) NOT NULL,
+  certificate_pem   bytea NOT NULL,
+  certificate_key   bytea NOT NULL,
+  encryption_iv     bytea NOT NULL,
+  cnpj_titular      varchar(14) NOT NULL,
+  valid_from        date NOT NULL,
+  valid_until       date NOT NULL,
+  is_active         boolean NOT NULL DEFAULT true,
+  last_used_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_cert_type CHECK (certificate_type IN ('A1', 'A3'))
+);
+
+CREATE INDEX IDX_digital_certificates_org ON digital_certificates (organization_id);
+CREATE INDEX IDX_digital_certificates_active ON digital_certificates (organization_id) WHERE is_active = true;
+CREATE INDEX IDX_digital_certificates_expiry ON digital_certificates (valid_until) WHERE is_active = true;
+
+COMMENT ON TABLE digital_certificates IS 'Certificados digitais A1/A3 criptografados (AES-256-GCM)';
+COMMENT ON COLUMN digital_certificates.certificate_pem IS 'Certificado PEM criptografado com AES-256-GCM';
+COMMENT ON COLUMN digital_certificates.certificate_key IS 'Chave privada criptografada com AES-256-GCM';
+
+
+-- ============================================================
+-- TABELA: sefaz_download_sessions (Feature #1)
+-- ============================================================
+CREATE TABLE sefaz_download_sessions (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  certificate_id    uuid NOT NULL REFERENCES digital_certificates(id) ON DELETE CASCADE,
+  status            varchar(20) NOT NULL DEFAULT 'PENDING',
+  period_start      date NOT NULL,
+  period_end        date NOT NULL,
+  total_found       integer DEFAULT 0,
+  total_downloaded  integer DEFAULT 0,
+  total_new         integer DEFAULT 0,
+  total_duplicate   integer DEFAULT 0,
+  error_message     text,
+  started_at        timestamptz,
+  completed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_sefaz_download_status CHECK (status IN ('PENDING', 'CONNECTING', 'DOWNLOADING', 'COMPLETED', 'FAILED', 'PARTIAL'))
+);
+
+CREATE INDEX IDX_sefaz_download_org ON sefaz_download_sessions (organization_id);
+CREATE INDEX IDX_sefaz_download_status ON sefaz_download_sessions (status) WHERE status IN ('PENDING', 'CONNECTING', 'DOWNLOADING');
+CREATE INDEX IDX_sefaz_download_created ON sefaz_download_sessions (created_at DESC);
+
+COMMENT ON TABLE sefaz_download_sessions IS 'Sessões de download automático de XMLs da Sefaz';
+
+
+-- ============================================================
+-- TABELA: sefaz_download_queue (Feature #1)
+-- ============================================================
+CREATE TABLE sefaz_download_queue (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  certificate_id    uuid NOT NULL REFERENCES digital_certificates(id) ON DELETE CASCADE,
+  scheduled_at      timestamptz NOT NULL,
+  period_start      date NOT NULL,
+  period_end        date NOT NULL,
+  status            varchar(20) NOT NULL DEFAULT 'SCHEDULED',
+  attempts          integer NOT NULL DEFAULT 0,
+  max_attempts      integer NOT NULL DEFAULT 3,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_sefaz_queue_status CHECK (status IN ('SCHEDULED', 'PROCESSING', 'COMPLETED', 'FAILED')),
+  CONSTRAINT CK_sefaz_queue_attempts CHECK (attempts >= 0 AND attempts <= max_attempts)
+);
+
+CREATE INDEX IDX_sefaz_queue_scheduled ON sefaz_download_queue (scheduled_at) WHERE status = 'SCHEDULED';
+CREATE INDEX IDX_sefaz_queue_org ON sefaz_download_queue (organization_id);
+
+COMMENT ON TABLE sefaz_download_queue IS 'Fila de downloads automáticos agendados (pg-boss)';
+
+
+-- ============================================================
+-- TABELA: inconsistency_comments (Feature #4)
+-- ============================================================
+CREATE TABLE inconsistency_comments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  user_id           uuid REFERENCES users(id) ON DELETE SET NULL,
+  author_type       varchar(20) NOT NULL,
+  comment_text      text NOT NULL,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_comment_author_type CHECK (author_type IN ('USER', 'ACCOUNTANT', 'SYSTEM'))
+);
+
+CREATE INDEX IDX_inconsistency_comments_inconsistency ON inconsistency_comments (inconsistency_id);
+CREATE INDEX IDX_inconsistency_comments_org ON inconsistency_comments (organization_id);
+CREATE INDEX IDX_inconsistency_comments_created ON inconsistency_comments (created_at DESC);
+
+COMMENT ON TABLE inconsistency_comments IS 'Comentários em inconsistências (Kanban)';
+
+
+-- ============================================================
+-- TABELA: inconsistency_attachments (Feature #4)
+-- ============================================================
+CREATE TABLE inconsistency_attachments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  user_id           uuid REFERENCES users(id) ON DELETE SET NULL,
+  file_name         varchar(255) NOT NULL,
+  file_path         text NOT NULL,
+  file_size         integer NOT NULL,
+  mime_type         varchar(100) NOT NULL,
+  description       text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_attachment_size CHECK (file_size > 0 AND file_size <= 10485760) -- 10MB max
+);
+
+CREATE INDEX IDX_inconsistency_attachments_inconsistency ON inconsistency_attachments (inconsistency_id);
+CREATE INDEX IDX_inconsistency_attachments_org ON inconsistency_attachments (organization_id);
+
+COMMENT ON TABLE inconsistency_attachments IS 'Anexos (PDF/imagem) em inconsistências (Kanban)';
+
+
+-- ============================================================
+-- TABELA: inconsistency_assignments (Feature #4)
+-- ============================================================
+CREATE TABLE inconsistency_assignments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  assigned_to       uuid REFERENCES users(id) ON DELETE SET NULL,
+  assigned_by       uuid REFERENCES users(id) ON DELETE SET NULL,
+  due_date          date,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_assignment_per_inconsistency UNIQUE (inconsistency_id)
+);
+
+CREATE INDEX IDX_inconsistency_assignments_inconsistency ON inconsistency_assignments (inconsistency_id);
+CREATE INDEX IDX_inconsistency_assignments_org ON inconsistency_assignments (organization_id);
+CREATE INDEX IDX_inconsistency_assignments_assigned_to ON inconsistency_assignments (assigned_to) WHERE assigned_to IS NOT NULL;
+CREATE INDEX IDX_inconsistency_assignments_due_date ON inconsistency_assignments (due_date) WHERE due_date IS NOT NULL;
+
+COMMENT ON TABLE inconsistency_assignments IS 'Atribuição de responsável e prazo para inconsistências (Kanban)';
+
+
+-- ============================================================
+-- TABELA: cadastral_alerts (Feature #14)
+-- ============================================================
+CREATE TABLE cadastral_alerts (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  alert_type        varchar(30) NOT NULL,
+  entity_type       varchar(30) NOT NULL,
+  entity_cnpj       varchar(14),
+  entity_name       varchar(200),
+  severity          varchar(20) NOT NULL,
+  message           text NOT NULL,
+  details           jsonb,
+  is_read           boolean NOT NULL DEFAULT false,
+  dismissed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_cadastral_alert_type CHECK (alert_type IN ('CERTIFICATE_EXPIRING', 'CERTIFICATE_EXPIRED', 'CNPJ_INAPTO', 'CNPJ_SUSPENSO', 'IE_IRREGULAR', 'CNAE_INCOMPATIVEL', 'SUPPLIER_RECURRENT_ISSUE')),
+  CONSTRAINT CK_cadastral_severity CHECK (severity IN ('INFO', 'WARNING', 'CRITICAL'))
+);
+
+CREATE INDEX IDX_cadastral_alerts_org ON cadastral_alerts (organization_id);
+CREATE INDEX IDX_cadastral_alerts_unread ON cadastral_alerts (organization_id, severity) WHERE is_read = false AND dismissed_at IS NULL;
+CREATE INDEX IDX_cadastral_alerts_created ON cadastral_alerts (created_at DESC);
+
+COMMENT ON TABLE cadastral_alerts IS 'Alertas cadastrais (certificado, CNPJ, IE, CNAE, fornecedor recorrente)';
+
+
+-- ============================================================
+-- TABELA: cadastral_monitoring_config (Feature #14)
+-- ============================================================
+CREATE TABLE cadastral_monitoring_config (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  monitor_type      varchar(30) NOT NULL,
+  enabled           boolean NOT NULL DEFAULT true,
+  check_interval    varchar(20) NOT NULL DEFAULT 'weekly',
+  last_checked_at   timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_monitor_per_org UNIQUE (organization_id, monitor_type),
+  CONSTRAINT CK_monitor_interval CHECK (check_interval IN ('daily', 'weekly', 'monthly'))
+);
+
+CREATE INDEX IDX_cadastral_monitoring_org ON cadastral_monitoring_config (organization_id);
+
+COMMENT ON TABLE cadastral_monitoring_config IS 'Configuração de monitoramento cadastral por organização';
+```
+
+---
+
+#### 5.8 Novas Tabelas — Fase C (Inteligência e Ecossistema)
+
+```sql
+-- ============================================================
+-- TABELA: accountants (Feature #2)
+-- ============================================================
+CREATE TABLE accountants (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  nome              varchar(150) NOT NULL,
+  cpf               varchar(11) NOT NULL UNIQUE,
+  email             varchar(255) NOT NULL UNIQUE,
+  password_hash     varchar(255) NOT NULL,
+  crc_numero        varchar(30),
+  crc_uf            char(2),
+  whatsapp          varchar(15),
+  is_active         boolean NOT NULL DEFAULT true,
+  last_login_at     timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_accountants_cpf_format CHECK (cpf ~ '^[0-9]{11}$'),
+  CONSTRAINT CK_accountants_crc_uf CHECK (crc_uf IS NULL OR crc_uf ~ '^[A-Z]{2}$')
+);
+
+CREATE INDEX IDX_accountants_cpf ON accountants (cpf);
+CREATE INDEX IDX_accountants_email ON accountants (email);
+CREATE INDEX IDX_accountants_active ON accountants (is_active) WHERE is_active = true;
+
+COMMENT ON TABLE accountants IS 'Contadores com acesso ao portal dedicado';
+COMMENT ON COLUMN accountants.password_hash IS 'bcrypt hash (cost >= 10)';
+
+
+-- ============================================================
+-- TABELA: accountant_clients (Feature #2)
+-- ============================================================
+CREATE TABLE accountant_clients (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  accountant_id     uuid NOT NULL REFERENCES accountants(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  invited_by        uuid REFERENCES users(id) ON DELETE SET NULL,
+  status            varchar(20) NOT NULL DEFAULT 'PENDING',
+  invited_at        timestamptz NOT NULL DEFAULT now(),
+  accepted_at       timestamptz,
+
+  CONSTRAINT UQ_accountant_client UNIQUE (accountant_id, organization_id),
+  CONSTRAINT CK_accountant_client_status CHECK (status IN ('PENDING', 'ACTIVE', 'REMOVED'))
+);
+
+CREATE INDEX IDX_accountant_clients_accountant ON accountant_clients (accountant_id);
+CREATE INDEX IDX_accountant_clients_org ON accountant_clients (organization_id);
+CREATE INDEX IDX_accountant_clients_active ON accountant_clients (accountant_id, status) WHERE status = 'ACTIVE';
+
+COMMENT ON TABLE accountant_clients IS 'Relação contador-cliente (convite e aceite)';
+
+
+-- ============================================================
+-- TABELA: accountant_comments (Feature #2)
+-- ============================================================
+CREATE TABLE accountant_comments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  accountant_id     uuid NOT NULL REFERENCES accountants(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  inconsistency_id  uuid REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  comment_text      text NOT NULL,
+  is_validation     boolean NOT NULL DEFAULT false,
+  validated_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IDX_accountant_comments_accountant ON accountant_comments (accountant_id);
+CREATE INDEX IDX_accountant_comments_org ON accountant_comments (organization_id);
+CREATE INDEX IDX_accountant_comments_inconsistency ON accountant_comments (inconsistency_id) WHERE inconsistency_id IS NOT NULL;
+CREATE INDEX IDX_accountant_comments_created ON accountant_comments (created_at DESC);
+
+COMMENT ON TABLE accountant_comments IS 'Comentários e validações do contador em inconsistências';
+
+
+-- ============================================================
+-- TABELA: accountant_monthly_exports (Feature #2)
+-- ============================================================
+CREATE TABLE accountant_monthly_exports (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  accountant_id     uuid NOT NULL REFERENCES accountants(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  month             varchar(7) NOT NULL,
+  status            varchar(20) NOT NULL DEFAULT 'PENDING',
+  pdf_url           text,
+  generated_at      timestamptz,
+  downloaded_at     timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_accountant_export_status CHECK (status IN ('PENDING', 'GENERATING', 'READY', 'DOWNLOADED')),
+  CONSTRAINT CK_accountant_export_month CHECK (month ~ '^[0-9]{4}-[0-9]{2}$')
+);
+
+CREATE INDEX IDX_accountant_exports_accountant ON accountant_monthly_exports (accountant_id);
+CREATE INDEX IDX_accountant_exports_org ON accountant_monthly_exports (organization_id);
+CREATE INDEX IDX_accountant_exports_status ON accountant_monthly_exports (status) WHERE status IN ('PENDING', 'GENERATING');
+
+COMMENT ON TABLE accountant_monthly_exports IS 'Exportações mensais consolidadas do contador';
+
+
+-- ============================================================
+-- VIEW MATERIALIZADA: supplier_scores (Feature #3)
+-- ============================================================
+CREATE MATERIALIZED VIEW supplier_scores AS
+SELECT
+  d.organization_id,
+  d.cnpj_emitente AS supplier_cnpj,
+  MAX(d.nome_emitente) AS supplier_name,
+  COUNT(DISTINCT d.id) AS total_notes_90d,
+  SUM(d.valor_total) AS total_value_90d,
+  COUNT(DISTINCT i.id) AS total_inconsistencies_90d,
+  COUNT(DISTINCT i.id) FILTER (WHERE i.classification = 'RISCO_ALTO') AS high_risk_count,
+  COALESCE(SUM(i.estimated_impact), 0) AS total_risk_value,
+  CASE
+    WHEN COUNT(DISTINCT d.id) = 0 THEN 0
+    ELSE ROUND(
+      COUNT(DISTINCT i.id)::numeric / COUNT(DISTINCT d.id)::numeric * 100, 1
+    )
+  END AS error_rate,
+  CASE
+    WHEN COUNT(DISTINCT i.id) = 0 THEN 'CONFIÁVEL'
+    WHEN COUNT(DISTINCT i.id) FILTER (WHERE i.classification = 'RISCO_ALTO') > 0 THEN 'RISCO'
+    WHEN COUNT(DISTINCT i.id)::numeric / GREATEST(COUNT(DISTINCT d.id), 1)::numeric > 0.2 THEN 'ATENCAO'
+    ELSE 'CONFIÁVEL'
+  END AS category
+FROM nfe_documents d
+LEFT JOIN inconsistencies i ON i.nfe_document_id = d.id
+WHERE d.data_emissao >= CURRENT_DATE - INTERVAL '90 days'
+GROUP BY d.organization_id, d.cnpj_emitente;
+
+CREATE INDEX IDX_supplier_scores_org ON supplier_scores (organization_id, category);
+CREATE INDEX IDX_supplier_scores_cnpj ON supplier_scores (organization_id, supplier_cnpj);
+
+COMMENT ON MATERIALIZED VIEW supplier_scores IS 'Score de fornecedores baseado em 90 dias de histórico (atualizada diariamente via cron)';
+
+
+-- ============================================================
+-- TABELA: ai_conversations (Feature #12)
+-- ============================================================
+CREATE TABLE ai_conversations (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  user_id           uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  inconsistency_id  uuid REFERENCES inconsistencies(id) ON DELETE SET NULL,
+  question          text NOT NULL,
+  answer            text NOT NULL,
+  model_used        varchar(50),
+  tokens_used       integer,
+  latency_ms        integer,
+  feedback          varchar(10),
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_ai_feedback CHECK (feedback IS NULL OR feedback IN ('GOOD', 'BAD'))
+);
+
+CREATE INDEX IDX_ai_conversations_org ON ai_conversations (organization_id);
+CREATE INDEX IDX_ai_conversations_user ON ai_conversations (user_id);
+CREATE INDEX IDX_ai_conversations_inconsistency ON ai_conversations (inconsistency_id) WHERE inconsistency_id IS NOT NULL;
+CREATE INDEX IDX_ai_conversations_created ON ai_conversations (created_at DESC);
+
+COMMENT ON TABLE ai_conversations IS 'Histórico de conversas com assistente de IA';
+```
+
+---
+
+#### 5.9 Novas Tabelas — Fase D (Plataforma e Escala)
+
+```sql
+-- ============================================================
+-- TABELA: reform_checklist (Feature #9)
+-- ============================================================
+CREATE TABLE reform_checklist (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  item_key          varchar(50) NOT NULL,
+  item_text         text NOT NULL,
+  category          varchar(30) NOT NULL,
+  is_done           boolean NOT NULL DEFAULT false,
+  done_at           timestamptz,
+  notes             text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_checklist_per_org UNIQUE (organization_id, item_key),
+  CONSTRAINT CK_checklist_category CHECK (category IN ('CADASTRO', 'SISTEMAS', 'PROCESSOS', 'TRIBUTOS'))
+);
+
+CREATE INDEX IDX_reform_checklist_org ON reform_checklist (organization_id);
+CREATE INDEX IDX_reform_checklist_done ON reform_checklist (organization_id, is_done);
+
+COMMENT ON TABLE reform_checklist IS 'Checklist de preparação para Reforma Tributária (CBS/IBS)';
+
+
+-- ============================================================
+-- TABELA: cbs_ibs_alerts (Feature #9)
+-- ============================================================
+CREATE TABLE cbs_ibs_alerts (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  nfe_document_id   uuid REFERENCES nfe_documents(id) ON DELETE CASCADE,
+  alert_type        varchar(30) NOT NULL,
+  severity          varchar(20) NOT NULL,
+  message           text NOT NULL,
+  details           jsonb,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_cbs_ibs_alert_type CHECK (alert_type IN ('CBS_FIELD_MISSING', 'IBS_FIELD_MISSING', 'CBS_IBS_INCONSISTENT', 'TRANSITION_RULE_APPLICABLE')),
+  CONSTRAINT CK_cbs_ibs_severity CHECK (severity IN ('INFO', 'WARNING', 'CRITICAL'))
+);
+
+CREATE INDEX IDX_cbs_ibs_alerts_org ON cbs_ibs_alerts (organization_id);
+CREATE INDEX IDX_cbs_ibs_alerts_nfe ON cbs_ibs_alerts (nfe_document_id) WHERE nfe_document_id IS NOT NULL;
+CREATE INDEX IDX_cbs_ibs_alerts_created ON cbs_ibs_alerts (created_at DESC);
+
+COMMENT ON TABLE cbs_ibs_alerts IS 'Alertas de campos CBS/IBS ausentes ou inconsistentes nos XMLs';
+
+
+-- ============================================================
+-- TABELA: erp_connections (Feature #10)
+-- ============================================================
+CREATE TABLE erp_connections (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  erp_type          varchar(20) NOT NULL,
+  access_token      text NOT NULL,
+  refresh_token     text,
+  token_expires_at  timestamptz,
+  config            jsonb NOT NULL DEFAULT '{}'::jsonb,
+  is_active         boolean NOT NULL DEFAULT true,
+  last_sync_at      timestamptz,
+  last_sync_status  varchar(20),
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_erp_type CHECK (erp_type IN ('BLING', 'OMIE', 'TINY', 'CONTA_AZUL')),
+  CONSTRAINT CK_erp_sync_status CHECK (last_sync_status IS NULL OR last_sync_status IN ('SUCCESS', 'PARTIAL', 'FAILED'))
+);
+
+CREATE INDEX IDX_erp_connections_org ON erp_connections (organization_id);
+CREATE INDEX IDX_erp_connections_active ON erp_connections (organization_id, is_active) WHERE is_active = true;
+
+COMMENT ON TABLE erp_connections IS 'Conexões OAuth com ERPs brasileiros (tokens criptografados)';
+COMMENT ON COLUMN erp_connections.access_token IS 'Access token criptografado com AES-256-GCM';
+
+
+-- ============================================================
+-- TABELA: erp_sync_logs (Feature #10)
+-- ============================================================
+CREATE TABLE erp_sync_logs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  connection_id     uuid NOT NULL REFERENCES erp_connections(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  sync_type         varchar(20) NOT NULL,
+  status            varchar(20) NOT NULL,
+  total_found       integer DEFAULT 0,
+  total_synced      integer DEFAULT 0,
+  total_skipped     integer DEFAULT 0,
+  error_message     text,
+  started_at        timestamptz,
+  completed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_erp_sync_type CHECK (sync_type IN ('FULL', 'INCREMENTAL')),
+  CONSTRAINT CK_erp_sync_status CHECK (status IN ('PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'PARTIAL'))
+);
+
+CREATE INDEX IDX_erp_sync_logs_connection ON erp_sync_logs (connection_id);
+CREATE INDEX IDX_erp_sync_logs_org ON erp_sync_logs (organization_id);
+CREATE INDEX IDX_erp_sync_logs_status ON erp_sync_logs (status) WHERE status IN ('PENDING', 'RUNNING');
+CREATE INDEX IDX_erp_sync_logs_created ON erp_sync_logs (created_at DESC);
+
+COMMENT ON TABLE erp_sync_logs IS 'Logs de sincronização com ERPs';
+
+
+-- ============================================================
+-- TABELA: rule_packs (Feature #13)
+-- ============================================================
+CREATE TABLE rule_packs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  pack_key          varchar(50) NOT NULL UNIQUE,
+  pack_name         varchar(150) NOT NULL,
+  description       text,
+  sector            varchar(50) NOT NULL,
+  uf                char(2),
+  regime            organization_regime,
+  version           varchar(20) NOT NULL,
+  rules_json        jsonb NOT NULL,
+  is_active         boolean NOT NULL DEFAULT true,
+  activated_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_rule_pack_key UNIQUE (pack_key)
+);
+
+CREATE INDEX IDX_rule_packs_active ON rule_packs (is_active) WHERE is_active = true;
+CREATE INDEX IDX_rule_packs_sector ON rule_packs (sector);
+CREATE INDEX IDX_rule_packs_uf ON rule_packs (uf) WHERE uf IS NOT NULL;
+
+COMMENT ON TABLE rule_packs IS 'Pacotes de regras por UF e setor (ex: SP construção, MG construção, Lucro Presumido)';
+COMMENT ON COLUMN rule_packs.rules_json IS 'Array de regras: [{id, name, description, evaluate_function}]';
+
+
+-- ============================================================
+-- TABELA: organization_rule_packs (Feature #13)
+-- ============================================================
+CREATE TABLE organization_rule_packs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  rule_pack_id      uuid NOT NULL REFERENCES rule_packs(id) ON DELETE CASCADE,
+  is_enabled        boolean NOT NULL DEFAULT true,
+  enabled_at        timestamptz NOT NULL DEFAULT now(),
+  disabled_at       timestamptz,
+
+  CONSTRAINT UQ_org_pack UNIQUE (organization_id, rule_pack_id)
+);
+
+CREATE INDEX IDX_org_rule_packs_org ON organization_rule_packs (organization_id);
+CREATE INDEX IDX_org_rule_packs_enabled ON organization_rule_packs (organization_id, is_enabled) WHERE is_enabled = true;
+
+COMMENT ON TABLE organization_rule_packs IS 'Pacotes de regras habilitados por organização';
+```
+
+---
+
+### Resumo do Modelo Atualizado (MVP + Pós-MVP)
 
 | Tabela | Registros esperados (5 tenants, 3 meses) | Tamanho estimado | Função principal |
 |---|---|---|---|
+| **MVP (10 tabelas)** | | | |
 | `organizations` | 5 | < 10 KB | Tenants |
 | `users` | 10 | < 10 KB | Usuários por tenant |
 | `nfe_documents` | ~2.500 (500/tenant) | ~15 MB (com XML raw) | Documentos fiscais |
@@ -5246,7 +8700,49 @@ const pending = await db.query.pendingNotifications.findMany({
 | `upload_batches` | ~150 | < 1 MB | Histórico de uploads |
 | `pending_notifications` | ~1.000 | < 1 MB | Fila de notificações |
 | `fiscal_reference_tables` | ~10 | ~5 MB | Tabelas fiscais versionadas |
-| **Total** | | **~35 MB** | Bem dentro dos 40GB da VPS |
+| **Pós-MVP Fase A (4 tabelas)** | | | |
+| `supplier_message_templates` | ~20 | < 1 MB | Templates de mensagens |
+| `supplier_messages` | ~500 | < 1 MB | Log de mensagens enviadas |
+| `whatsapp_ingestion_log` | ~1.000 | < 1 MB | Log de ingestão WhatsApp |
+| `onboarding_sessions` | ~10 | < 1 MB | Sessões de onboarding |
+| **Pós-MVP Fase B (8 tabelas)** | | | |
+| `digital_certificates` | ~5 | < 1 MB | Certificados A1 criptografados |
+| `sefaz_download_sessions` | ~150 | < 1 MB | Sessões de download Sefaz |
+| `sefaz_download_queue` | ~50 | < 1 MB | Fila de downloads agendados |
+| `inconsistency_comments` | ~1.000 | < 1 MB | Comentários em inconsistências |
+| `inconsistency_attachments` | ~500 | ~5 MB | Anexos (PDF/imagem) |
+| `inconsistency_assignments` | ~250 | < 1 MB | Atribuições de responsável |
+| `cadastral_alerts` | ~200 | < 1 MB | Alertas cadastrais |
+| `cadastral_monitoring_config` | ~10 | < 1 MB | Config de monitoramento |
+| **Pós-MVP Fase C (5 tabelas + 1 view)** | | | |
+| `accountants` | ~10 | < 1 MB | Contadores (portal) |
+| `accountant_clients` | ~20 | < 1 MB | Relação contador-cliente |
+| `accountant_comments` | ~500 | < 1 MB | Comentários do contador |
+| `accountant_monthly_exports` | ~50 | < 1 MB | Exportações mensais |
+| `supplier_scores` (view) | ~500 | < 1 MB | Score de fornecedores |
+| `ai_conversations` | ~1.000 | < 1 MB | Conversas com IA |
+| **Pós-MVP Fase D (5 tabelas)** | | | |
+| `reform_checklist` | ~50 | < 1 MB | Checklist Reforma Tributária |
+| `cbs_ibs_alerts` | ~100 | < 1 MB | Alertas CBS/IBS |
+| `erp_connections` | ~10 | < 1 MB | Conexões ERPs |
+| `erp_sync_logs` | ~500 | < 1 MB | Logs de sincronização |
+| `rule_packs` | ~10 | < 1 MB | Pacotes de regras |
+| `organization_rule_packs` | ~20 | < 1 MB | Pacotes habilitados por org |
+| **Total** | | **~45 MB** | Bem dentro dos 40GB da VPS |
+
+---
+
+### Riscos e pontos de atenção (Expansão Pós-MVP)
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| 23 novas tabelas podem degradar performance se índices não otimizados | Média | Revisão de índices antes de cada fase. Query analysis com `EXPLAIN ANALYZE`. Particionamento se necessário |
+| View materializada `supplier_scores` pode ficar desatualizada se cron falhar | Média | Refresh manual via botão na interface. Alerta se refresh falhar. Timestamp visível "Atualizado em DD/MM HH:MM" |
+| Certificados A1 criptografados podem ser comprometidos se `CERTIFICATE_ENCRYPTION_KEY` vazar | Alta | Rotação de chave a cada 6 meses. Pen-test antes de lançar. Armazenar chave em cofre (AWS Secrets Manager) |
+| Tokens OAuth de ERPs em `erp_connections` podem ser comprometidos | Alta | Criptografia AES-256-GCM. Rotação de tokens via refresh_token. Monitoramento de uso suspeito |
+| JSONB em `rule_packs.rules_json` pode crescer se muitos pacotes forem adicionados | Baixa | Limite de 100 regras por pacote. Validação de tamanho no upload. Compressão se necessário |
+| `inconsistency_attachments` pode crescer rápido se usuários uploadarem muitos arquivos | Média | Limite de 10MB por anexo. Rotação de anexos > 1 ano para S3. Alerta se disco > 80% |
+| `ai_conversations` pode crescer rápido se IA for muito usada | Baixa | Retenção de 90 dias. Arquivamento para S3 após 90 dias. Limite de 10 perguntas/hora por usuário |
 
 ### Riscos e pontos de atenção
 
@@ -10723,6 +14219,138 @@ SE BUFFER CONSUMIDO ANTES DA SEMANA 10:
 
 ---
 
+### Roadmap Pós-MVP — Fases A-D (Mês 4-12)
+
+Após o MVP de 12 semanas, o produto evolui em 4 fases de 2-3 meses cada, totalizando 155 dias de desenvolvimento distribuídos em ~9 meses.
+
+#### Visão Macro do Roadmap Expandido
+
+```
+FASE      MESES    DURAÇÃO    FOCO                          CUSTO INFRA/MÊS
+────      ─────    ───────    ────────────────────────────  ───────────────
+MVP       1-3      90 dias    Core: parser + 8 regras +     ~R$ 168
+                              dashboard + WhatsApp + PDF
+
+FASE A    4-5      ~30 dias   Retenção e Redução de Atrito  ~R$ 168
+                              #5, #6, #7, #8, #11, #15
+
+FASE B    5-7      ~40 dias   Monitoramento Contínuo         ~R$ 188
+                              #1, #4, #14                   (+pg-boss)
+
+FASE C    7-9      ~35 dias   Inteligência e Ecossistema     ~R$ 218
+                              #2, #3, #12                   (+LLM, +VPS)
+
+FASE D    9-12     ~50 dias   Plataforma e Escala            ~R$ 338
+                              #9, #10, #13                  (VPS maior)
+```
+
+#### FASE A — Retenção e Redução de Atrito (Mês 4-5)
+
+```
+SEM   PRODUTO                              AQUISIÇÃO
+
+ 13   F46: Mensagem p/ fornecedor          Enviar templates W1/W5 atualizados p/
+      F47: Tudo certo inteligente          aprovação Meta. Preparar onboarding raio-x.
+      F50: Onboarding raio-x               Contar economia em mensagens de vendas.
+
+ 14   F42: Painel de economia              Divulgar "R$ X economizados" em grupos WA.
+      F48: Relatório mensal do dono        Mostrar relatório bonito em demo comercial.
+      F50: Onboarding raio-x (completo)
+
+ 15   F36: Ingestão por WhatsApp           Ativar para 10 clientes beta.
+                                           "Encaminha o XML no WhatsApp. Pronto."
+
+ 16   F36: Refinamento e QA                Coletar depoimentos: "Antes eu levava 2h,
+      F42/F46/F48: Ajustes                 agora é automático."
+```
+
+#### FASE B — Monitoramento Contínuo (Mês 5-7)
+
+```
+SEM   PRODUTO                              AQUISIÇÃO
+
+ 17   F37 (Parte 1): Certificado A1        Começar a cobrar R$ 147/mês para clientes
+      Upload + cripto + validação          com download automático (tier premium).
+
+ 18   F37 (Parte 2): Sefaz WS + fila      "Conecte seu certificado A1 uma vez.
+      Download diário funcional            O FiscoPilot puxa suas NF-e sozinho."
+
+ 19   F45: Kanban de pendências            Posicionar como "mini-CRM fiscal".
+      Drag & drop, comentários, anexos     Mostrar em vídeo demo no WhatsApp.
+
+ 20   F41/F65: Monitoramento cadastral     Upsell: "Monitoramos CPNJ de fornecedores.
+      Job semanal CNPJ/IE/CNAE            Se um ficar inapto, você sabe na hora."
+
+ 21   F45: Refinamento e QA               Lançamento oficial da Fase B.
+      F41/F65: Ajustes + deploys          Aumento de preço: R$ 97 → R$ 147.
+```
+
+#### FASE C — Inteligência e Ecossistema (Mês 7-9)
+
+```
+SEM   PRODUTO                              AQUISIÇÃO
+
+ 22   F53-F55: Portal contador (login,     Convidar 5 contadores parceiros.
+      dashboard clientes)                  "Você vê todos seus clientes em um lugar."
+
+ 23   F56-F58: Comentários + validação +   Contadores testam, validam, recomendam.
+      exportação mensal                    Ciclo: contador → recomenda → lojista compra.
+
+ 24   F43/F62: Score de fornecedores       "Seus melhores e piores fornecedores."
+      View materializada, ranking          Usar como argumento de renovação.
+
+ 25   F51/F61: Assistente IA               Botão "Perguntar à IA" em toda inconsistência.
+      Chat contextual, guardrails          IA explica, mas nunca calcula imposto.
+
+ 26   F51/F61: Refinamento e QA            Coletar feedback da IA (thumbs up/down).
+      F43/F62: Ajustes + deploys           Lançamento oficial da Fase C.
+```
+
+#### FASE D — Plataforma e Escala (Mês 9-12)
+
+```
+SEM   PRODUTO                              AQUISIÇÃO
+
+ 27   F39/F44: Verificador CBS/IBS         "Sua loja está pronta para a Reforma
+      Score de preparação + checklist      Tributária?" Diferenciação forte.
+
+ 28   F38 (Parte 1): Conectores Bling +   "Não precisa fazer upload. O FiscoPilot
+      Tiny. OAuth flow + sync engine.      lê as notas do sistema que você já usa."
+
+ 29   F40 (Parte 1): Pacotes base + SP/    "Regras específicas para seu setor e
+      MG construção + Lucro Presumido      estado." Expansão para novos ICPs.
+
+ 30   F38 (Parte 2): Omie + Conta Azul     Custo sobe para R$ 197/mês.
+      F40 (Parte 2): Restantes + confecção  Upsell: "Pacote premium com + regras."
+
+ 31   F52/F64: Gerenciador pacotes +       Marketplace de pacotes? Contadores criam
+      Simulador Reforma Tributária          regras? (explorar modelo de plataforma)
+
+ 32   QA geral, otimizações, deploys       Lançamento oficial da Fase D.
+      Documentação completa.               Retrospectiva do ano 1.
+```
+
+#### Métricas de Sucesso por Fase
+
+| Fase | Meta de clientes | MRR esperado | Preço por cliente |
+|---|---|---|---|
+| MVP | 10 | R$ 970 | R$ 97/mês |
+| Fase A | 20 | R$ 1.940 | R$ 97/mês |
+| Fase B | 30 | R$ 4.410 | R$ 147/mês |
+| Fase C | 50 | R$ 7.350 | R$ 147/mês |
+| Fase D | 80 | R$ 15.760 | R$ 197/mês |
+
+#### Critério de Go/No-Go por Fase
+
+| Marco | Critério | Ação se não atingir |
+|---|---|---|
+| Antes da Fase B | ≥15 clientes pagantes + NPS ≥40 | Adiar Fase B, focar em vendas |
+| Antes da Fase C | ≥25 clientes pagantes + churn <5% | Cortar Fase C features, manter core |
+| Antes da Fase D | ≥40 clientes pagantes + time de 3+ devs | Adiar Fase D, contratar antes de expandir |
+| Após Fase D | ≥80 clientes + MRR R$ 15k+ | Meta atingida. Avaliar Série A ou bootstrap contínuo |
+
+---
+
 ## Etapa 30 — Backlog de Construção
 
 ### Objetivo da etapa
@@ -12179,23 +15807,23 @@ Sintetizar as 33 etapas anteriores em um documento executivo de 1 página — de
 
 ### FiscoPilot — Copiloto Fiscal para PME
 
-**Visão:** Ser a primeira ferramenta que traduz documentos fiscais em riscos compreensíveis para donos de pequenas empresas brasileiras — antes que inconsistências virem multas.
+**Visão:** Ser a primeira ferramenta que traduz documentos fiscais em riscos compreensíveis para donos de pequenas empresas brasileiras — antes que inconsistências virem multas. Evoluir de "analisador de XML" para **sistema de prevenção fiscal recorrente**.
 
 **Problema:** PMEs brasileiras perdem entre R$ 7.700 e R$ 29.600 por ano com multas, imposto pago a maior e retrabalho contábil — porque ninguém lê XML de nota fiscal. Os dados estão lá, trancados em arquivos ilegíveis e linguagem técnica inacessível. O dono decide comprar, vender e contratar às cegas do ponto de vista fiscal.
 
-**Solução:** O FiscoPilot lê NF-e de compra, detecta inconsistências com 8 regras determinísticas, explica o problema em português claro com impacto em reais e sugere ações concretas — tudo em 2 minutos, no celular.
+**Solução:** O FiscoPilot lê NF-e de compra, detecta inconsistências com 8 regras determinísticas, explica o problema em português claro com impacto em reais e sugere ações concretas — tudo em 2 minutos, no celular. Pós-MVP, adiciona download automático de XML via certificado digital, portal do contador, score de fornecedores e mais 12 features de prevenção fiscal recorrente.
 
 **ICP:** Donos de loja de material de construção, Simples Nacional, 5-20 funcionários, faturamento R$ 80-300 mil/mês, que recebem 60-200 NF-e de entrada por mês. Persona: Roberto, 51 anos, ensino médio, usa WhatsApp intensamente, não sabe o que é XML.
 
-**Proposta de valor:** "Suas notas fiscais explicadas." R$ 97/mês. 15 dias grátis. Sem contrato.
+**Proposta de valor:** "Suas notas fiscais explicadas." R$ 97/mês (MVP) → R$ 147/mês (Fase B) → R$ 197/mês (Fase D). 15 dias grátis. Sem contrato.
 
 **Diferenciação:** Não é ERP (não emite nota, não faz gestão). Não é software de contador (não apura imposto, não entrega declaração). É a camada de tradução entre o fiscal e o dono da PME — um segmento sem concorrente direto hoje.
 
-**Stack:** TypeScript ponta a ponta (Next.js 14 + Fastify 5). PostgreSQL 16 com RLS multi-tenant. Drizzle ORM. Docker Compose em VPS única (Hetzner CX22, R$ 120/mês). WhatsApp Business API para auth e notificações. GPT-4o-mini via OpenRouter como paráfrase opcional de explicações (feature flag, desligável). Custo total de infra: ~R$ 168/mês.
+**Stack:** TypeScript ponta a ponta (Next.js 14 + Fastify 5). PostgreSQL 16 com RLS multi-tenant. Drizzle ORM. Docker Compose em VPS única (Hetzner CX22, R$ 120/mês → CX32, R$ 240/mês na Fase D). WhatsApp Business API para auth e notificações. GPT-4o-mini via OpenRouter como paráfrase opcional de explicações (feature flag, desligável). Custo total de infra: ~R$ 168/mês (MVP) → ~R$ 338/mês (Fase D).
 
-**Modelo de negócio:** SaaS B2B. Plano único R$ 97/mês. Cobrança via Pix manual nos primeiros 6 meses (até ~20 clientes). Stripe na Fase 2. Meta: 10 clientes = R$ 970 MRR em 90 dias. 30 clientes = R$ 2.910 MRR em 12 meses.
+**Modelo de negócio:** SaaS B2B. Plano único R$ 97/mês no MVP, evoluindo para R$ 147/mês na Fase B e R$ 197/mês na Fase D com features premium. Cobrança via Pix manual nos primeiros 6 meses. Meta: 10 clientes = R$ 970 MRR em 90 dias. 80 clientes = R$ 15.760 MRR em 12 meses.
 
-**Roadmap de 12 semanas:** Semanas 1-4: parser + 8 regras (MVP interno). Semanas 5-8: dashboard + checklist + PDF + notificações. **Semana 8: beta fechado com 5 lojas.** Semanas 9-10: correções + primeiras vendas. **Semana 10: primeira venda.** Semanas 11-12: QA + deploy produção. **Semana 12: 10 clientes ou pivot.**
+**Roadmap:** MVP (90 dias, 35 funcionalidades) → Fase A: Retenção/Atrito (mês 4-5, 6 features) → Fase B: Monitoramento (mês 5-7, 3 features) → Fase C: Inteligência (mês 7-9, 3 features) → Fase D: Plataforma (mês 9-12, 3 features). Total: 65 funcionalidades, 57 requisitos de usuário, 76 requisitos de sistema, 12 requisitos de contorno, 23 telas, 34 tabelas.
 
 **Métricas-chave (meta 90 dias):**
 - 30 leads qualificados acumulados
@@ -12205,19 +15833,1344 @@ Sintetizar as 33 etapas anteriores em um documento executivo de 1 página — de
 - K-factor ≥ 1.0 (cada cliente indica ≥1)
 - Churn < 10%
 
+**Métricas-chave (meta 12 meses):**
+- 80 clientes pagantes
+- R$ 15.760 MRR (80 × R$ 197)
+- NPS ≥ 40 mantido
+- Churn < 5%
+- 4 fases de expansão lançadas
+
 **Riscos principais:**
 1. **Mercado (🔴):** PME não percebe risco fiscal. Mitigação: demo raio-x ao vivo com dados reais do prospect.
 2. **Execução (🔴):** Regras não detectam inconsistências. Mitigação: validar contra 200 XMLs reais na semana 1.
 3. **WhatsApp (🔴):** Dependência única para auth e notificações. Mitigação: plano B com SMS + e-mail documentado.
 4. **Monetização (🟡):** Ninguém paga R$ 97. Mitigação: onboarding guiado + depoimentos + opção de teste de preço menor.
 5. **Regulatório (🟢):** Risco baixo. Disclaimers em toda tela. Produto não calcula imposto.
+6. **Complexidade (🟡):** 12 novos módulos podem sobrecarregar time. Mitigação: cada fase auto-contida. Contratar antes da Fase C.
 
-**Equipe:** 1 founder full-stack + 1 engenheiro back-end + 1 designer UX part-time. 90 dias. 706 horas de desenvolvimento.
+**Equipe:** 1 founder full-stack + 1 engenheiro back-end + 1 designer UX part-time. MVP: 90 dias, 706 horas. Pós-MVP: +155 dias, ~1.240 horas. Contratar dev adicional antes da Fase C.
 
 **Próximo passo:** Começar a construir. Semana 1, Sprint 1, tarefa S1-01: inicializar monorepo.
 
 ---
 
-_Conteúdo completo do plano FiscoPilot — 34 etapas, da definição do problema ao resumo executivo._
+## Etapa 35 — Features Pós-MVP: Sistema de Prevenção Fiscal Recorrente
+
+### Objetivo da etapa
+
+Expandir o FiscoPilot de "analisador de XML" para **sistema de prevenção fiscal recorrente** — adicionando 15 features que transformam o produto de ferramenta reativa (espera upload manual) em plataforma proativa (monitora, alerta, age e demonstra valor continuamente). As features estão organizadas em 4 fases (A, B, C, D) com critério de priorização baseado em redução de atrito, retenção, esforço, diferenciação e dependência de dados acumulados.
+
+### Premissas adotadas
+
+| # | Premissa | Justificativa |
+|---|---|---|
+| P1 | O MVP (Etapas 1-34) está funcional e em produção com ao menos 3-5 clientes pagantes antes de iniciar qualquer feature pós-MVP | Validação de valor precede expansão de escopo |
+| P2 | A arquitetura existente (monorepo TypeScript, Fastify + Next.js + PostgreSQL 16) suporta todas as 15 features sem reescrita | Monolito modular já definido; cada feature vira sub-módulo |
+| P3 | O diagnóstico continua 100% determinístico; IA generativa é camada explicativa opcional | Premissa central do produto (D5 da Etapa 1) mantida |
+| P4 | O contador (Dona Célia) passa de persona influenciadora para persona usuária ativa via portal dedicado | Feature #2 transforma o contador em aliado com acesso próprio |
+| P5 | Features que exigem histórico acumulado (score de fornecedores, economia) só ativam após 90 dias de dados | Sem dados, essas features não geram valor; não adianta construir antes |
+| P6 | Cada fase é auto-contida: pode ser lançada independentemente e gera valor incremental | Evita "big bang" de lançamento; cada fase é um mini-release |
+
+### Decisões recomendadas
+
+| Decisão | Conteúdo | Status |
+|---|---|---|
+| D1 | 15 features organizadas em 4 fases: A (Retenção/Atrito), B (Monitoramento), C (Inteligência), D (Plataforma) | Decisão de roadmap |
+| D2 | Fase A é prioritária: reduz atrito de ingestão (#11 WhatsApp, #1 Download auto) e demonstra ROI (#5 Mensagem, #6 Economia, #7 Relatório, #8 Tudo certo+, #15 Onboarding) | Decisão de priorização |
+| D3 | 23 novas tabelas + 1 view materializada + ~65 novas rotas API + 14 novas telas + 12 novos módulos backend | Decisão de escopo |
+| D4 | Custo de infra sobe de ~R$ 168/mês para ~R$ 338/mês na Fase D (VPS maior, mais LLM) | Decisão de infraestrutura |
+| D5 | Esforço total estimado: ~155 dias de desenvolvimento distribuídos em ~9 meses (Fases A-D) | Decisão de cronograma |
+| D6 | Cada feature mantém RFC-001 a RFC-008 (Etapa 9): sem edição de campos fiscais, sem cálculo de imposto, sem substituição do contador | Decisão de compliance |
+
+---
+
+### Visão geral das 15 features
+
+| # | Feature | Fase | Esforço | Impacto principal |
+|---|---|---|---|---|
+| 1 | Download automático de XML via certificado digital | B | 15 dias | Elimina upload manual; monitoramento contínuo |
+| 2 | Modo contador (portal) | C | 15 dias | Transforma contador em aliado; reduz veto |
+| 3 | Score de fornecedores | C | 8 dias | Retenção via inteligência de negócio |
+| 4 | Gestão de pendências como Kanban | B | 12 dias | Transforma alerta em ação rastreável |
+| 5 | Mensagem pronta para fornecedor | A | 5 dias | Sensação de produto "mágico" |
+| 6 | Histórico de economia / risco evitado | A | 5 dias | Demonstração contínua de ROI |
+| 7 | Relatório mensal do dono | A | 5 dias | Retenção mesmo sem erros |
+| 8 | "Tudo certo" mais inteligente | A | 2 dias | Percepção de trabalho realizado |
+| 9 | Simulador da Reforma Tributária | D | 15 dias | Diferenciação competitiva forte |
+| 10 | Integração com ERPs brasileiros | D | 20 dias | Elimina upload; "lê do sistema que você já usa" |
+| 11 | Ingestão por WhatsApp | A | 8 dias | Canal natural do ICP brasileiro |
+| 12 | Assistente de IA com limites claros | C | 10 dias | Explicação contextual sem risco fiscal |
+| 13 | Biblioteca de regras por UF e setor | D | 15 dias | Plataforma de regras expansível |
+| 14 | Alerta de certificado e dados cadastrais | B | 10 dias | Mini-monitor cadastral proativo |
+| 15 | Checklist de onboarding "raio-x fiscal" | A | 5 dias | Primeira experiência polida e guiada |
+
+---
+
+### FASE A — Retenção e Redução de Atrito (Mês 4-5, ~30 dias)
+
+**Objetivo da fase:** Reduzir o atrito de ingestão de dados (hoje dependente de upload manual) e demonstrar valor continuamente — mesmo quando não há inconsistências.
+
+**Features incluídas:** #5, #6, #7, #8, #11, #15
+
+---
+
+#### Feature #5 — Mensagem Pronta para Fornecedor
+
+**Descrição:** Quando uma nota apresenta inconsistência, o sistema gera automaticamente uma mensagem contextualizada para o fornecedor — pronta para copiar, enviar por WhatsApp ou e-mail. Transforma o alerta em ação concreta com um toque.
+
+**Novo módulo:** `apps/api/src/modules/messages/`
+
+```
+modules/messages/
+├── index.ts          # Plugin Fastify
+├── templates.ts      # Templates por tipo de regra (R1-R8)
+├── routes.ts         # GET/POST/PUT
+└── generators.ts     # Geração de mensagem contextual
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE supplier_message_templates (
+  id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  rule_id         rule_id NOT NULL,
+  variant         varchar(30) NOT NULL DEFAULT 'default',
+  template_text   text NOT NULL,
+  is_active       boolean NOT NULL DEFAULT true,
+  created_at      timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE supplier_messages (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id),
+  user_id           uuid REFERENCES users(id),
+  channel           varchar(20) NOT NULL,
+  message_text      text NOT NULL,
+  status            varchar(20) NOT NULL DEFAULT 'GENERATED',
+  sent_at           timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/inconsistencies/:id/message` | Gera mensagem pronta para o fornecedor |
+| POST | `/api/v1/inconsistencies/:id/message/send` | Envia via WhatsApp ou e-mail |
+| POST | `/api/v1/inconsistencies/:id/message/copy` | Registra que foi copiada |
+
+**Exemplo de mensagem (R1 — CFOP divergente):**
+
+```
+Olá, {fornecedor}. Recebemos a NF-e nº {numero} e identificamos possível
+divergência no código da operação fiscal (CFOP). O código registrado foi
+{cfop_encontrado}, mas nosso sistema indica que o correto para esta operação
+seria {cfop_esperado}. Poderiam verificar e, se necessário, emitir carta
+de correção? Obrigado.
+```
+
+**Critério de aceitação:** Para cada regra R1-R8, o sistema gera uma mensagem contextual com dados reais da nota. Botões "Copiar", "Enviar por WhatsApp" e "Enviar por e-mail" funcionais. Status da mensagem persistido.
+
+---
+
+#### Feature #6 — Histórico de Economia / Risco Evitado
+
+**Descrição:** Painel "Riscos Evitados" que mostra o impacto acumulado do FiscoPilot — quantas inconsistências foram detectadas, qual o valor em risco e quanto foi potencialmente economizado. Demonstra ROI continuamente.
+
+**Novo módulo:** `apps/api/src/modules/savings/`
+
+```
+modules/savings/
+├── index.ts          # Plugin Fastify
+├── routes.ts         # GET /api/v1/savings
+└── calculator.ts     # Agregação sobre inconsistencies
+```
+
+**Sem novas tabelas** — usa agregação sobre `inconsistencies` + `nfe_documents` existentes.
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/savings` | Painel de riscos evitados (mês/trimestre/ano) |
+| GET | `/api/v1/savings/history` | Série histórica mensal |
+
+**Lógica de cálculo:**
+
+```
+risco_evitado = SUM(estimated_impact) WHERE status IN ('RESOLVIDA')
+risco_detectado = SUM(estimated_impact) WHERE classification = 'RISCO_ALTO'
+taxa_resolucao = COUNT(RESOLVIDA) / COUNT(total) * 100
+```
+
+**Mockup do painel:**
+
+```
+┌──────────────────────────────────┐
+│  Riscos Evitados       Maio 2026│
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │  Este mês o FiscoPilot       ││
+│  │  encontrou 4 inconsistências ││
+│  │  em R$ 18.430 de notas.      ││
+│  │                              ││
+│  │  Impacto potencial           ││
+│  │  estimado:                   ││
+│  │                              ││
+│  │      ~R$ 1.240               ││
+│  │                              ││
+│  │  3 resolvidos · 1 pendente   ││
+│  └──────────────────────────────┘│
+│                                  │
+│  ── HISTÓRICO ──                 │
+│  Abr: ~R$ 890 (3 resolvidos)    │
+│  Mar: ~R$ 2.100 (5 resolvidos)  │
+│  Fev: ~R$ 340 (2 resolvidos)    │
+└──────────────────────────────────┘
+```
+
+**Critério de aceitação:** Painel exibe valores corretos para mês, trimestre e ano. Gráfico de barras com últimos 6 meses. Atualiza em tempo real após mudança de status de inconsistência.
+
+---
+
+#### Feature #7 — Relatório Mensal do Dono ("Fechamento Fiscal")
+
+**Descrição:** Além do PDF para contador (existente), um relatório mensal visual de 1 página para o dono — mostrando notas analisadas, valor processado, inconsistências, fornecedores problemáticos e recomendação para o próximo mês. Gera retenção mesmo quando não há erros.
+
+**Expansão do módulo:** `apps/api/src/modules/report/`
+
+```
+modules/report/
+├── index.ts
+├── accountant-pdf.ts   # Existente (PDF contador)
+└── owner-report.ts     # NOVO: relatório mensal do dono
+```
+
+**Nova rota API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/report/owner-pdf?month=YYYY-MM` | PDF do dono (1 página) |
+
+**Conteúdo do PDF (1 página A4):**
+
+```
+┌─────────────────────────────────────────────┐
+│  FiscoPilot — Seu Mês Fiscal               │
+│  {nome_loja} · {mês}/{ano}                  │
+│                                              │
+│  NOTAS ANALISADAS          VALOR PROCESSADO  │
+│       143                  R$ 284.500        │
+│                                              │
+│  INCONSISTÊNCIAS          RISCOS RESOLVIDOS  │
+│       5                        3             │
+│                                              │
+│  FORNECEDORES             PENDÊNCIAS         │
+│  PROBLEMÁTICOS             ABERTAS           │
+│       2                        2             │
+│                                              │
+│  TOP 3 FORNECEDORES COM MAIS PROBLEMAS      │
+│  1. CimentoBom — 3 notas, R$ 1.200 risco   │
+│  2. Telhanorte — 1 nota, R$ 340 risco      │
+│  3. Pisos Sul — 1 nota, R$ 87 risco        │
+│                                              │
+│  RECOMENDAÇÃO PARA O PRÓXIMO MÊS            │
+│  "Atenção ao fornecedor CimentoBom.         │
+│   Considere pedir carta de correção."       │
+│                                              │
+│  ⓘ Análise preliminar. Confirme com         │
+│  seu contador.                              │
+└─────────────────────────────────────────────┘
+```
+
+**Critério de aceitação:** PDF gerado em <5s. Contém todos os dados do mês. Botão "Baixar meu mês fiscal" visível no dashboard.
+
+---
+
+#### Feature #8 — "Tudo Certo" Mais Inteligente
+
+**Descrição:** Quando não há inconsistências, a notificação de silêncio positivo inclui contexto rico — número de notas, valor total, quantidade de fornecedores — para que o usuário sinta que o sistema realmente trabalhou.
+
+**Expansão do módulo:** `apps/api/src/modules/notify/`
+
+Sem novas tabelas ou rotas. Expansão dos templates de notificação existentes.
+
+**Template W5 atualizado:**
+
+```
+✅ FiscoPilot — Tudo certo essa semana
+
+Analisamos {N} notas, R$ {valor_total} em compras,
+{N_fornecedores} fornecedores diferentes.
+
+Nenhuma inconsistência crítica encontrada.
+
+Seu fiscal está em dia.
+
+{link_magico}
+```
+
+**Template W1 atualizado (resumo semanal com contexto):**
+
+```
+📊 FiscoPilot — Resumo da semana
+
+{periodo}: {N} notas processadas, R$ {valor_total} em compras.
+
+{N_ok} sem problemas · {N_atencao} atenção · {N_risco} risco
+
+{Se há risco > 0:}
+⚠️ {N_risco} questões precisam da sua atenção:
+{top_risco_fornecedor}: {top_risco_tipo} (~R$ {impacto})
+
+{link_magico}
+```
+
+**Critério de aceitação:** Notificações W1 e W5 incluem agregações de `valor_total` e `COUNT(DISTINCT cnpj_emitente)`. Tom contextual, não genérico.
+
+---
+
+#### Feature #11 — Ingestão por WhatsApp
+
+**Descrição:** A funcionária recebe XML no WhatsApp do fornecedor, encaminha para o número do FiscoPilot, e o sistema processa automaticamente. Canal natural do ICP brasileiro — elimina a necessidade de abrir computador para fazer upload.
+
+**Novo módulo:** `apps/api/src/modules/whatsapp-ingest/`
+
+```
+modules/whatsapp-ingest/
+├── index.ts          # Plugin Fastify
+├── webhook.ts        # POST /api/v1/whatsapp/webhook
+├── processor.ts      # Extrai XML de mensagem, dispara pipeline
+└── media.ts          # Download de mídia via WhatsApp API
+```
+
+**Nova tabela:**
+
+```sql
+CREATE TABLE whatsapp_ingestion_log (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid REFERENCES organizations(id),
+  user_id           uuid REFERENCES users(id),
+  whatsapp_from     varchar(20) NOT NULL,
+  message_id        varchar(100) NOT NULL,
+  message_type      varchar(30) NOT NULL,
+  media_url         text,
+  media_mime_type   varchar(100),
+  processed         boolean NOT NULL DEFAULT false,
+  upload_batch_id   uuid REFERENCES upload_batches(id),
+  error_message     text,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| POST | `/api/v1/whatsapp/webhook` | Webhook da Meta (recebe mensagens) |
+| GET | `/api/v1/whatsapp/ingestion-log` | Histórico de mensagens recebidas |
+
+**Fluxo:**
+
+```
+1. Fernanda encaminha XML para número FiscoPilot no WhatsApp
+2. Meta envia webhook → POST /api/v1/whatsapp/webhook
+3. Sistema identifica remetente → busca organization por whatsapp
+4. Download do documento (XML/PDF/ZIP) via WhatsApp Media API
+5. Se XML → pipeline de ingestão existente (validate → parse → rules)
+6. Se ZIP → extrai e processa
+7. Se não-reconhecido → responde: "Formato não suportado. Envie .xml ou .zip"
+8. Confirma processamento: "✅ 3 notas recebidas e analisadas."
+```
+
+**Variáveis de ambiente novas:**
+
+```
+WHATSAPP_WEBHOOK_VERIFY_TOKEN=<random>
+WHATSAPP_BUSINESS_ACCOUNT_ID=
+```
+
+**Critério de aceitação:** XML encaminhado via WhatsApp é processado em <60s. Confirmação enviada ao remetente. Histórico visível na interface.
+
+---
+
+#### Feature #15 — Checklist de Onboarding "Raio-X Fiscal"
+
+**Descrição:** Fluxo de onboarding extremamente guiado em 5 passos — do primeiro upload ao envio do PDF para o contador. Transforma o momento "raio-x imediato" (ponto de venda) numa feature de produto polida e repetível.
+
+**Novo módulo:** `apps/api/src/modules/onboarding/`
+
+```
+modules/onboarding/
+├── index.ts          # Plugin Fastify
+├── routes.ts         # GET/POST onboarding state
+└── steps.ts          # Definição dos passos do raio-x
+```
+
+**Nova tabela:**
+
+```sql
+CREATE TABLE onboarding_sessions (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  user_id           uuid NOT NULL REFERENCES users(id),
+  current_step      integer NOT NULL DEFAULT 0,
+  steps_completed   jsonb NOT NULL DEFAULT '[]',
+  first_upload_batch_id uuid REFERENCES upload_batches(id),
+  risks_found       integer DEFAULT 0,
+  high_risks_found  integer DEFAULT 0,
+  completed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/onboarding` | Estado atual do onboarding |
+| POST | `/api/v1/onboarding/start` | Inicia sessão de onboarding |
+| PATCH | `/api/v1/onboarding/step` | Avança para próximo passo |
+| POST | `/api/v1/onboarding/complete` | Marca como concluído |
+
+**Fluxo do Raio-X (5 passos):**
+
+```
+PASSO 1: "Envie seus XMLs dos últimos 30 dias"
+  → Tela de upload simplificada (sem menus, sem histórico)
+
+PASSO 2: "Analisando suas notas..."
+  → Animação de processamento com contador
+
+PASSO 3: "Encontramos {X} riscos"
+  → Tela de resultado com números grandes
+
+PASSO 4: "Aqui estão os {3} mais importantes"
+  → Cards dos top 3 riscos com explicação simplificada
+
+PASSO 5: "Envie este PDF para seu contador"
+  → Geração automática do PDF do contador
+  → Botão "Enviar por WhatsApp" + "Baixar PDF"
+```
+
+**Mockup do wizard:**
+
+```
+┌──────────────────────────────────┐
+│  FiscoPilot — Raio-X Fiscal      │
+├──────────────────────────────────┤
+│                                  │
+│  ● ─── ○ ─── ○ ─── ○ ─── ○     │
+│  1      2      3      4      5   │
+│                                  │
+│  ┌──────────────────────────────┐│
+│  │                              ││
+│  │    📤                        ││
+│  │                              ││
+│  │    Envie seus XMLs dos       ││
+│  │    últimos 30 dias.          ││
+│  │                              ││
+│  │    [Arraste arquivos aqui]   ││
+│  │    ou                        ││
+│  │    [Selecionar do celular]   ││
+│  │                              ││
+│  │    Dica: peça para sua       ││
+│  │    auxiliar ou contador      ││
+│  │    os arquivos .xml          ││
+│  │                              ││
+│  └──────────────────────────────┘│
+│                                  │
+│  [Pular]              [Avançar →]│
+└──────────────────────────────────┘
+```
+
+**Critério de aceitação:** Wizard de 5 passos funcional. Upload simplificado. Resultados com animação. PDF gerado automaticamente no passo 5. Sessão persistida (pode retomar se sair).
+
+---
+
+### Riscos e pontos de atenção da Fase A
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| WhatsApp Business API pode rejeitar webhook de ingestão de documentos | Média | Testar com conta de teste da Meta antes de implementar. Fallback: e-mail para notas@copilotofiscal.com |
+| Feature #6 (Economia) pode superestimar impacto financeiro se `estimated_impact` estiver errado | Média | Sempre usar "~" (aproximado). Disclaimer: "Estimativa conservadora. Confirme com seu contador." |
+| Onboarding wizard (Feature #15) pode ser pulado por usuários que já conhecem o produto | Baixa | Wizard é obrigatório apenas para novas organizações. Usuários existentes veem dashboard direto |
+| Templates de mensagem (Feature #5) podem soar robóticos ou formais demais para WhatsApp | Média | Testar com 5 donos de loja reais. Ajustar tom para linguagem coloquial brasileira |
+| Ingestão por WhatsApp (Feature #11) pode receber arquivos não-XML (fotos, áudios, PDFs) | Média | Pipeline de validação rejeita silenciosamente. Responde: "Formato não suportado. Envie .xml ou .zip" |
+
+---
+
+### FASE B — Monitoramento Contínuo (Mês 5-7, ~40 dias)
+
+**Objetivo da fase:** Transformar o FiscoPilot de ferramenta reativa (espera upload) em sistema de monitoramento contínuo — baixando XMLs automaticamente, rastreando pendências como Kanban e monitorando dados cadastrais de fornecedores.
+
+**Features incluídas:** #1, #4, #14
+
+---
+
+#### Feature #1 — Download Automático de XML via Certificado Digital
+
+**Descrição:** "Conecte seu certificado digital uma vez e o FiscoPilot puxa suas NF-e de entrada automaticamente." Elimina o upload manual e transforma o produto em monitoramento contínuo. Feature mais impactante pós-MVP.
+
+**Novo módulo:** `apps/api/src/modules/sefaz/`
+
+```
+modules/sefaz/
+├── index.ts              # Plugin Fastify
+├── routes.ts             # CRUD certificado, trigger download
+├── certificate-store.ts  # Armazenamento seguro de certificados A1
+├── nfe-download.ts       # Cliente SOAP para Sefaz WS
+├── scheduler.ts          # Cron de download automático
+└── queue.ts              # Fila de downloads (pg-boss)
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE digital_certificates (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  certificate_type  varchar(5) NOT NULL,
+  certificate_pem   bytea NOT NULL,
+  certificate_key   bytea NOT NULL,
+  encryption_iv     bytea NOT NULL,
+  cnpj_titular      varchar(14) NOT NULL,
+  valid_from        date NOT NULL,
+  valid_until       date NOT NULL,
+  is_active         boolean NOT NULL DEFAULT true,
+  last_used_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT CK_cert_type CHECK (certificate_type IN ('A1', 'A3'))
+);
+
+CREATE TABLE sefaz_download_sessions (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  certificate_id    uuid NOT NULL REFERENCES digital_certificates(id),
+  status            varchar(20) NOT NULL DEFAULT 'PENDING',
+  period_start      date NOT NULL,
+  period_end        date NOT NULL,
+  total_found       integer DEFAULT 0,
+  total_downloaded  integer DEFAULT 0,
+  total_new         integer DEFAULT 0,
+  total_duplicate   integer DEFAULT 0,
+  error_message     text,
+  started_at        timestamptz,
+  completed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE sefaz_download_queue (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  certificate_id    uuid NOT NULL REFERENCES digital_certificates(id),
+  scheduled_at      timestamptz NOT NULL,
+  period_start      date NOT NULL,
+  period_end        date NOT NULL,
+  status            varchar(20) NOT NULL DEFAULT 'SCHEDULED',
+  attempts          integer NOT NULL DEFAULT 0,
+  max_attempts      integer NOT NULL DEFAULT 3,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| POST | `/api/v1/certificates` | Upload certificado A1 (multipart, criptografado) |
+| GET | `/api/v1/certificates` | Lista certificados da org |
+| DELETE | `/api/v1/certificates/:id` | Remove certificado |
+| POST | `/api/v1/sefaz/download` | Trigger manual de download |
+| GET | `/api/v1/sefaz/download/:id` | Status do download |
+| GET | `/api/v1/sefaz/download-history` | Histórico de downloads |
+| PATCH | `/api/v1/sefaz/schedule` | Configura download automático (diário/semanal) |
+
+**Segurança do certificado:**
+- Criptografia AES-256-GCM em repouso
+- Chave de criptografia derivada de `CERTIFICATE_ENCRYPTION_KEY` (env var)
+- Certificado NUNCA logado, NUNCA exposto via API
+- Alerta de vencimento 30/15/7 dias antes
+
+**Dependências npm novas:** `node-forge` (certificado X.509/PFX), `soap` (webservices Sefaz)
+
+**Variáveis de ambiente novas:**
+
+```
+CERTIFICATE_ENCRYPTION_KEY=<64-char-hex>
+SEFAZ_DOWNLOAD_ENABLED=true
+SEFAZ_DOWNLOAD_SCHEDULE="0 5 * * *"
+```
+
+**Critério de aceitação:** Certificado A1 uploadado e criptografado. Download automático diário funcional. Notas baixadas entram no pipeline de processamento existente. Alerta de vencimento do certificado.
+
+---
+
+#### Feature #4 — Gestão de Pendências como Kanban
+
+**Descrição:** Mini-CRM de pendências fiscais. Cada inconsistência ganha responsável, prazo, comentários, anexos de comprovação e botões "enviar para contador" e "enviar mensagem para fornecedor". Transforma o alerta em ação rastreável.
+
+**Novo módulo:** `apps/api/src/modules/kanban/`
+
+```
+modules/kanban/
+├── index.ts          # Plugin Fastify
+├── routes.ts         # CRUD comentários, anexos, atribuições
+└── board.ts          # Query de board (colunas = status)
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE inconsistency_comments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  user_id           uuid REFERENCES users(id),
+  author_type       varchar(20) NOT NULL,
+  comment_text      text NOT NULL,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE inconsistency_attachments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  user_id           uuid REFERENCES users(id),
+  file_name         varchar(255) NOT NULL,
+  file_path         text NOT NULL,
+  file_size         integer NOT NULL,
+  mime_type         varchar(100) NOT NULL,
+  description       text,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE inconsistency_assignments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  inconsistency_id  uuid NOT NULL REFERENCES inconsistencies(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  assigned_to       uuid REFERENCES users(id),
+  assigned_by       uuid REFERENCES users(id),
+  due_date          date,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_assignment_per_inconsistency UNIQUE (inconsistency_id)
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/kanban` | Board completo (colunas por status) |
+| POST | `/api/v1/inconsistencies/:id/comments` | Adicionar comentário |
+| GET | `/api/v1/inconsistencies/:id/comments` | Listar comentários |
+| POST | `/api/v1/inconsistencies/:id/attachments` | Upload anexo |
+| GET | `/api/v1/inconsistencies/:id/attachments` | Listar anexos |
+| PUT | `/api/v1/inconsistencies/:id/assignment` | Atribuir responsável + prazo |
+| POST | `/api/v1/inconsistencies/:id/send-to-accountant` | Envia para contador |
+| POST | `/api/v1/inconsistencies/:id/send-to-supplier` | Envia mensagem para fornecedor |
+
+**Mockup do Kanban:**
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  Pendências Fiscais                          Maio 2026   │
+├──────────────┬──────────────┬──────────────┬─────────────┤
+│  PENDENTE    │ EM ANDAMENTO │  RESOLVIDA   │  IGNORADA   │
+│     (3)      │     (2)      │     (5)      │     (1)     │
+├──────────────┼──────────────┼──────────────┼─────────────┤
+│ ┌──────────┐ │ ┌──────────┐ │ ┌──────────┐ │ ┌─────────┐│
+│ │🔴 Cimento│ │ │⚠️ Telha- │ │ │✅ Ferrag.│ │ │⚠️ Pisos ││
+│ │  Bom     │ │ │  norte   │ │ │  do Zé   │ │ │  Sul    ││
+│ │ R$ 8.400 │ │ │ R$ 3.200 │ │ │ R$ 2.890 │ │ │ R$ 520  ││
+│ │ CFOP     │ │ │ Valor    │ │ │ CST      │ │ │ NCM     ││
+│ │          │ │ │          │ │ │          │ │ │         ││
+│ │ Fernanda │ │ │ Roberto  │ │ │ ✅       │ │ │Motivo:  ││
+│ │ Prazo:   │ │ │ Prazo:   │ │ │          │ │ │contador ││
+│ │ 20/05    │ │ │ 25/05    │ │ │          │ │ │ok       ││
+│ └──────────┘ │ └──────────┘ │ └──────────┘ │ └─────────┘│
+│ ┌──────────┐ │ ┌──────────┐ │ ┌──────────┐ │             │
+│ │🔴 Areal  │ │ │⚠️ C&C    │ │ │✅ Sodimac│ │             │
+│ │  Brita   │ │ │          │ │ │          │ │             │
+│ │ R$ 5.200 │ │ │ R$ 1.150 │ │ │ R$ 4.300 │ │             │
+│ │ CNPJ     │ │ │ Soma     │ │ │ CFOP     │ │             │
+│ └──────────┘ │ └──────────┘ │ └──────────┘ │             │
+└──────────────┴──────────────┴──────────────┴─────────────┘
+```
+
+**Critério de aceitação:** Board com 4 colunas funcionais. Drag & drop entre colunas. Comentários persistidos. Anexos uploadados. Atribuição com prazo. Botões "Enviar para contador" e "Enviar para fornecedor" integrados com Features #2 e #5.
+
+---
+
+#### Feature #14 — Alerta de Certificado Digital e Dados Cadastrais
+
+**Descrição:** Mini-monitor cadastral que alerta sobre certificado digital vencendo, CNPJ de fornecedor inapto, inscrição estadual irregular, CNAE incompatível e fornecedores recorrentes com problema. Expande a regra R4 (CNPJ ativo) para monitoramento contínuo.
+
+**Novo módulo:** `apps/api/src/modules/cadastral/`
+
+```
+modules/cadastral/
+├── index.ts              # Plugin Fastify
+├── routes.ts             # GET alertas, configurações
+├── certificate-monitor.ts # Verifica vencimento de certificados
+├── cnpj-monitor.ts        # Consulta situação cadastral (RFB)
+├── ie-monitor.ts          # Inscrição estadual (Sintegra)
+└── scheduler.ts           # Cron de verificação
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE cadastral_alerts (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  alert_type        varchar(30) NOT NULL,
+  entity_type       varchar(30) NOT NULL,
+  entity_cnpj       varchar(14),
+  entity_name       varchar(200),
+  severity          varchar(20) NOT NULL,
+  message           text NOT NULL,
+  details           jsonb,
+  is_read           boolean NOT NULL DEFAULT false,
+  dismissed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE cadastral_monitoring_config (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  monitor_type      varchar(30) NOT NULL,
+  enabled           boolean NOT NULL DEFAULT true,
+  check_interval    varchar(20) NOT NULL DEFAULT 'weekly',
+  last_checked_at   timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_monitor_per_org UNIQUE (organization_id, monitor_type)
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/cadastral/alerts` | Lista alertas cadastrais |
+| PATCH | `/api/v1/cadastral/alerts/:id/read` | Marca como lido |
+| PATCH | `/api/v1/cadastral/alerts/:id/dismiss` | Descarta alerta |
+| GET | `/api/v1/cadastral/config` | Configuração de monitoramento |
+| PUT | `/api/v1/cadastral/config` | Atualiza configuração |
+
+**Tipos de alerta:**
+
+| Tipo | Severidade | Gatilho |
+|---|---|---|
+| `CERTIFICATE_EXPIRING` | WARNING | Certificado vence em 30/15/7 dias |
+| `CERTIFICATE_EXPIRED` | CRITICAL | Certificado vencido |
+| `CNPJ_INAPTO` | CRITICAL | Fornecedor com CNPJ inapto/suspenso |
+| `IE_IRREGULAR` | WARNING | Inscrição estadual irregular |
+| `CNAE_INCOMPATIVEL` | WARNING | CNAE do fornecedor incompatível com NF-e |
+| `SUPPLIER_RECURRENT_ISSUE` | WARNING | Fornecedor com >3 inconsistências em 90 dias |
+
+**Critério de aceitação:** Verificação cadastral automática semanal. Alertas visíveis no dashboard com badge de contagem. Alertas críticos disparam notificação WhatsApp.
+
+---
+
+### Riscos e pontos de atenção da Fase B
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Webservices da Sefaz (NFeConsultaDest) têm histórico de instabilidade e downtime | Alta | Retry com backoff exponencial. Fila de downloads (pg-boss). Alerta founder se API falhar >3x |
+| Armazenar certificado digital cria responsabilidade legal e risco de segurança | Alta | Criptografia AES-256-GCM. Certificado NUNCA em logs. Pen-test antes de lançar. Termo de responsabilidade |
+| Kanban (Feature #4) pode adicionar complexidade desnecessária se usuário não adotar | Média | Lançar como feature opcional. Dashboard simples continua sendo a tela principal |
+| API da Receita Federal para consulta de CNPJ tem rate limit e instabilidade | Média | Cache de 7 dias por CNPJ. Batch processing noturno (não em tempo real) |
+| Download automático pode baixar notas que o fornecedor cancelou depois | Baixa | Pipeline verifica `status_nfe` e marca canceladas. Não gera inconsistência para nota cancelada |
+
+---
+
+### FASE C — Inteligência e Ecossistema (Mês 7-9, ~35 dias)
+
+**Objetivo da fase:** Adicionar inteligência ao produto — portal do contador (transforma gatekeeper em aliado), score de fornecedores (valor de negócio além do fiscal) e assistente de IA (explicação contextual sem risco).
+
+**Features incluídas:** #2, #3, #12
+
+---
+
+#### Feature #2 — Modo Contador (Portal)
+
+**Descrição:** Portal dedicado para o contador com login próprio, lista de clientes atendidos, comentários por inconsistência, botão "validado pelo contador", exportação mensal e histórico de ações. Transforma o contador de influenciador cético em aliado do ecossistema.
+
+**Novo módulo:** `apps/api/src/modules/accountant/`
+
+```
+modules/accountant/
+├── index.ts          # Plugin Fastify
+├── routes.ts         # Auth, CRUD clientes, comentários, validação
+├── auth.ts           # Auth separado para contadores (CPF + senha)
+└── export.ts         # Exportação mensal consolidada
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE accountants (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  nome              varchar(150) NOT NULL,
+  cpf               varchar(11) NOT NULL UNIQUE,
+  email             varchar(255) NOT NULL UNIQUE,
+  password_hash     varchar(255) NOT NULL,
+  crc_numero        varchar(30),
+  crc_uf            char(2),
+  whatsapp          varchar(15),
+  is_active         boolean NOT NULL DEFAULT true,
+  last_login_at     timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE accountant_clients (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  accountant_id     uuid NOT NULL REFERENCES accountants(id) ON DELETE CASCADE,
+  organization_id   uuid NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
+  invited_by        uuid REFERENCES users(id),
+  status            varchar(20) NOT NULL DEFAULT 'PENDING',
+  invited_at        timestamptz NOT NULL DEFAULT now(),
+  accepted_at       timestamptz,
+
+  CONSTRAINT UQ_accountant_client UNIQUE (accountant_id, organization_id)
+);
+
+CREATE TABLE accountant_comments (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  accountant_id     uuid NOT NULL REFERENCES accountants(id),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  inconsistency_id  uuid REFERENCES inconsistencies(id),
+  comment_text      text NOT NULL,
+  is_validation     boolean NOT NULL DEFAULT false,
+  validated_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE accountant_monthly_exports (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  accountant_id     uuid NOT NULL REFERENCES accountants(id),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  month             varchar(7) NOT NULL,
+  status            varchar(20) NOT NULL DEFAULT 'PENDING',
+  pdf_url           text,
+  generated_at      timestamptz,
+  downloaded_at     timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API (prefixo `/api/v1/accountant/`):**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| POST | `/api/v1/accountant/auth/login` | Login CPF + senha |
+| POST | `/api/v1/accountant/auth/register` | Registro do contador |
+| GET | `/api/v1/accountant/clients` | Lista de clientes |
+| POST | `/api/v1/accountant/clients/:orgId/accept` | Aceita convite |
+| GET | `/api/v1/accountant/clients/:orgId/dashboard` | Dashboard do cliente |
+| GET | `/api/v1/accountant/clients/:orgId/inconsistencies` | Inconsistências |
+| POST | `/api/v1/accountant/clients/:orgId/comments` | Comentar |
+| POST | `/api/v1/accountant/clients/:orgId/validate/:inconsistencyId` | "Validado" |
+| POST | `/api/v1/accountant/clients/:orgId/export` | Gerar exportação mensal |
+| GET | `/api/v1/accountant/exports` | Lista exportações |
+
+**Novo app web:** `apps/web/src/app/accountant/`
+
+```
+app/accountant/
+├── page.tsx                    # Login do contador
+├── dashboard/
+│   └── page.tsx                # Lista de clientes
+├── clients/[orgId]/
+│   ├── page.tsx                # Dashboard do cliente
+│   ├── inconsistencies/
+│   │   └── page.tsx            # Lista com comentários
+│   └── exports/
+│       └── page.tsx            # Exportações mensais
+└── register/
+    └── page.tsx                # Registro
+```
+
+**Critério de aceitação:** Contador faz login com CPF + senha. Vê lista de clientes. Comenta em inconsistências. Valida com selo "Validado pelo contador". Gera exportação mensal consolidada.
+
+---
+
+#### Feature #3 — Score de Fornecedores
+
+**Descrição:** Dashboard de fornecedores com score baseado em histórico de 90 dias — erros, valor em risco, CNPJ irregular, recorrência de problemas. Cards de "fornecedores confiáveis", "fornecedores com mais erros" e "fornecedores com maior valor em risco". Valor de negócio além do fiscal.
+
+**Novo módulo:** `apps/api/src/modules/suppliers/`
+
+```
+modules/suppliers/
+├── index.ts          # Plugin Fastify
+├── routes.ts         # GET lista, GET detalhe
+├── scorer.ts         # Cálculo de score por fornecedor
+└── categories.ts     # Classificação (confiável, atenção, risco)
+```
+
+**View materializada:**
+
+```sql
+CREATE MATERIALIZED VIEW supplier_scores AS
+SELECT
+  d.organization_id,
+  d.cnpj_emitente AS supplier_cnpj,
+  MAX(d.nome_emitente) AS supplier_name,
+  COUNT(DISTINCT d.id) AS total_notes_90d,
+  SUM(d.valor_total) AS total_value_90d,
+  COUNT(DISTINCT i.id) AS total_inconsistencies_90d,
+  COUNT(DISTINCT i.id) FILTER (WHERE i.classification = 'RISCO_ALTO') AS high_risk_count,
+  COALESCE(SUM(i.estimated_impact), 0) AS total_risk_value,
+  CASE
+    WHEN COUNT(DISTINCT d.id) = 0 THEN 0
+    ELSE ROUND(
+      COUNT(DISTINCT i.id)::numeric / COUNT(DISTINCT d.id)::numeric * 100, 1
+    )
+  END AS error_rate,
+  CASE
+    WHEN COUNT(DISTINCT i.id) = 0 THEN 'CONFIÁVEL'
+    WHEN COUNT(DISTINCT i.id) FILTER (WHERE i.classification = 'RISCO_ALTO') > 0 THEN 'RISCO'
+    WHEN COUNT(DISTINCT i.id)::numeric / GREATEST(COUNT(DISTINCT d.id), 1)::numeric > 0.2 THEN 'ATENCAO'
+    ELSE 'CONFIÁVEL'
+  END AS category
+FROM nfe_documents d
+LEFT JOIN inconsistencies i ON i.nfe_document_id = d.id
+WHERE d.data_emissao >= CURRENT_DATE - INTERVAL '90 days'
+GROUP BY d.organization_id, d.cnpj_emitente;
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/suppliers` | Lista de fornecedores com score |
+| GET | `/api/v1/suppliers/:cnpj` | Detalhe do fornecedor |
+| GET | `/api/v1/suppliers/ranking` | Ranking por categoria |
+
+**Mockup do card de fornecedor:**
+
+```
+┌──────────────────────────────────┐
+│  🔴 RISCO                        │
+│                                  │
+│  Distribuidora CimentoBom        │
+│  CNPJ 12.345.678/0001-90        │
+│                                  │
+│  18 notas em 90 dias            │
+│  5 com inconsistências (27,8%)  │
+│  3 de risco alto                │
+│                                  │
+│  Valor em risco: ~R$ 2.340      │
+│                                  │
+│  Problemas recorrentes:         │
+│  · CFOP divergente (3x)         │
+│  · Alíquota ICMS (2x)           │
+│                                  │
+│  [Ver histórico completo →]     │
+└──────────────────────────────────┘
+```
+
+**Critério de aceitação:** View materializada atualizada diariamente via cron. Ranking por categoria (Confiável, Atenção, Risco). Detalhe do fornecedor com histórico de 90 dias. Só ativa após 90 dias de dados acumulados.
+
+---
+
+#### Feature #12 — Assistente de IA com Limites Claros
+
+**Descrição:** Assistente de IA contextual que responde perguntas sobre inconsistências — "Explique esse alerta em linguagem simples", "O que devo perguntar ao contador?", "Gere uma mensagem para o fornecedor". Sempre baseado nos dados do motor de regras. Nunca calcula imposto nem dá parecer fiscal definitivo.
+
+**Expansão do módulo:** `apps/api/src/modules/explain/`
+
+```
+modules/explain/
+├── index.ts              # Existente (templates)
+├── llm.ts                # Existente (OpenRouter)
+├── ai-assistant.ts       # NOVO: chat contextual
+├── prompts.ts            # NOVO: system prompts com guardrails
+└── guardrails.ts         # NOVO: validação de output
+```
+
+**Nova tabela:**
+
+```sql
+CREATE TABLE ai_conversations (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  user_id           uuid NOT NULL REFERENCES users(id),
+  inconsistency_id  uuid REFERENCES inconsistencies(id),
+  question          text NOT NULL,
+  answer            text NOT NULL,
+  model_used        varchar(50),
+  tokens_used       integer,
+  latency_ms        integer,
+  feedback          varchar(10),
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| POST | `/api/v1/ai/ask` | Pergunta contextual sobre inconsistência |
+| GET | `/api/v1/ai/conversations` | Histórico de conversas |
+| POST | `/api/v1/ai/feedback` | Feedback (bom/ruim) |
+
+**Perguntas pré-definidas (botões rápidos):**
+
+```
+- "Explique esse alerta em linguagem simples"
+- "O que devo perguntar ao contador?"
+- "Gere uma mensagem para o fornecedor"
+- "Qual o risco real se eu não fizer nada?"
+- "Isso é comum no meu setor?"
+```
+
+**System prompt com guardrails:**
+
+```
+Você é o assistente do FiscoPilot, um copiloto fiscal para PMEs brasileiras.
+
+REGRAS OBRIGATÓRIAS:
+1. NUNCA calcule imposto devido ou dê parecer fiscal definitivo
+2. NUNCA substitua o contador — sempre recomende confirmação
+3. SEMPRE baseie suas respostas nos dados detectados pelo motor de regras
+4. SEMPRE inclua disclaimer: "Esta é uma orientação preliminar"
+5. Use português simples, nível ensino médio
+6. Máximo 150 palavras por resposta
+```
+
+**Critério de aceitação:** Assistente responde perguntas contextuais sobre inconsistências. Guardrails impedem respostas que calculem imposto ou deem parecer definitivo. Disclaimer em toda resposta. Feedback (thumbs up/down) persistido.
+
+---
+
+### Riscos e pontos de atenção da Fase C
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Contador pode sentir que o portal (Feature #2) é "fiscalização do trabalho dele" | Alta | Posicionar como "ferramenta que facilita seu trabalho". Selo "Validado pelo contador" dá autoridade |
+| Score de fornecedores (Feature #3) pode gerar conflitos entre lojista e fornecedor | Média | Score é privado (só o lojista vê). Nunca enviar score para fornecedor |
+| IA (Feature #12) pode alucinar e dar orientação fiscal errada | Alta | Guardrails rígidos no prompt. Output validado antes de exibir. Fallback para template se IA falhar |
+| Portal do contador exige auth separado (CPF + senha) — mais superfície de ataque | Média | bcrypt cost ≥10. Rate limit. 2FA na Fase D |
+| View materializada (Feature #3) pode ficar desatualizada se cron falhar | Baixa | Refresh diário via cron. Alerta se refresh falhar. Botão "Atualizar agora" na interface |
+
+---
+
+### FASE D — Plataforma e Escala (Mês 9-12, ~50 dias)
+
+**Objetivo da fase:** Transformar o FiscoPilot em plataforma — simulador da Reforma Tributária (diferenciação competitiva), integrações com ERPs (elimina upload) e biblioteca de regras por UF/setor (expansão para novos mercados).
+
+**Features incluídas:** #9, #10, #13
+
+---
+
+#### Feature #9 — Simulador da Reforma Tributária (CBS/IBS)
+
+**Descrição:** Módulo "Preparação CBS/IBS" que verifica se XMLs já trazem campos de CBS/IBS, alerta campos ausentes, explica o que muda para empresas do Simples, oferece checklist de preparação 2026-2033 e gera relatório "sua loja está pronta para a Reforma Tributária?". Posiciona o FiscoPilot como produto atual e inevitável.
+
+**Novo módulo:** `apps/api/src/modules/reform/`
+
+```
+modules/reform/
+├── index.ts              # Plugin Fastify
+├── routes.ts             # GET readiness, checklist
+├── cbs-ibs-checker.ts    # Verifica campos CBS/IBS nos XMLs
+├── checklist-engine.ts   # Checklist de preparação
+├── timeline.ts           # Timeline 2026-2033
+└── report.ts             # Relatório de preparação
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE reform_checklist (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  item_key          varchar(50) NOT NULL,
+  item_text         text NOT NULL,
+  category          varchar(30) NOT NULL,
+  is_done           boolean NOT NULL DEFAULT false,
+  done_at           timestamptz,
+  notes             text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT UQ_checklist_per_org UNIQUE (organization_id, item_key)
+);
+
+CREATE TABLE cbs_ibs_alerts (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  nfe_document_id   uuid REFERENCES nfe_documents(id),
+  alert_type        varchar(30) NOT NULL,
+  severity          varchar(20) NOT NULL,
+  message           text NOT NULL,
+  details           jsonb,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/reform/readiness` | Score de preparação (0-100%) |
+| GET | `/api/v1/reform/checklist` | Checklist de itens |
+| PATCH | `/api/v1/reform/checklist/:key` | Marcar item como feito |
+| GET | `/api/v1/reform/alerts` | Alertas CBS/IBS |
+| GET | `/api/v1/reform/timeline` | Timeline 2026-2033 personalizada |
+| GET | `/api/v1/reform/report-pdf` | PDF "Sua loja está pronta?" |
+
+**Checklist de preparação:**
+
+```
+CADASTRO:
+☐ CNPJ atualizado na Receita Federal
+☐ Inscrição estadual regular
+☐ CNAE principal compatível com atividade
+
+SISTEMAS:
+☐ ERP atualizado para suportar CBS/IBS
+☐ Fornecedor principal já emite com campos CBS/IBS
+
+PROCESSOS:
+☐ Contador informado sobre a transição
+☐ Plano de classificação de produtos revisado
+
+TRIBUTOS:
+☐ Entendeu a diferença entre ICMS e IBS
+☐ Sabe quando CBS começa a valer para o Simples
+```
+
+**Critério de aceitação:** Score de preparação calculado (0-100%). Checklist interativo por categoria. Timeline 2026-2033 personalizada. PDF de preparação gerado. Alertas CBS/IBS nos XMLs quando aplicável.
+
+---
+
+#### Feature #10 — Integração com ERPs Brasileiros
+
+**Descrição:** Conectores para Bling, Omie, Tiny e Conta Azul que leem notas fiscais diretamente do ERP do cliente — eliminando upload manual. Vendido como: "Não precisa fazer upload. O FiscoPilot lê as notas do sistema que você já usa."
+
+**Novo módulo:** `apps/api/src/modules/erp/`
+
+```
+modules/erp/
+├── index.ts              # Plugin Fastify
+├── routes.ts             # CRUD conexões, trigger sync
+├── connectors/
+│   ├── base.ts           # Interface ErpConnector
+│   ├── bling.ts          # Conector Bling (API v3)
+│   ├── omie.ts           # Conector Omie
+│   ├── tiny.ts           # Conector Tiny
+│   └── conta-azul.ts     # Conector Conta Azul
+├── sync-engine.ts        # Motor de sincronização
+└── mapper.ts             # Mapeia dados ERP → NfeDocument
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE erp_connections (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  erp_type          varchar(20) NOT NULL,
+  access_token      text NOT NULL,
+  refresh_token     text,
+  token_expires_at  timestamptz,
+  config            jsonb NOT NULL DEFAULT '{}',
+  is_active         boolean NOT NULL DEFAULT true,
+  last_sync_at      timestamptz,
+  last_sync_status  varchar(20),
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE erp_sync_logs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  connection_id     uuid NOT NULL REFERENCES erp_connections(id),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  sync_type         varchar(20) NOT NULL,
+  status            varchar(20) NOT NULL,
+  total_found       integer DEFAULT 0,
+  total_synced      integer DEFAULT 0,
+  total_skipped     integer DEFAULT 0,
+  error_message     text,
+  started_at        timestamptz,
+  completed_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/erp/connectors` | Lista ERPs suportados |
+| POST | `/api/v1/erp/connect` | Inicia fluxo OAuth do ERP |
+| GET | `/api/v1/erp/connections` | Lista conexões ativas |
+| DELETE | `/api/v1/erp/connections/:id` | Remove conexão |
+| POST | `/api/v1/erp/sync` | Trigger manual de sincronização |
+| GET | `/api/v1/erp/sync/:id` | Status da sincronização |
+| GET | `/api/v1/erp/sync-history` | Histórico de syncs |
+
+**Interface do conector:**
+
+```typescript
+interface ErpConnector {
+  name: string;
+  type: 'BLING' | 'OMIE' | 'TINY' | 'CONTA_AZUL';
+  getAuthUrl(orgId: string): string;
+  exchangeCode(code: string): Promise<ErpTokens>;
+  refreshToken(token: string): Promise<ErpTokens>;
+  fetchNfes(token: string, period: DateRange): Promise<RawNfeData[]>;
+  mapToNfeDocument(raw: RawNfeData): ParsedNfe;
+}
+```
+
+**Critério de aceitação:** Ao menos 2 conectores funcionais (Bling + Tiny). OAuth flow completo. Sincronização automática diária. Notas do ERP entram no pipeline de processamento existente.
+
+---
+
+#### Feature #13 — Biblioteca de Regras por UF e Setor
+
+**Descrição:** Plataforma de regras empacotáveis por UF e setor — "pacote SP material de construção", "pacote MG material de construção", "pacote restaurantes", "pacote confecção", "pacote distribuidora de bebidas", "pacote Lucro Presumido". Cada novo setor/estado vira um módulo testável. Permite expansão sem bagunça.
+
+**Refatoração do módulo:** `apps/api/src/modules/rules/`
+
+```
+modules/rules/
+├── engine.ts             # Existente (orquestrador)
+├── types.ts              # Existente
+├── packs/                # NOVO: pacotes de regras
+│   ├── index.ts          # Registry de pacotes
+│   ├── base/             # Regras universais (R1-R8)
+│   │   └── index.ts
+│   ├── sp-construcao/    # SP + material de construção
+│   │   └── index.ts
+│   ├── mg-construcao/    # MG + material de construção
+│   │   └── index.ts
+│   ├── restaurantes/     # Setor restaurantes
+│   │   └── index.ts
+│   ├── confeccao/        # Setor confecção
+│   │   └── index.ts
+│   ├── bebidas/          # Distribuidora de bebidas
+│   │   └── index.ts
+│   └── lucro-presumido/  # Regime Lucro Presumido
+│       └── index.ts
+└── rule-loader.ts        # NOVO: carrega pacotes por org
+```
+
+**Novas tabelas:**
+
+```sql
+CREATE TABLE rule_packs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  pack_key          varchar(50) NOT NULL UNIQUE,
+  pack_name         varchar(150) NOT NULL,
+  description       text,
+  sector            varchar(50) NOT NULL,
+  uf                char(2),
+  regime            organization_regime,
+  version           varchar(20) NOT NULL,
+  rules_json        jsonb NOT NULL,
+  is_active         boolean NOT NULL DEFAULT true,
+  activated_at      timestamptz,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE organization_rule_packs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  organization_id   uuid NOT NULL REFERENCES organizations(id),
+  rule_pack_id      uuid NOT NULL REFERENCES rule_packs(id),
+  is_enabled        boolean NOT NULL DEFAULT true,
+  enabled_at        timestamptz NOT NULL DEFAULT now(),
+  disabled_at       timestamptz,
+
+  CONSTRAINT UQ_org_pack UNIQUE (organization_id, rule_pack_id)
+);
+```
+
+**Novas rotas API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/api/v1/rule-packs` | Lista pacotes disponíveis |
+| GET | `/api/v1/rule-packs/:key` | Detalhe do pacote |
+| POST | `/api/v1/organizations/rule-packs` | Ativar pacote para org |
+| DELETE | `/api/v1/organizations/rule-packs/:id` | Desativar pacote |
+
+**Critério de aceitação:** Ao menos 3 pacotes funcionais (SP construção, MG construção, Lucro Presumido). Pacotes ativáveis/desativáveis por organização. Motor de regras carrega pacotes ativos dinamicamente.
+
+---
+
+### Riscos e pontos de atenção da Fase D
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Reforma Tributária (Feature #9) pode ter regulamentação incompleta ou mudar | Alta | Acompanhar publicações da Receita Federal. Checklist genérico + alertas específicos quando campos CBS/IBS disponíveis |
+| APIs de ERPs (Feature #10) podem mudar sem aviso ou ter rate limits restritivos | Média | Versionamento de conectores. Testes de integração contínuos. Fallback para upload manual |
+| Biblioteca de regras (Feature #13) pode gerar inconsistência entre pacotes (mesma nota, resultados diferentes) | Média | Pacote base (R1-R8) sempre ativo. Pacotes setoriais adicionam regras, não substituem. Testes cruzados entre pacotes |
+| Esforço total da Fase D (~50 dias) pode exceder capacidade do time | Média | Priorizar Feature #10 (ERPs) — maior impacto comercial. Features #9 e #13 podem ser adiadas |
+| Lucro Presumido (pacote da Feature #13) tem regras fiscais significativamente diferentes do Simples | Média | Contratar contador consultor para validar regras do pacote Lucro Presumido antes de lançar |
+
+---
+
+### Resumo consolidado da expansão
+
+| Dimensão | MVP (Etapas 1-34) | Pós-MVP (Etapa 35) | Total |
+|---|---|---|---|
+| Tabelas | 10 | +23 + 1 view | 34 |
+| Rotas API | ~13 | +~65 | ~78 |
+| Telas | 9 | +14 | 23 |
+| Módulos backend | 7 | +12 | 19 |
+| Funcionalidades | 35 (F01-F35) | +30 (F36-F65) | 65 |
+| Custo infra/mês | ~R$ 168 | +R$ 170 | ~R$ 338 |
+| Esforço | 90 dias | +155 dias | 245 dias |
+
+### Diagrama de componentes atualizado
+
+```
+apps/api/src/modules/
+├── auth/              # Existente
+├── ingest/            # Existente
+├── parser/            # Existente
+├── rules/             # Existente + packs/ (Feature #13)
+├── dashboard/         # Existente
+├── notify/            # Existente + smart templates (Feature #8)
+├── report/            # Existente + owner-report (Feature #7)
+├── explain/           # Existente + ai-assistant (Feature #12)
+├── messages/          # NOVO (Feature #5)
+├── savings/           # NOVO (Feature #6)
+├── whatsapp-ingest/   # NOVO (Feature #11)
+├── onboarding/        # NOVO (Feature #15)
+├── sefaz/             # NOVO (Feature #1)
+├── kanban/            # NOVO (Feature #4)
+├── cadastral/         # NOVO (Feature #14)
+├── accountant/        # NOVO (Feature #2)
+├── suppliers/         # NOVO (Feature #3)
+├── reform/            # NOVO (Feature #9)
+└── erp/               # NOVO (Feature #10)
+```
+
+### Riscos gerais da expansão
+
+| Risco | Severidade | Mitigação |
+|---|---|---|
+| Complexidade total do produto pode crescer além da capacidade do time de 2-3 devs | Alta | Cada fase é auto-contida. Se capacity apertar, adiar Fase D. Contratar dev adicional antes da Fase C |
+| Produto pode perder foco ao tentar atender muitos setores/UFs (Feature #13) | Média | Manter ICP original (material de construção, Simples, SP/MG) como core. Novos pacotes são expansões, não pivots |
+| Custo de infra pode crescer mais que receita se features não converterem em vendas | Média | Cada fase deve gerar ao menos 5 novos clientes ou permitir aumento de preço (R$ 97 → R$ 147 → R$ 197) |
+| Dependência de APIs externas (Sefaz, ERPs, Receita Federal) cria fragilidade | Alta | Toda integração externa tem fallback: upload manual, cache local, retry com backoff |
+| Concorrente pode surgir com produto similar antes da Fase D | Baixa | Velocidade de execução é a defesa. 155 dias de vantagem com produto em produção e clientes pagantes |
+
+---
+
+_Conteúdo completo do plano FiscoPilot — 35 etapas, da definição do problema à expansão pós-MVP._
 
 ---
